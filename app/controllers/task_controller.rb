@@ -1,5 +1,4 @@
-class TaskController < WebsocketRails::BaseController
+class ChatController < WebsocketRails::BaseController
   def notify
-    broadcast_message :temp, {}
   end
 end

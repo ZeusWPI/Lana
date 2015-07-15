@@ -13,9 +13,10 @@ generate_div = (content) ->
             .text(content)
 
 channel.bind 'message', (data) ->
-    notification = new Notification 'General',
+    noti = new Notification 'General',
         body: data
         icon: "https://pbs.twimg.com/profile_images/241260158/zeuswpi_400x400.jpg"
+    # Not sure why this doesn't work??
+    setTimeout (() -> noti.close()), 2000
 
-    # Temporary for testing
     $(".notification-center").prepend generate_div(data)

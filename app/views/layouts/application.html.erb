@@ -23,6 +23,9 @@
                     <li>
                         <%= link_to 'Users', '/users' %>
                     </li>
+                    <li>
+                        <%= link_to 'Notifications', '/notifications' %>
+                    </li>
                 </ul>
             </div>
 
@@ -33,9 +36,16 @@
                             <%= yield %>
                         </div>
 
-                        <div class=".col-xs-6 col-md-4">
+                        <div class="text-right .col-xs-6 col-md-4">
                             <h2>Notifications</h2>
                             <div class="notification-center">
+                                <% for notification in Notification.order 'created_at DESC' %>
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <%= notification.content %>
+                                        </div>
+                                    </div>
+                                <% end %>
                             </div>
                         </div>
                     </div>

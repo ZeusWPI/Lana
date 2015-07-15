@@ -10,3 +10,9 @@ names = ['Don', 'Iepoev', 'Silox', 'Julien']
 names.each do |n|
   User.create name: n
 end
+
+titles = ['Dota', 'League Of Legends', 'Trackmania', 'Nidhogg']
+
+titles.each do |t|
+  Game.create title: t
+end

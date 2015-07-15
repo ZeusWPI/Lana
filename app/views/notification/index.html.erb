@@ -1,0 +1,5 @@
+<%= form_for @new_notification, :url => {:controller => "notification", :action => "add"} do |f| %>
+    Content : <%= f.text_area :content %><br />
+    <%= f.submit %>
+<% end %>
+

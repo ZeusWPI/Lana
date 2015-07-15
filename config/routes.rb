@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :users
-  #get 'users' => 'users#index'
-  #get 'users/:id' => 'users#show'
+  resources :users, only: [:index, :show]
 
+  get 'games' => 'games#index'
+
+  get 'notifications' => 'notification#index'
+  post 'notifications' => 'notification#add'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
