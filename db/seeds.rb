@@ -16,3 +16,8 @@ titles = ['Dota', 'League Of Legends', 'Trackmania', 'Nidhogg']
 titles.each do |t|
   Game.create title: t
 end
+
+contents = [ 'Pizza\'s kunnen besteld worden!', 'Het Dota toernooi begint zodra', 'Kijk daar!, een roze olifant!']
+contents.each do |c|
+  Notification.create content: c
+end

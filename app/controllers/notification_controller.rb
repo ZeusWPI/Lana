@@ -4,13 +4,16 @@ class NotificationController < ApplicationController
     @new_notification = Notification.new
   end
 
-  def add
-    content = params[:notification][:content]
+  def create
+    noti = Notification.new(notification_params)
+    noti.save!
 
-    Rails.logger.debug params.inspect
-    Notification.create content: content
-
-    WebsocketRails[:all].trigger :message, content
+    WebsocketRails[:all].trigger :message, params[:notification][:content]
     redirect_to :action => 'index'
+  end
+
+  private
+  def notification_params
+    params.require(:notification).permit(:content)
   end
 end
