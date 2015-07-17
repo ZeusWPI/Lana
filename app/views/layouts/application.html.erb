@@ -12,19 +12,22 @@
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <li class="sidebar-brand">
-                        <%= link_to 'Home', '/' %>
+                        <%= link_to 'Home', :root %>
                     </li>
                     <li>
                         LFG
                     </li>
                     <li>
-                        <%= link_to 'Games', '/games' %>
+                        <%= link_to 'Games', :games %>
                     </li>
                     <li>
-                        <%= link_to 'Users', '/users' %>
+                        <%= link_to 'Users', :users %>
                     </li>
                     <li>
-                        <%= link_to 'Notifications', '/notifications' %>
+                        <%= link_to 'Notifications', :notifications %>
+                    </li>
+                    <li>
+                        <%= link_to 'Competitions', :competitions %>
                     </li>
                 </ul>
             </div>
@@ -36,14 +39,12 @@
                             <%= yield %>
                         </div>
 
-                        <div class="text-right .col-xs-6 col-md-4">
+                        <div class="notification-center text-right .col-xs-6 col-md-4">
                             <h2>Notifications</h2>
-                            <div class="notification-center">
-                                <% for notification in Notification.order 'created_at DESC' %>
-                                    <div class="notification panel panel-default">
-                                        <div class="panel-body">
-                                            <%= notification.content %>
-                                        </div>
+                            <div class="notifications">
+                                <% for notification in Notification.order(created_at: :desc).limit(5) %>
+                                    <div class="notification well">
+                                        <%= notification.content %>
                                     </div>
                                 <% end %>
                             </div>

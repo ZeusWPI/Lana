@@ -19,4 +19,4 @@ channel.bind 'message', (data) ->
     # Not sure why this doesn't work??
     setTimeout (() -> noti.close()), 2000
 
-    $(".notification-center").prepend generate_div(data)
+    $(".notifications").prepend generate_div(data)
