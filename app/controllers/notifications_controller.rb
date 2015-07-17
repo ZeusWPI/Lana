@@ -1,4 +1,4 @@
-class NotificationController < ApplicationController
+class NotificationsController < ApplicationController
   def index
     @notifications = Notification.all
     @new_notification = Notification.new

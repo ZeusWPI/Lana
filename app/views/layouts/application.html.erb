@@ -24,7 +24,7 @@
                         <%= link_to 'Users', '/users' %>
                     </li>
                     <li>
-                        <%= link_to 'Notifications', '/notification' %>
+                        <%= link_to 'Notifications', '/notifications' %>
                     </li>
                 </ul>
             </div>
@@ -40,7 +40,7 @@
                             <h2>Notifications</h2>
                             <div class="notification-center">
                                 <% for notification in Notification.order 'created_at DESC' %>
-                                    <div class="panel panel-default">
+                                    <div class="notification panel panel-default">
                                         <div class="panel-body">
                                             <%= notification.content %>
                                         </div>

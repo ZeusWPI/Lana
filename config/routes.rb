@@ -15,5 +15,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
   resources :games, only: [:index]
-  resources :notification, only: [:index, :create]
+  resources :notifications, only: [:index, :create]
 end

@@ -7,7 +7,7 @@ channel = dispatcher.subscribe 'all'
 
 generate_div = (content) ->
     $('<div/>')
-        .addClass('panel panel-default')
+        .addClass('notification panel panel-default')
         .append('<div/>')
             .addClass('panel-body')
             .text(content)
