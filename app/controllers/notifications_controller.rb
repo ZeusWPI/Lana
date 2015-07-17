@@ -9,6 +9,7 @@ class NotificationsController < ApplicationController
     noti.save!
 
     WebsocketRails[:all].trigger :message, params[:notification][:content]
+
     redirect_to :action => 'index'
   end
 
