@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require websocket_rails/main
+//= require chat
 //= require jasny-bootstrap.min
 //= require easy-emoji
 //= require emoji-turbolinks
