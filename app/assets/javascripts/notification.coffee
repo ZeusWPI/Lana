@@ -1,9 +1,5 @@
-generate_dispatcher = -> new WebSocketRails location.host + '/websocket'
-
-window.dispatcher = generate_dispatcher()
-window.dispatcher.on_close = ->
-  console.log "closed"
-  generate_dispatcher
+window.dispatcher = new WebSocketRails location.host + '/websocket'
+window.dispatcher.on_close = -> window.dispatcher.reconnect()
 
 Notification.requestPermission()
 
