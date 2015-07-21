@@ -10,6 +10,10 @@ generate_div = (content) ->
     $('<div/>')
         .text(content)
 
+play_sound = ->
+    $('#notification_sound')[0].currentTime = 0
+    $('#notification_sound')[0].play()
+
 channel.bind 'message', (data) ->
     noti = new Notification 'General',
         body: data
@@ -19,3 +23,5 @@ channel.bind 'message', (data) ->
 
     $(".notifications").prepend generate_div(data)
     $(".notification").last().remove()
+
+    play_sound()

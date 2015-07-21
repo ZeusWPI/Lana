@@ -10,6 +10,7 @@
         <%= yield :head %>
     </head>
     <body class="<%= controller_name %> <%= action_name %>">
+        <%= audio_tag "notification_sound.wav", { id: "notification_sound", class: "audio_player", preload: "auto" } %>
         <div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm">
             <a class="navmenu-brand visible-md visible-lg" href="#">LanApp</a>
             <ul class="nav navmenu-nav">

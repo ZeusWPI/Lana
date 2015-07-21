@@ -38,6 +38,9 @@ gem 'jasny-bootstrap-rails'
 # Mandatory.
 gem 'easy-emoji'
 
+# Scheduling of notifications
+gem 'rufus-scheduler'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
