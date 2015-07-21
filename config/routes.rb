@@ -11,6 +11,8 @@
 #
 
 Rails.application.routes.draw do
+  get 'chat', to: 'chat#index'
+
   root 'welcome#index'
 
   resources :users, only: [:index, :show]

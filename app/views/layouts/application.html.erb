@@ -6,6 +6,8 @@
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
         <%= csrf_meta_tags %>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <%= yield :head %>
     </head>
     <body>
         <div id="wrapper">
@@ -28,6 +30,9 @@
                     </li>
                     <li>
                         <%= link_to 'Competitions', :competitions %>
+                    </li>
+                    <li>
+                        <%= link_to 'Chat', :chat %>
                     </li>
                 </ul>
             </div>

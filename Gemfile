@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
-gem 'websocket-rails'
+gem 'websocket-rails', github: 'websocket-rails/websocket-rails'
 
 # For images
 gem 'paperclip'
