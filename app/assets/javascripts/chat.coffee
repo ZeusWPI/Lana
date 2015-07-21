@@ -4,7 +4,7 @@ dispatcher.on_open = (data) ->
   dispatcher.trigger 'chat.connect', "local"
 
 append_message_div = (content) ->
-  $( ".col-md-8" ).append $('<div/>').text(content)
+  $( ".page-header" ).after $('<div/>').text(content)
 
 dispatcher.bind 'chat.incoming_message', (content) ->
     append_message_div content.text

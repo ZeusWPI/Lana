@@ -7,7 +7,6 @@ channel = dispatcher.subscribe 'all'
 
 generate_div = (content) ->
     $('<div/>')
-        .addClass('notification well')
         .text(content)
 
 channel.bind 'message', (data) ->

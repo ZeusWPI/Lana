@@ -32,6 +32,8 @@ gem 'websocket-rails', github: 'websocket-rails/websocket-rails'
 # For images
 gem 'paperclip'
 
+gem 'jasny-bootstrap-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
