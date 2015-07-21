@@ -1,10 +1,19 @@
 dispatcher = new WebSocketRails location.host + '/websocket'
 
-console.log "SUP GUISE"
-
 dispatcher.on_open = (data) ->
-  console.log "Connection has been established: ", data
   dispatcher.trigger 'chat.connect', "local"
 
-dispatcher.bind 'chat.new_connection', (event) ->
-    alert "stuff!"
+append_message_div = (content) ->
+  $( ".col-md-8" ).append $('<div/>').text(content)
+
+dispatcher.bind 'chat.incoming_message', (content) ->
+    append_message_div content.text
+
+send_message = (event) ->
+  if (event.which == 13 || event.keyCode == 13) && $(this).val() != ''
+    dispatcher.trigger 'chat.new_message', { text: $(this).val() }
+    # Clear input field
+    $(this).val ''
+
+$ ->
+  $( "#send_message" ).keypress send_message

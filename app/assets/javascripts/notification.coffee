@@ -18,3 +18,4 @@ channel.bind 'message', (data) ->
     setTimeout (() -> noti.close()), 10000
 
     $(".notifications").prepend generate_div(data)
+    $(".notification").last().remove()
