@@ -52,8 +52,10 @@
             </div>
 
             <div>
-                <%= yield %>
-                <div class="notification-center text-right">
+                <div class="col-md-8">
+                    <%= yield %>
+                </div>
+                <div class="notification-center text-right col-md-4">
                     <h2>Notifications</h2>
                     <div class="notifications">
                         <% for notification in Notification.order(created_at: :desc).limit(5) %>
