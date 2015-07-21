@@ -1,8 +1,11 @@
+#Emojify everything
+
 append_message_div = (content) ->
-  $( ".page-header" ).after $('<div/>').text(content)
+  $( "#send_message" ).before $('<div/>').text(content)
 
 window.dispatcher.bind 'chat.incoming_message', (content) ->
     append_message_div content.text
+    emojify.run()
 
 @send_message = (event) ->
   if (event.which == 13 || event.keyCode == 13)

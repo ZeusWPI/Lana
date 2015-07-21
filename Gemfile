@@ -32,7 +32,11 @@ gem 'websocket-rails', github: 'websocket-rails/websocket-rails'
 # For images
 gem 'paperclip'
 
+# For fancy sidebar
 gem 'jasny-bootstrap-rails'
+
+# Mandatory.
+gem 'easy-emoji'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
