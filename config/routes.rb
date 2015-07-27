@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :games, only: [:index]
   resources :notifications, only: [:index, :create]
-  resources :competitions, only: [:index, :create, :show]
+  resources :competitions, only: [:index, :create, :show, :new]
 end
