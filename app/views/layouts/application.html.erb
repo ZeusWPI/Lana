@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>LanApp</title>
+        <%= favicon_link_tag 'favicon.ico' %>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
         <%= csrf_meta_tags %>
@@ -16,9 +17,6 @@
             <ul class="nav navmenu-nav">
                 <li>
                     <%= link_to 'Home', :root %>
-                </li>
-                <li>
-                    LFG
                 </li>
                 <li>
                     <%= link_to 'Games', :games %>
