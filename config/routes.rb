@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users, only: [:index, :show]
-  resources :games, only: [:index]
+  resources :games, only: [:index, :show]
   resources :notifications, only: [:index, :create]
   resources :competitions, only: [:index, :create, :show, :new]
 end
