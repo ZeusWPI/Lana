@@ -7,6 +7,7 @@
 #  notes      :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  max_users  :integer
 #
 
 class Group < ActiveRecord::Base
@@ -15,6 +16,13 @@ class Group < ActiveRecord::Base
 
   validate :validate_max_users
   validates :game, presence: true
+  validates :users, presence: true
+
+  def usercount
+    users.size
+  end
+
+  private
 
   def validate_max_users
     if max_users.present? && users.size > max_users then
