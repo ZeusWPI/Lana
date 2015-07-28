@@ -1,5 +1,9 @@
 <h1><%= @game.title %></h1>
 <h2>Groups searching for peeps</h2>
 <% for g in @game.groups %>
-    x<br>
+    <%= link_to "x", g %><br>
+<% end %>
+<h2>Competitions starring this game</h2>
+<% for c in @game.competitions %>
+    <%= link_to c.starttime, c %><br>
 <% end %>
