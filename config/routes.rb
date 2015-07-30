@@ -17,12 +17,6 @@
 #
 
 Rails.application.routes.draw do
-  get 'groups/new'
-
-  get 'groups/show'
-
-  get 'groups/create'
-
   get 'chat', to: 'chat#index'
 
   root 'welcome#index'
