@@ -6,6 +6,11 @@
 
 /* Toggle Styles */
 
+/*
+*=require_self
+*=require_tree
+*/
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "jasny-bootstrap.min";

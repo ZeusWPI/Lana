@@ -1,3 +1,30 @@
 // Place all the styles related to the Chat controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.fill-height {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+
+    div.chatbox {
+        border-right: 1px solid DarkGray;
+        border-left: 1px solid DarkGray;
+        min-height: 100%;
+        flex: 2;
+        overflow: auto;
+        margin-bottom: 30px;
+        padding: 8px;
+    }
+}
+
+.username {
+    font-weight: bold;
+    margin-right: 3px;
+}
+
+#send_message {
+    height: 30px;
+    width: 100%;
+}
+

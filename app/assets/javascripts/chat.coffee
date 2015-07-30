@@ -1,6 +1,9 @@
 $(".chat.index").ready ->
     append_message_div = (content) ->
-      $( "#send_message" ).before $('<div/>').text(content)
+      $( ".chatbox" ).append $('<div/>')
+          .addClass( "message" )
+              .append $('<span/>').text("Blaa:").addClass( "username" )
+              .append $('<span/>').text(content)
 
     window.dispatcher.bind 'chat.incoming_message', (content) ->
         append_message_div content.text
