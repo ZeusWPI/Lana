@@ -1,6 +1,6 @@
 <h1>Groups</h1>
 <%= form_for @group do |f| %>
-    <%= f.collection_select :user_ids, User.all, :id, :name, multiple: true %>
+    <%= f.collection_select :user_ids, User.all, :id, :name, { include_hidden: false }, { multiple: true } %>
     <%= f.collection_select :game_id, Game.all, :id, :title %>
     <%= f.submit %>
 <% end %>
