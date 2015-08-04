@@ -1,17 +1,3 @@
 <h1>Groups</h1>
-<%= form_for @group, url: create_group_path({ game_id: params[:game_id] }) do |f| %>
-    <% if @group.errors.any? %>
-        <div id="error_explanation">
-            <h2><%= pluralize(@group.errors.count, "error") %> prohibited this competition from being saved:</h2>
 
-            <ul>
-                <% @group.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
-    <%= f.collection_select :user_ids, User.all, :id, :name, { include_hidden: false }, { multiple: true } %>
-    <%= f.hidden_field :game_id, value: params[:game_id] %>
-    <%= f.submit "Create group", class: "btn btn-default" %>
-<% end %>
+<%= render 'form' %>
