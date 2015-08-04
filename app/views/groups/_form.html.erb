@@ -11,11 +11,11 @@
         </div>
     <% end %>
 
+    <div class="form-group">
+        <%= f.label :game_id, "Game:" %>
+        <%= f.collection_select :game_id, Game.all, :id, :title, {selected: params[:game_id]}, { class: 'form-control' } %>
+    </div>
     <% if params[:game_id].blank? %>
-        <div class="form-group">
-            <%= f.label :game_id, "Game:" %>
-            <%= f.collection_select :game_id, Game.all, :id, :title, {}, { class: 'form-control' } %>
-        </div>
     <% else %>
         <%= f.hidden_field :game_id, value: params[:game_id] %>
     <% end %>
