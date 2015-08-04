@@ -1,1 +1,5 @@
 <h1>Group <%= @group.id %> for <%= @group.game.title %></h1>
+<h2>Users</h2>
+<% for user in @group.users %>
+    <%= user.name %><br>
+<% end %>
