@@ -15,16 +15,9 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
 
-    respond_to do |wants|
-      if @group.save
-        flash[:notice] = 'Group was successfully created.'
-        wants.html { redirect_to(@group) }
-        wants.xml { render :xml => @group, :status => :created, :location => @group }
-      else
-        p "test"
-        wants.html { render :action => "new" }
-        wants.xml { render :xml => @group.errors, :status => :unprocessable_entity }
-      end
+    if @group.save
+      flash[:notice] = 'Group was successfully created.'
+      redirect_to(@group)
     end
   end
 
