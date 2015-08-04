@@ -1,4 +1,4 @@
-<%= form_for @group, url: create_group_path({ game_id: params[:game_id] }), html: { class: 'form-horizontal', role: 'form' } do |f| %>
+<%= form_for @group, html: { class: 'form-horizontal', role: 'form' } do |f| %>
     <% if @group.errors.any? %>
         <div id="error_explanation">
             <h2><%= pluralize(@group.errors.count, "error") %> prohibited this competition from being saved:</h2>
@@ -10,6 +10,16 @@
             </ul>
         </div>
     <% end %>
+
+    <% if params[:game_id].blank? %>
+        <div class="form-group">
+            <%= f.label :game_id, "Game:" %>
+            <%= f.collection_select :game_id, Game.all, :id, :title, {}, { class: 'form-control' } %>
+        </div>
+    <% else %>
+        <%= f.hidden_field :game_id, value: params[:game_id] %>
+    <% end %>
+
     <div class="form-group">
         <%= f.label :user_ids, "Users:" %>
         <%= f.collection_select :user_ids, User.all, :id, :name, { include_hidden: false }, { multiple: true, class: 'form-control'} %>
@@ -20,7 +30,6 @@
         <%= f.text_area :notes, { class: 'form-control' } %>
     </div>
 
-    <%= f.hidden_field :game_id, value: params[:game_id] %>
-    <%= f.submit "Create group", class: "btn btn-default" %>
+    <%= f.submit "Submit", class: "btn btn-default" %>
 <% end %>
 
