@@ -1,10 +1,10 @@
 <div>
-    <%= link_to "Create new group", new_group_path(game_id: 1) %>
+    <%= link_to "Create new group", new_group_path(game_id: @game.id) %>
 </div>
 <h1><%= @game.title %></h1>
 <h2>Groups searching for peeps</h2>
-<% for g in @game.groups %>
-    <%= link_to "x", g %><br>
+<% for g in @game.groups.sort_by {|x| x.usercount}.reverse %>
+    <%= link_to "#{g.usercount} #{"player".pluralize(g.usercount)}", g %><br>
 <% end %>
 <h2>Competitions starring this game</h2>
 <% for c in @game.competitions %>
