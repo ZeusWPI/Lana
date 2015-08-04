@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   def new
     @group = Group.new
+    @id = params[:game_id]
   end
 
   def show
@@ -15,9 +16,12 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
 
-    if @group.save
-      flash[:notice] = 'Group was successfully created.'
-      redirect_to(@group)
+    respond_to do |format|
+      if @group.save
+        format.html { redirect_to @group, notice: 'Group was successfully created.' }
+      else
+        format.html { render action: :new }
+      end
     end
   end
 

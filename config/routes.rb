@@ -26,4 +26,6 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index, :create]
   resources :competitions, only: [:index, :create, :show, :new]
   resources :groups, only: [:new, :show, :create]
+
+  match '/groups/new', to: 'groups#create', via: :post, as: :create_group
 end
