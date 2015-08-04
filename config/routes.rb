@@ -13,6 +13,9 @@
 #                 POST     /competitions(.:format)     competitions#create
 # new_competition GET      /competitions/new(.:format) competitions#new
 #     competition GET      /competitions/:id(.:format) competitions#show
+#       new_group GET      /groups/new(.:format)       groups#new
+#           group GET      /groups/:id(.:format)       groups#show
+#    create_group POST     /groups/new(.:format)       groups#create
 #       websocket GET|POST /websocket(.:format)        websocket_rails
 #
 
@@ -25,7 +28,7 @@ Rails.application.routes.draw do
   resources :games, only: [:index, :show]
   resources :notifications, only: [:index, :create]
   resources :competitions, only: [:index, :create, :show, :new]
-  resources :groups, only: [:new, :show, :create]
+  resources :groups, only: [:new, :show]
 
   match '/groups/new', to: 'groups#create', via: :post, as: :create_group
 end
