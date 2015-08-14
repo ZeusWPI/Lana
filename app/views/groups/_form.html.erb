@@ -15,14 +15,15 @@
         <%= f.label :game_id, "Game:" %>
         <%= f.collection_select :game_id, Game.all, :id, :title, {selected: params[:game_id]}, { class: 'form-control' } %>
     </div>
-    <% if params[:game_id].blank? %>
-    <% else %>
-        <%= f.hidden_field :game_id, value: params[:game_id] %>
-    <% end %>
 
     <div class="form-group">
         <%= f.label :user_ids, "Users:" %>
         <%= f.collection_select :user_ids, User.all, :id, :name, { include_hidden: false }, { multiple: true, class: 'form-control'} %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :max_users, "Max users:" %>
+        <%= f.number_field :max_users, { class: 'form-control' } %>
     </div>
 
     <div class="form-group">
