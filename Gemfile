@@ -41,6 +41,8 @@ gem 'easy-emoji'
 # Scheduling of notifications
 gem 'rufus-scheduler'
 
+gem 'multi-select-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

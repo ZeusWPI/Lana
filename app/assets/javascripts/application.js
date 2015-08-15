@@ -20,3 +20,5 @@
 //= require easy-emoji
 //= require emoji-turbolinks
 //= require notification
+//= require multi-select
+//= require_tree .

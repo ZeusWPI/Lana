@@ -49,10 +49,12 @@
             <div class="page-header">
                 <h1>LanApp</h1>
             </div>
+            <%= flash_messages %>
 
             <div>
                 <div class="col-md-8">
                     <%= yield %>
+                    <%= debug(params) %>
                 </div>
                 <div class="notification-center text-right col-md-4">
                     <h2>Notifications</h2>

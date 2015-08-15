@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721132227) do
+ActiveRecord::Schema.define(version: 20150728220926) do
 
   create_table "competitions", force: :cascade do |t|
     t.integer  "game_id"
@@ -38,9 +38,18 @@ ActiveRecord::Schema.define(version: 20150721132227) do
     t.text     "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "max_users"
   end
 
   add_index "groups", ["game_id"], name: "index_groups_on_game_id"
+
+  create_table "groups_users", id: false, force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+  end
+
+  add_index "groups_users", ["group_id"], name: "index_groups_users_on_group_id"
+  add_index "groups_users", ["user_id"], name: "index_groups_users_on_user_id"
 
   create_table "notifications", force: :cascade do |t|
     t.text     "content"
