@@ -1,7 +1,16 @@
 <h1>Group <%= @group.id %> for <%= @group.game.title %></h1>
 <%= link_to 'Delete', @group, method: :delete, data: { confirm: 'Are you sure?' } %><br>
 <%= link_to 'Edit', edit_group_path(@group) %><br>
-<h2>Users</h2>
+
+<h2>
+<% if @group.max_users.present? %>
+    <%= @group.usercount %>/<%= @group.max_users %>
+<% else %>
+    <%= @group.usercount %>
+<% end %>
+ Users
+</h2>
+
 <% for user in @group.users %>
     <%= link_to user.name, user %><br>
 <% end %>
