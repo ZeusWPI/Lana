@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>LanApp</title>
+        <title>Lana</title>
         <%= favicon_link_tag 'favicon.ico' %>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -13,7 +13,7 @@
     <body class="<%= controller_name %> <%= action_name %>">
         <%= audio_tag "notification_sound.wav", { id: "notification_sound", class: "audio_player", preload: "auto" } %>
         <div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm">
-            <a class="navmenu-brand visible-md visible-lg" href="#">LanApp</a>
+            <a class="navmenu-brand visible-md visible-lg" href="#">Lana</a>
             <ul class="nav navmenu-nav">
                 <li>
                     <%= link_to 'Home', :root %>
@@ -42,12 +42,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">LanApp</a>
+            <a class="navbar-brand" href="#">Lana</a>
         </div>
 
         <div class="container">
             <div class="page-header">
-                <h1>LanApp</h1>
+                <h1>Lana</h1>
             </div>
             <%= flash_messages %>
 

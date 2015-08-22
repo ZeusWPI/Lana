@@ -1,4 +1,4 @@
-LanApp (Working title)
+Lana
 =======================
 
 An application to make the life of a LAN-partygoer easier!
