@@ -1,5 +1,6 @@
 <%= form_for @new_notification, method: :create do |f| %>
     Content : <%= f.text_area :content %><br />
+    Scheduled time : <%= f.datetime_select :scheduled_at %><br />
     <%= f.submit %>
 <% end %>
 

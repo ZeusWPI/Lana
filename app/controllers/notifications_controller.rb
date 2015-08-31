@@ -5,16 +5,18 @@ class NotificationsController < ApplicationController
   end
 
   def create
-    noti = Notification.new(notification_params)
-    noti.save!
+    notification = Notification.new(notification_params)
+    notification.save!
 
-    WebsocketRails[:all].trigger :message, params[:notification][:content]
+    Rufus::Scheduler.singleton.at notification.scheduled_at do
+      WebsocketRails[:all].trigger :message, params[:notification][:content]
+    end
 
-    redirect_to :action => 'index'
+    redirect_to action: 'index'
   end
 
   private
   def notification_params
-    params.require(:notification).permit(:content)
+    params.require(:notification).permit(:content, :scheduled_at)
   end
 end
