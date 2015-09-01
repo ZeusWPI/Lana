@@ -5,7 +5,7 @@ $(".chat.index").ready ->
             .addClass( "message" )
                 .append $('<span/>').text("Blaa:").addClass( "username" )
                 .append $('<span/>').text(content)
-        chatbox.animate({ scrollTop: $(document).height() }, "slow");
+        chatbox.scrollTop($(document).height());
 
     window.dispatcher.bind 'chat.incoming_message', (content) ->
         append_message_div content.text
