@@ -1,14 +1,5 @@
 <div class="chatbox">
-    <% @chat_messages.each do |c| %>
-        <div class="message">
-            <span class="username">
-                <%= c.user.name %>
-            </span>
-            <span>
-                <%= c.content %>
-            </span>
-        </div>
-    <% end %>
+    <%= render @chat_messages %>
 </div>
 <%= select_tag "user_id", options_for_select(User.all.collect{ |u| [u.name, u.id]}) %>
 <input id="send_message" type="text" onKeyPress="send_message(event)">
