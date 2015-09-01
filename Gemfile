@@ -41,6 +41,13 @@ gem 'easy-emoji'
 # Scheduling of notifications
 gem 'rufus-scheduler'
 
+# Multi-select JS
+gem 'multi-select-rails'
+
+# Nicer datetime_select
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

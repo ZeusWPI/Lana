@@ -54,7 +54,7 @@ GEM
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
     arel (6.0.2)
-    autoprefixer-rails (5.2.1)
+    autoprefixer-rails (5.2.1.1)
       execjs
       json
     binding_of_caller (0.7.2)
@@ -62,12 +62,14 @@ GEM
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
+    bootstrap3-datetimepicker-rails (4.15.35)
+      momentjs-rails (>= 2.8.1)
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
-    cocaine (0.5.5)
+    cocaine (0.5.7)
       climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -107,16 +109,22 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.6.1)
+    mimemagic (0.3.0)
     mini_portile (0.6.2)
     minitest (5.7.0)
+    momentjs-rails (2.10.3)
+      railties (>= 3.1)
+    multi-select-rails (0.9.12)
+      railties (>= 3.0)
     multi_json (1.11.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
-    paperclip (4.2.1)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
+    paperclip (4.3.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
       mime-types
+      mimemagic (= 0.3.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -198,12 +206,15 @@ DEPENDENCIES
   annotate (~> 2.6.6)
   autoprefixer-rails
   bootstrap-sass
+  bootstrap3-datetimepicker-rails (~> 4.15.35)
   byebug
   coffee-rails (~> 4.1.0)
   easy-emoji
   jasny-bootstrap-rails
   jbuilder (~> 2.0)
   jquery-rails
+  momentjs-rails (>= 2.9.0)
+  multi-select-rails
   paperclip
   rails (= 4.2.0)
   rufus-scheduler

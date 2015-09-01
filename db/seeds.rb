@@ -1,3 +1,9 @@
+## Users
+names = ['Don', 'Iepoev', 'Julien']
+names.each do |n|
+  User.create name: n
+end
+
 ## Games
 titles = ['Dota', 'League Of Legends', 'Trackmania', 'Nidhogg']
 

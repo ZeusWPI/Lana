@@ -1,10 +1,8 @@
 <% for game in @games %>
-    <div class="text-center col-xs-4">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                IMAGE
-            </div>
-            <div class="panel-footer"><%= game.title %></div>
-        </div>
+    <div class="col-xs-4 game-image">
+        <%= link_to game do %>
+            <%= image_tag "dota", { width: 200 } %>
+            <h2><span><%= game.title %></span></h2>
+        <% end %>
     </div>
 <% end %>

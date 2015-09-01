@@ -7,8 +7,7 @@ Notification.requestPermission()
 channel = dispatcher.subscribe 'all'
 
 generate_div = (content) ->
-    $('<div/>')
-        .text(content)
+    $('<div/>').text(content)
 
 play_sound = ->
     $('#notification_sound')[0].currentTime = 0
@@ -21,7 +20,11 @@ channel.bind 'message', (data) ->
     # Not sure why this doesn't work??
     setTimeout (() -> noti.close()), 10000
 
-    $(".notifications").prepend generate_div(data)
+    $(".notification-center-inside").prepend generate_div(data)
     $(".notification").last().remove()
 
     play_sound()
+
+$(document).on 'ready page:load', ->
+    $('.datetimepicker').datetimepicker()
+
