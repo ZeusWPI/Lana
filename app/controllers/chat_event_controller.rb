@@ -3,7 +3,7 @@ class ChatEventController < WebsocketRails::BaseController
   end
 
   def new_message
-    unless message[:text].blank?
+    if message[:username].present? and message[:text].present?
       broadcast_message :incoming_message, message, namespace: :chat
     end
   end
