@@ -11,7 +11,9 @@
 class Notification < ActiveRecord::Base
   after_save :schedule_notification
 
-  private
+  def trigger_notification
+    WebsocketRails[:all].trigger :message, self.content
+  end
 
   def schedule_notification
     s = Rufus::Scheduler.singleton
@@ -21,7 +23,8 @@ class Notification < ActiveRecord::Base
     end
 
     s.at self.scheduled_at, tag: self.id do
-      WebsocketRails[:all].trigger :message, self.content
+      self.trigger_notification
     end
   end
+
 end

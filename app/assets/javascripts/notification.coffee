@@ -25,4 +25,6 @@ channel.bind 'message', (data) ->
 
     play_sound()
 
-$ -> $('.datetimepicker').datetimepicker();
+$(document).on 'ready page:load', ->
+    $('.datetimepicker').datetimepicker()
+
