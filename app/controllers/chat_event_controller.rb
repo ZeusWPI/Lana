@@ -3,8 +3,9 @@ class ChatEventController < WebsocketRails::BaseController
   end
 
   def new_message
-    if message[:username].present? and message[:text].present?
-      broadcast_message :incoming_message, message, namespace: :chat
+    chat_message = ChatMessage.new(message)
+    if chat_message.save
+      broadcast_message :incoming_message, {username:chat_message.user.name, text:chat_message.content}, namespace: :chat
     end
   end
 end

@@ -13,6 +13,6 @@ $(".chat.index").ready ->
 
     window.send_message = (event) ->
       if (event.which == 13 || event.keyCode == 13)
-        window.dispatcher.trigger 'chat.new_message', { username: $("#username").val(), text: $( "#send_message" ).val() }
+        window.dispatcher.trigger 'chat.new_message', { user_id: $("#user_id").val(), content: $( "#send_message" ).val() }
         # Clear input field
         $( "#send_message" ).val ''
