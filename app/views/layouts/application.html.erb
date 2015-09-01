@@ -58,8 +58,8 @@
                 </div>
                 <div class="notification-center text-right col-md-4">
                     <h2>Notifications</h2>
-                    <div class="notifications">
-                        <% for notification in Notification.order(created_at: :desc).limit(5) %>
+                    <div class="notification-center-inside">
+                        <% latest_notifications.each do |notification| %>
                             <div class="notification">
                                 <%= notification.content %>
                             </div>
