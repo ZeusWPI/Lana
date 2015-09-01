@@ -5,10 +5,10 @@
 .chatbox {
     border-right: 1px solid DarkGray;
     border-left: 1px solid DarkGray;
-    min-height: calc(100vh - 300px);
-    max-height: calc(100vh - 300px);
+    min-height: calc(100vh - 150px);
+    max-height: calc(100vh - 150px);
     overflow-y: scroll;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
     padding: 8px;
 }
 
@@ -20,5 +20,6 @@
 #send_message {
     height: 30px;
     width: 100%;
+    margin-bottom: 5px;
 }
 
