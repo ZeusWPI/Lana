@@ -7,8 +7,7 @@ Notification.requestPermission()
 channel = dispatcher.subscribe 'all'
 
 generate_div = (content) ->
-    $('<div/>')
-        .text(content)
+    $('<div/>').text(content)
 
 play_sound = ->
     $('#notification_sound')[0].currentTime = 0
@@ -25,3 +24,5 @@ channel.bind 'message', (data) ->
     $(".notification").last().remove()
 
     play_sound()
+
+$ -> $('.datetimepicker').datetimepicker();
