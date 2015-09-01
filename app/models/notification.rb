@@ -9,4 +9,22 @@
 #
 
 class Notification < ActiveRecord::Base
+  after_save :schedule_notification, if: Proc.new { |n| n.scheduled_at.present? }
+
+  def trigger_notification
+    WebsocketRails[:all].trigger :message, self.content
+  end
+
+  def schedule_notification
+    s = Rufus::Scheduler.singleton
+
+    s.jobs(tag: self.id).each do |job|
+      job.unschedule
+    end
+
+    s.at self.scheduled_at, tag: self.id do
+      self.trigger_notification
+    end
+  end
+
 end

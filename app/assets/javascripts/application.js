@@ -20,3 +20,7 @@
 //= require easy-emoji
 //= require emoji-turbolinks
 //= require notification
+//= require multi-select
+//= require moment
+//= require bootstrap-datetimepicker
+//= require_tree .
