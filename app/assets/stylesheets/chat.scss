@@ -2,20 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.fill-height {
-    display: flex;
-    flex-direction: column;
-    height: 500px;
-
-    div.chatbox {
-        border-right: 1px solid DarkGray;
-        border-left: 1px solid DarkGray;
-        min-height: 100%;
-        flex: 2;
-        overflow: auto;
-        margin-bottom: 30px;
-        padding: 8px;
-    }
+.chatbox {
+    border-right: 1px solid DarkGray;
+    border-left: 1px solid DarkGray;
+    min-height: calc(100vh - 300px);
+    max-height: calc(100vh - 300px);
+    overflow-y: scroll;
+    margin-bottom: 30px;
+    padding: 8px;
 }
 
 .username {
