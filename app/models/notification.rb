@@ -9,7 +9,7 @@
 #
 
 class Notification < ActiveRecord::Base
-  after_save :schedule_notification
+  after_save :schedule_notification, if: Proc.new { |n| n.scheduled_at.present? }
 
   def trigger_notification
     WebsocketRails[:all].trigger :message, self.content
