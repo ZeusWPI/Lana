@@ -3,7 +3,7 @@ $(".chat.index").ready ->
         chatbox = $( ".chatbox")
         chatbox.append $('<div/>')
             .addClass( "message" )
-                .append $('<span/>').text(content["username"]+":").addClass("username")
+                .append $('<span/>').text(content["username"]+ " (" + content["timestamp"] + ") :").addClass("username")
                 .append $('<span/>').text(content["text"])
         chatbox.scrollTop(chatbox[0].scrollHeight)
 
