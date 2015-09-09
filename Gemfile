@@ -57,6 +57,9 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Errbit integratins
+gem 'airbrake'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -70,3 +73,7 @@ group :development, :test do
   gem 'annotate', '~> 2.6.6'
 end
 
+group :test do
+  # Coveralls integration
+  gem 'coveralls', require: false
+end

@@ -1,0 +1,13 @@
+language: ruby
+sudo: false
+before_script:
+- RAILS_ENV=test bundle exec rake db:create
+- RAILS_ENV=test bundle exec rake db:schema:load
+notifications:
+  email:
+    recipients:
+    - lana@zeus.ugent.be
+    on_success: never
+    on_failure: change
+  slack:
+    secure: JERHJKlf764rvuls0TM0BgVt6lOkpVgpRtlDweJof+rgw4JJuG2YAiC2Oxct8yBE8OB4a6OFRTJI3mdzz67ytcvl7nSElX+n0X9J7OTaKlU0mOGnT0Modix5ZgZhaKS+97F90V/hCNBwBzZgr1u+LkM1wAqVZQBgcmMEIcZY6PTaA6vgy+I05G/8MJfLghL3+b4TeNYXRWvFxef0d7Q7I3j0i7hZKBO/dM/Lq/7/Di8B1A66MTld7yib5PQLamxs86RVNsatXVLHYT+YwXP33qtDyxMlao5/lW64swnmaOQRrHzSrWL8eRuDMsdWu49c79nixclvWQogBsklPL4VlD3hY4UntzPIhZ9zLXIt/EnUCqPhd4Gf7IXvFna/IoJgWfbhYcwY1qJRQ8xGDhHJhpBh6KGn8WHuvS+rXkbofYf42ZdhghaunSkNEPkU9uMLoijdBn9xvRK58/aZ4m0CfXEXh9fMNj7TPra9LNhTlaSKNgRnMABEi9sfQhvAHnzdRf+ZsI8nzge1rlPhyADUncksQzzLUP6Hnpy0s7tc6owq75WE8oSfUShUUNrXlg1vJSsezeQTbo3LlErFKHDq7+wYzAT2OInjCMENIndEzbuHnhPF67RV4VQlHHlJJvNoDOrVhTnTatgJ36bwzJa3jk2O5tE3xRijMcPYUk5pkbM=
