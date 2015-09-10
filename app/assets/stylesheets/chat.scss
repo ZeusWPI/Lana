@@ -3,13 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .chatbox {
-    border-right: 1px solid DarkGray;
-    border-left: 1px solid DarkGray;
     min-height: calc(100vh - 160px);
     max-height: calc(100vh - 160px);
     overflow-y: scroll;
-    margin-bottom: 5px;
     padding: 8px;
+    border: solid 1px DarkGrey;
 }
 
 .username {
@@ -20,6 +18,7 @@
 #send_message {
     height: 30px;
     width: 100%;
+    border: solid 1px DarkGrey;
     margin-bottom: 5px;
 }
 

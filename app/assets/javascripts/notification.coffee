@@ -16,7 +16,7 @@ play_sound = ->
 channel.bind 'message', (data) ->
     noti = new Notification 'General',
         body: data
-        icon: "https://pbs.twimg.com/profile_images/241260158/zeuswpi_400x400.jpg"
+        icon: "https://pbs.twimg.com/profile_images/638277807336984576/NickQZLu.png"
     # Not sure why this doesn't work??
     setTimeout (() -> noti.close()), 10000
 
