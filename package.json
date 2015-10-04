@@ -2,7 +2,8 @@
     "name": "lana",
     "dependencies": {
         "browserify": "~> 10.2.4",
-        "browserify-incremental": "^3.0.1"
+        "browserify-incremental": "^3.0.1",
+        "reactify": "^1.1.0"
     },
     "engines": {
         "node": ">= 0.10"

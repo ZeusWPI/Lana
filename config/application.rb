@@ -22,5 +22,8 @@ module Lana
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # reactify javascripts
+    config.browserify_rails.commandline_options = "-t reactify --extension=\".js.jsx\""
   end
 end
