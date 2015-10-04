@@ -20,6 +20,3 @@
 
 /public/images
 coverage/
-
-# Ignore packages installed by bower
-vendor/assets/bower_components/*

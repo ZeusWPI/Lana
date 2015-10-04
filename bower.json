@@ -1,6 +1,0 @@
-{
-    "name": "lana",
-    "dependencies": {
-        "reflux": "0.2.12"
-    }
-}
