@@ -1,7 +1,8 @@
 window.dispatcher = new WebSocketRails location.host + '/websocket'
 window.dispatcher.on_close = -> window.dispatcher.reconnect()
 
-Notification.requestPermission()
+# temporarily disable this
+# Notification.requestPermission()
 
 # Subscribe to a general channel
 channel = dispatcher.subscribe 'all'

@@ -45,27 +45,6 @@
             <a class="navbar-brand" href="#">Lana</a>
         </div>
 
-        <div class="container">
-            <div class="page-header">
-                <h1>Lana</h1>
-            </div>
-            <%= flash_messages %>
-
-            <div>
-                <div class="col-md-8">
-                    <%= yield %>
-                </div>
-                <div class="notification-center text-right col-md-4">
-                    <h2>Notifications</h2>
-                    <div class="notification-center-inside">
-                        <% latest_notifications.each do |notification| %>
-                            <div class="notification">
-                                <%= notification.content %>
-                            </div>
-                        <% end %>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id='hello-div' class="container"></div>
     </body>
 </html>

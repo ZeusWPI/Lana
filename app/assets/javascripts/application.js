@@ -17,6 +17,7 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require reflux
 //= require websocket_rails/main
 //= require chat
 //= require jasny-bootstrap.min
