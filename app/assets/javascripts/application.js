@@ -16,8 +16,6 @@
 //= require turbolinks
 //= require react
 //= require react_ujs
-//= require components
-//= require reflux
 //= require websocket_rails/main
 //= require chat
 //= require jasny-bootstrap.min
@@ -27,4 +25,5 @@
 //= require multi-select
 //= require moment
 //= require bootstrap-datetimepicker
+//= require app
 //= require_tree .

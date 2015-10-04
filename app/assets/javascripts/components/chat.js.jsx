@@ -56,9 +56,11 @@ var Chat = React.createClass({
   render: function(){
     return (
       <div>
-        <MessageBox messages=[]/>
+        <MessageBox messages={[]}/>
         <MessageForm/>
       </div>
     );
   }
 });
+
+module.exports = Chat;
