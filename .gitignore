@@ -20,3 +20,5 @@
 
 /public/images
 coverage/
+
+/node_modules
