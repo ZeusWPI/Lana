@@ -14,8 +14,6 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
-//= require react
-//= require react_ujs
 //= require websocket_rails/main
 //= require jasny-bootstrap.min
 //= require easy-emoji
