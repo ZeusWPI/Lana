@@ -1,7 +1,9 @@
+import React from 'react';
+import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { reduce } from './reducer';
 import { addMessage } from './actions';
-import Chat from './components/chat';
+import App from './components/app';
 
 let store = createStore(reduce);
 
@@ -9,11 +11,13 @@ let unsubscribe = store.subscribe(
   () => console.log(store.getState().toArray())
 );
 
-store.dispatch(addMessage({author: 'Felix', contents: 'hoi ik ben felix'}));
-
 $(document).ready(function(){
   React.render(
-    <Chat/>,
+    <App store={store}/>,
     document.getElementById('hello-div')
+  );
+  setInterval(
+    () => store.dispatch(addMessage({author: 'Felix', contents: 'hoi ik ben felix'})),
+    1000
   );
 });

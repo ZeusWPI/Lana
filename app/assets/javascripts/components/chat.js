@@ -1,5 +1,7 @@
-var ChatMessage = React.createClass({
-  render: function(){
+import React, { Component } from 'react';
+
+class ChatMessage extends Component {
+  render() {
     return (
       <div className="message">
         <span className="author">
@@ -11,10 +13,10 @@ var ChatMessage = React.createClass({
       </div>
     );
   }
-});
+}
 
-var MessageBox = React.createClass({
-  render: function() {
+class MessageBox extends Component {
+  render() {
     return (
       <div>
         {this.props.messages.map(function(message){
@@ -26,41 +28,45 @@ var MessageBox = React.createClass({
       </div>
     );
   }
-});
+}
 
-var MessageForm = React.createClass({
-  getInitialState: function(){
-    return {text: ''};
-  },
+class MessageForm extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {text: ''};
+  }
 
-  handleSubmit: function(e){
+  handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.text);
     this.setState({text: ''});
-  },
+  }
 
-  changeHandler: function(e){
+  handleChange(e) {
     this.setState({text: e.target.value});
-  },
+  }
 
-  render: function(){
+  render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input onChange={this.changeHandler} value={this.state.text}/>
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        <input
+          type="text"
+          onChange={this.handleChange.bind(this)}
+          value={this.state.text}
+        />
       </form>
     );
   }
-});
+}
 
-var Chat = React.createClass({
-  render: function(){
+class Chat extends Component {
+  render() {
     return (
       <div>
-        <MessageBox messages={[]}/>
+        <MessageBox messages={this.props.messages}/>
         <MessageForm/>
       </div>
     );
   }
-});
+}
 
-module.exports = Chat;
+export default Chat;
