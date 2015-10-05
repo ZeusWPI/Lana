@@ -4,6 +4,7 @@
         "browserify": "~> 10.2.4",
         "browserify-incremental": "^3.0.1",
         "babelify": "^6.3.0",
+        "redux": "~> 3.0.2",
         "immutable": "~> 3.7.5"
     },
     "engines": {

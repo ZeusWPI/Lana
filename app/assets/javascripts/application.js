@@ -17,13 +17,11 @@
 //= require react
 //= require react_ujs
 //= require websocket_rails/main
-//= require chat
 //= require jasny-bootstrap.min
 //= require easy-emoji
 //= require emoji-turbolinks
-//= require notification
 //= require multi-select
 //= require moment
 //= require bootstrap-datetimepicker
-//= require app
-//= require_tree .
+
+require('./app.js');
