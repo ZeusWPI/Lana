@@ -24,6 +24,7 @@ module Lana
     config.active_record.raise_in_transactional_callbacks = true
 
     # reactify javascripts
-    config.browserify_rails.commandline_options = "-t reactify --extension=\".js.jsx\""
+    config.browserify_rails.commandline_options = "-t babelify"
+    #--extension=\".js.jsx\"
   end
 end
