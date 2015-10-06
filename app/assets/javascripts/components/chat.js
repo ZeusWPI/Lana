@@ -38,6 +38,7 @@ class MessageForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.onSend(this.state.text);
     this.setState({text: ''});
   }
 
@@ -63,7 +64,7 @@ class Chat extends Component {
     return (
       <div>
         <MessageBox messages={this.props.messages}/>
-        <MessageForm/>
+        <MessageForm onSend={this.props.onSend}/>
       </div>
     );
   }
