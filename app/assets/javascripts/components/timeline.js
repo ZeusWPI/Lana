@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 
 class Event extends Component {
   render() {
+    const event=this.props.event;
     return (
-      <div>
-        <span>{this.props.time}</span>
-        <span>{this.props.name}</span>
+      <div className='panel panel-default'>
+        <div className='panel-body'>
+          <span>{event.name}</span>
+          <span>{event.date}</span>
+        </div>
       </div>
     );
   }
@@ -16,7 +19,7 @@ class Timeline extends Component {
     return (
       <div>
         {this.props.events.map(
-          event => <Event time={event.time} name={event.name}/>
+          event => <Event event={event}/>
         )}
       </div>
     );

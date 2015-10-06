@@ -5,8 +5,8 @@ import Chat from './chat';
 import Timeline from './timeline';
 
 const events = [
-  {name: 'hallo'},
-  {name: 'hai'}
+  {name: 'hallo', date: Date.now()+1000},
+  {name: 'hai', date: Date.now()+2000}
 ];
 
 class App extends Component {
