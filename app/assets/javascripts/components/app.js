@@ -4,20 +4,15 @@ import { addMessage } from '../actions';
 import Chat from './chat';
 import Timeline from './timeline';
 
-const events = [
-  {name: 'hallo', date: Date.now()+1000},
-  {name: 'hai', date: Date.now()+2000}
-];
-
 class App extends Component {
   render() {
     const dispatch = this.props.dispatch;
     return (
       <div>
-        <Timeline events={events}/>
+        <Timeline events={this.props.events}/>
         <hr/>
         <Chat
-          messages={this.props.chatMessages}
+          messages={this.props.messages}
           onSend={text =>
             dispatch(addMessage({author: 'you', contents: text}))
           }
@@ -29,7 +24,8 @@ class App extends Component {
 
 function select(state) {
   return {
-    chatMessages: state
+    messages: state.messages,
+    events: state.events
   };
 }
 

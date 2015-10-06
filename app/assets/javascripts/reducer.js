@@ -1,9 +1,10 @@
-var Immutable = require('immutable');
+import { combineReducers } from 'redux';
+import Immutable from 'immutable';
 var Actions = require('./actions');
 
-const initialState = Immutable.List();
+const emptyList=Immutable.List();
 
-export function reduce(state=initialState, action) {
+function messages(state=emptyList, action) {
   switch (action.type) {
     case Actions.ADD_MESSAGE:
       return state.push(action.payload);
@@ -11,3 +12,14 @@ export function reduce(state=initialState, action) {
       return state;
   }
 }
+
+function events(state=emptyList, action) {
+  return state;
+}
+
+const reducer = combineReducers({
+  messages,
+  events
+});
+
+export default reducer;

@@ -1,14 +1,18 @@
+import Immutable from 'immutable';
 import React from 'react';
-import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { reduce } from './reducer';
+import reducer from './reducer';
 import App from './components/app';
 
-let store = createStore(reduce);
+const initialState = {
+  messages: Immutable.List(),
+  events: Immutable.List([
+    {name: 'hallo', date: Date.now()+1000},
+    {name: 'hai', date: Date.now()+2000}
+  ])
+};
 
-let unsubscribe = store.subscribe(
-  () => console.log(store.getState().toArray())
-);
+let store = createStore(reducer, initialState);
 
 $(document).ready(function(){
   React.render(
