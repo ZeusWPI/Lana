@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901210527) do
+ActiveRecord::Schema.define(version: 20151007103328) do
 
   create_table "chat_messages", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 20150901210527) do
   end
 
   add_index "competitions", ["game_id"], name: "index_competitions_on_game_id"
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name",                     null: false
+    t.text     "description", default: "", null: false
+    t.datetime "moment",                   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "events", ["moment"], name: "index_events_on_moment"
 
   create_table "games", force: :cascade do |t|
     t.string   "title"
