@@ -21,5 +21,6 @@
 //= require multi-select
 //= require moment
 //= require bootstrap-datetimepicker
-
+//
+require('es6-promise').polyfill();
 require('./app.js');
