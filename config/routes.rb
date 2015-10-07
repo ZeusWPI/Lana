@@ -20,6 +20,8 @@
 #
 
 Rails.application.routes.draw do
+  get 'events', to: 'events#index'
+
   get 'chat', to: 'chat#index'
 
   root 'welcome#index'
