@@ -14,7 +14,12 @@ function messages(state=emptyList, action) {
 }
 
 function events(state=emptyList, action) {
-  return state;
+  switch (action.type) {
+    case Actions.RECEIVE_EVENTS:
+      return Immutable.List(action.payload);
+    default:
+      return state;
+  }
 }
 
 const reducer = combineReducers({
