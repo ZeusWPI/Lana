@@ -11,7 +11,7 @@ let store = applyMiddleware(thunk)(createStore)(reducer);
 $(document).ready(function(){
   React.render(
     <App store={store}/>,
-    document.getElementById('hello-div')
+    document.getElementById('react-root')
   );
   store.dispatch(fetchEvents());
 });

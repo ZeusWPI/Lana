@@ -16,7 +16,7 @@ export const RECEIVE_EVENTS = 'RECEIVE_EVENTS';
 export function receiveEvents(events){
   return {
     type: RECEIVE_EVENTS,
-    payload: Immutable.List(events);
+    payload: events
   };
 }
 
