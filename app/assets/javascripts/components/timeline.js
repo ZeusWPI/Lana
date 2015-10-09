@@ -5,10 +5,13 @@ class Event extends Component {
     const event=this.props.event;
     const time=moment(event.moment).calendar();
     return (
-      <div className='panel panel-default'>
+      <div className='event panel panel-default'>
         <div className='panel-body'>
-          <span>{event.name}</span>
-          <span>{time}</span>
+          <div className='header'>
+            <div className='name'>{event.name}</div>
+            <div className='time'>{time}</div>
+          </div>
+          <div className='description'>{event.description}</div>
         </div>
       </div>
     );
