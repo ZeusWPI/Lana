@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 class Event extends Component {
   render() {
     const event=this.props.event;
+    const time=moment(event.moment).calendar();
     return (
       <div className='panel panel-default'>
         <div className='panel-body'>
           <span>{event.name}</span>
-          <span>{event.date}</span>
+          <span>{time}</span>
         </div>
       </div>
     );
