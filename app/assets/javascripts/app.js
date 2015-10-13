@@ -13,12 +13,12 @@ $(document).ready(function(){
     <App store={store}/>,
     document.getElementById('react-root')
   );
-  store.dispatch(fetchEvents());
   let cable = Cable.createConsumer('ws://127.0.0.1:28080');
 
-  window.chan = cable.subscriptions.create("TestChannel", {
-    received: data => console.log(data),
-    test: msg => this.perform('test', 'hoi')
+  window.chan = cable.subscriptions.create("EventsChannel", {
+    connected: () => console.log('connected'),
+    disconnected: () => console.log('disconnected'),
+    received: action => store.dispatch(JSON.parse(action))
   });
 });
 
