@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Edge rails!
 gem 'rails', github: 'rails/rails', ref: 'c35c0c4a42b26978304613ddffd19c647e2bf5d1'
 # Much features!
-gem 'actioncable', github: 'rails/actioncable', ref: '6ee8bb9310f78de85e6b89c8cac33493b0582383'
+gem 'actioncable', github: 'rails/actioncable', ref: '0cf1db6be29fb2269d722bedd690641e0f949b36'
 # So wow!
 gem 'arel', github: 'rails/arel'
 # Much amazed!
