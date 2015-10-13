@@ -1,26 +1,19 @@
 import { combineReducers } from 'redux';
+import { handleActions } from 'redux-actions';
 import Immutable from 'immutable';
 var Actions = require('./actions');
 
-const emptyList=Immutable.List();
+const messages = handleActions({
+  ADD_MESSAGE: (state, action) => (
+    state.push(action.payload)
+  )
+}, Immutable.List());
 
-function messages(state=emptyList, action) {
-  switch (action.type) {
-    case Actions.ADD_MESSAGE:
-      return state.push(action.payload);
-    default:
-      return state;
-  }
-}
-
-function events(state=emptyList, action) {
-  switch (action.type) {
-    case Actions.RECEIVE_EVENTS:
-      return Immutable.List(action.payload);
-    default:
-      return state;
-  }
-}
+const events = handleActions({
+  RECEIVE_EVENTS: (state, action) => (
+      Immutable.List(action.payload)
+  )
+}, Immutable.List());
 
 const reducer = combineReducers({
   messages,

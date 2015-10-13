@@ -1,24 +1,11 @@
 import Immutable from 'immutable';
 import fetch from 'isomorphic-fetch';
+import { createAction } from 'redux-actions';
 // messages
-export const ADD_MESSAGE = 'ADD_MESSAGE';
-
-export function addMessage(message) {
-  return {
-    type: ADD_MESSAGE,
-    payload: message
-  };
-}
+export const addMessage = createAction('ADD_MESSAGE');
 
 // events
-export const RECEIVE_EVENTS = 'RECEIVE_EVENTS';
-
-export function receiveEvents(events){
-  return {
-    type: RECEIVE_EVENTS,
-    payload: events
-  };
-}
+export const receiveEvents = createAction('RECEIVE_EVENTS');
 
 export function fetchEvents(){
   return dispatch =>
