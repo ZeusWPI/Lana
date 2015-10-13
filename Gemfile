@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
-gem 'websocket-rails', github: 'websocket-rails/websocket-rails'
+gem 'actioncable', github: 'rails/actioncable'
 
 # For images
 gem 'paperclip'
@@ -57,8 +57,8 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
+# Use puma as the app server
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

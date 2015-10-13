@@ -14,13 +14,13 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
-//= require websocket_rails/main
 //= require jasny-bootstrap.min
 //= require easy-emoji
 //= require emoji-turbolinks
 //= require multi-select
 //= require moment
+//= require cable
 //= require bootstrap-datetimepicker
-//
+
 require('es6-promise').polyfill();
 require('./app.js');
