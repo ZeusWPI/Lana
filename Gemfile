@@ -2,15 +2,13 @@ source 'https://rubygems.org'
 
 
 # Edge rails!
-gem 'rails', github: 'rails/rails'
+gem 'rails', github: 'rails/rails', ref: 'c35c0c4a42b26978304613ddffd19c647e2bf5d1'
 # Much features!
-gem 'actioncable', github: 'rails/actioncable'
+gem 'actioncable', github: 'rails/actioncable', ref: '6ee8bb9310f78de85e6b89c8cac33493b0582383'
 # So wow!
 gem 'arel', github: 'rails/arel'
 # Much amazed!
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
-
-gem 'rack', github: 'rack/rack'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -77,9 +75,6 @@ gem 'airbrake'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
