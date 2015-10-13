@@ -1,7 +1,8 @@
 class EventsChannel < ActionChannel
   channel :events
+  reducer EventsReducer
 
   def snapshot
-    action(:receive_events, Event.all)
+    create_action(:receive_events, Event.all)
   end
 end

@@ -18,7 +18,21 @@ $(document).ready(function(){
   window.chan = cable.subscriptions.create("EventsChannel", {
     connected: () => console.log('connected'),
     disconnected: () => console.log('disconnected'),
-    received: action => store.dispatch(JSON.parse(action))
+      received: action => {
+        console.log(action);
+        store.dispatch(JSON.parse(action))
+      }
   });
+
+  window.test_event = {
+    name: 'test',
+    description: 'als je dit ziet, dan werkt shit',
+    moment: moment()
+  };
+
+  window.test_action = {
+    type: 'add_event',
+    payload: window.test_event
+  };
 });
 

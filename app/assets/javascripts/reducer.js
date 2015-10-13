@@ -10,6 +10,9 @@ const messages = handleActions({
 }, Immutable.List());
 
 const events = handleActions({
+  add_event: (state, action) => (
+    state.push(action.payload)
+  ),
   receive_events: (state, action) => (
       Immutable.List(action.payload)
   )
