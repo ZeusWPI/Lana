@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addMessage } from '../actions';
+import { addMessage } from '../actions/messages';
 import Chat from './chat';
 import Timeline from './timeline';
 

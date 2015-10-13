@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import Immutable from 'immutable';
-var Actions = require('./actions');
 
 const messages = handleActions({
   add_message: (state, action) => (

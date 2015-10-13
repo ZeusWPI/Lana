@@ -22,7 +22,7 @@ class ActionChannel < ApplicationCable::Channel
   end
 
   # 'controller' endpoint
-  def perform params
+  def action params
     reduce(params['data'])
   end
 
