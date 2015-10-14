@@ -11,3 +11,11 @@ $(document).ready(function(){
     document.getElementById('react-root')
   );
 });
+
+window.test_event = addEvent({
+  name: 'hoi',
+  description: '123',
+  moment: moment()
+});
+
+window.dispatch = store.dispatch;
