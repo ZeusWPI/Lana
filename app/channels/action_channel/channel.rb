@@ -1,13 +1,20 @@
 module ActionChannel
-  class Base < ApplicationCable::Channel
-    include Helpers
+  class Channel < ApplicationCable::Channel
+    extend Forwardable
+    include ChannelHelpers
     attr_reader :reducer
+    def_delegator :reducer, :reduce
+
+    def initialize(*args)
+      super(*args)
+      @reducer = self.class.reducer_class.new(self)
+    end
 
     # 'controller' endpoint
     def action data
       action = get_action data
-      action.payload = reducer.send(action.type, action.payload)
-      publish(action.to_json)
+      reduce(action)
+      publish(action)
     end
 
     def subscribed

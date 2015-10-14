@@ -1,5 +1,5 @@
 module ActionChannel
-  module Helpers
+  module ChannelHelpers
     def self.included base
       base.extend ClassMethods
     end
@@ -14,6 +14,11 @@ module ActionChannel
         define_method :publish do |data|
           ActionCable.server.broadcast(chan, data)
         end
+      end
+
+      attr_reader :reducer_class
+      def reducer &proc
+        @reducer_class = Class.new Reducer, &proc
       end
     end
   end

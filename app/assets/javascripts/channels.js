@@ -6,6 +6,6 @@ export const eventsChannel = cable.subscriptions.create("EventsChannel", {
   publish: function(action) {this.perform('action', action) },
   received: action => {
     console.log(action);
-    store.dispatch(JSON.parse(action));
+    store.dispatch(action);
   }
 });

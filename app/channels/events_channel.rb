@@ -1,12 +1,13 @@
-class EventsChannel < ActionChannel::Base
+class EventsChannel < ActionChannel::Channel
   channel :events
 
-  def initialize *args
-    super(*args)
-    @reducer = EventsReducer
+  def snapshot
+    Action.new(:receive_events, Event.all)
   end
 
-  def snapshot
-    Action.new(:receive_events, Event.all).to_json
+  reducer do
+    def add_event event
+      Event.create event
+    end
   end
 end
