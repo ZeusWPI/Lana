@@ -18,16 +18,4 @@ class Event extends Component {
   }
 }
 
-class Timeline extends Component {
-  render() {
-    return (
-      <div>
-        {this.props.events.map(
-          event => <Event event={event}/>
-        )}
-      </div>
-    );
-  }
-}
-
-export default Timeline;
+export default Event;

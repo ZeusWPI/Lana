@@ -1,7 +1,10 @@
 import React from 'react';
-import { Route } from 'react-router';
-import App from './components/app';
+import { Route, IndexRoute } from 'react-router';
+import App from './containers/app';
+import Timeline from './containers/timeline';
 
 export default (
-  <Route path="/" component={App}/>
+  <Route path="/" component={App}>
+    <IndexRoute component={Timeline}/>
+  </Route>
 );
