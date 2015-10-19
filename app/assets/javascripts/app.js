@@ -8,7 +8,7 @@ require('./channels');
 $(document).ready(function(){
   React.render(
     <App store={store}/>,
-    document.getElementById('react-root')
+    document.getElementById('root')
   );
 });
 

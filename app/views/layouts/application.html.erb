@@ -10,41 +10,8 @@
 
         <%= yield :head %>
     </head>
-    <body class="<%= controller_name %> <%= action_name %>">
+    <body>
         <%= audio_tag "notification_sound.wav", { id: "notification_sound", class: "audio_player", preload: "auto" } %>
-        <div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm">
-            <a class="navmenu-brand visible-md visible-lg" href="#">Lana</a>
-            <ul class="nav navmenu-nav">
-                <li>
-                    <%= link_to 'Home', :root %>
-                </li>
-                <li>
-                    <%= link_to 'Games', :games %>
-                </li>
-                <li>
-                    <%= link_to 'Users', :users %>
-                </li>
-                <li>
-                    <%= link_to 'Notifications', :notifications %>
-                </li>
-                <li>
-                    <%= link_to 'Competitions', :competitions %>
-                </li>
-                <li>
-                    <%= link_to 'Chat', :chat %>
-                </li>
-            </ul>
-        </div>
-
-        <div class="navbar navbar-default navbar-fixed-top hidden-md hidden-lg">
-            <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Lana</a>
-        </div>
-
-        <div id='react-root'></div>
+        <div id='root'></div>
     </body>
 </html>
