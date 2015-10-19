@@ -20,15 +20,6 @@
 #
 
 Rails.application.routes.draw do
-  get 'events', to: 'events#index'
-
-  get 'chat', to: 'chat#index'
-
-  root 'welcome#index'
-
-  resources :users, only: [:index, :show]
-  resources :games, only: [:index, :show]
-  resources :notifications, only: [:index, :create]
-  resources :competitions, only: [:index, :create, :show, :new]
-  resources :groups, only: [:new, :create, :show, :destroy, :edit, :update]
+  root to: 'welcome#index'
+  get '/*route', to: 'welcome#index'
 end
