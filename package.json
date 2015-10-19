@@ -1,18 +1,21 @@
 {
     "name": "lana",
     "dependencies": {
+        "babelify": "^6.3.0",
         "browserify": "~> 10.2.4",
         "browserify-incremental": "^3.0.1",
-        "babelify": "^6.3.0",
-        "react": "^0.13.0",
-        "redux": "^3.0.0",
-        "redux-thunk": "^1.0.0",
-        "react-redux": "^3.1.0",
-        "redux-actions": "^0.8.0",
+        "es6-promise": "^3.0.2",
         "immutable": "~> 3.7.5",
         "isomorphic-fetch": "^2.1.1",
-        "es6-promise": "^3.0.2",
-        "moment": "^2.10.6"
+        "moment": "^2.10.6",
+        "react": "^0.14.0",
+        "react-dom": "^0.14.0",
+        "react-redux": "^3.1.0",
+        "react-router": "^1.0.0-rc3",
+        "redux": "^3.0.0",
+        "redux-actions": "^0.8.0",
+        "redux-router": "^1.0.0-beta3",
+        "redux-thunk": "^1.0.0"
     },
     "engines": {
         "node": ">= 0.10"

@@ -1,6 +1,14 @@
 import thunk from 'redux-thunk';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './reducer';
 
-const store = applyMiddleware(thunk)(createStore)(reducer);
-export default store;
+import { reduxReactRouter } from 'redux-router';
+import createHistory from 'history/lib/createBrowserHistory';
+import routes from './routes';
+
+const finalCreateStore = compose(
+  applyMiddleware(thunk),
+  reduxReactRouter({routes, createHistory})
+)(createStore);
+
+export default finalCreateStore(reducer);

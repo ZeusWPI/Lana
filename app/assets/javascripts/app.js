@@ -1,13 +1,18 @@
 import React from 'react';
+import { render } from 'react-dom';
 import App from './components/app';
 import store from './store';
 import { addEvent } from './actions/events';
+import { ReduxRouter } from 'redux-router';
+import { Provider } from 'react-redux';
 require('./channels');
 
 
-$(document).ready(function(){
-  React.render(
-    <App store={store}/>,
+$(document).ready( () => {
+  render(
+    <Provider store={store}>
+      <ReduxRouter />
+    </Provider>,
     document.getElementById('root')
   );
 });

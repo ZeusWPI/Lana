@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
+import { routerStateReducer as router } from 'redux-router';
 import Immutable from 'immutable';
 
 const messages = handleActions({
@@ -19,7 +20,8 @@ const events = handleActions({
 
 const reducer = combineReducers({
   messages,
-  events
+  events,
+  router
 });
 
 export default reducer;
