@@ -18,9 +18,14 @@ const events = handleActions({
   )
 }, Immutable.List());
 
+const current_user = handleActions({
+  login: (state, action) => action.payload;
+}, null);
+
 const reducer = combineReducers({
   messages,
   events,
+  current_user,
   router
 });
 
