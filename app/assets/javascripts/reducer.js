@@ -18,15 +18,20 @@ const events = handleActions({
   )
 }, Immutable.List());
 
+const groups = handleActions({
+  receive_groups: (state, action) => (
+    Immutable.List(action.payload)
+  )
+}, Immutable.List());
+
 const current_user = handleActions({
-  login: (state, action) => action.payload;
+  login: (state, action) => action.payload
 }, null);
 
-const reducer = combineReducers({
+export default combineReducers({
   messages,
   events,
+  groups,
   current_user,
   router
 });
-
-export default reducer;

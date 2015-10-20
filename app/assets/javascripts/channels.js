@@ -14,3 +14,4 @@ function subscribe(channel) {
 
 export const eventsChannel = subscribe("EventsChannel");
 export const authenticationChannel = subscribe("AuthenticationChannel");
+export const groupsChannel = subscribe("GroupsChannel");
