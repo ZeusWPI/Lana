@@ -6,13 +6,14 @@ class Action
     self.payload = payload
   end
 
-  def to_h
+  def as_json options
     { type: type,
-      payload: payload }
+      payload: serializable_payload
+    }
   end
 
-  def to_json
-    # This uses active_model_serializers for converting models
-    ActionController::Base.render json: self.to_h
+  private
+  def serializable_payload
+    ActiveModel::SerializableResource.new(payload).serializable_hash
   end
 end
