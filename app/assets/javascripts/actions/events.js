@@ -1,11 +1,7 @@
 import { createAction } from 'redux-actions';
 import { eventsChannel } from '../channels';
+import { publishedAction } from './utils';
 
-const publish = creator => payload => () => {
-  let action = creator(payload);
-  eventsChannel.publish(action);
-};
-
-export const addEvent = publish(createAction('add_event'));
+export const addEvent = publishedAction(eventsChannel, 'add_event');
 
 export const receiveEvents = createAction('receive_events');

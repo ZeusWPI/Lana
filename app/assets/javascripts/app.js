@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import App from './components/app';
 import store from './store';
 import { addEvent } from './actions/events';
+import { login } from './actions/authentication';
 import { ReduxRouter } from 'redux-router';
 import { Provider } from 'react-redux';
 require('./channels');
@@ -24,3 +25,4 @@ window.test_event = addEvent({
 });
 
 window.dispatch = store.dispatch;
+window.login = credentials => store.dispatch(login(credentials));
