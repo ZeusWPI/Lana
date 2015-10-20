@@ -2,6 +2,9 @@ module ActionChannel
   class Reducer
     attr_reader :channel
 
+    extend Forwardable
+    def_delegator :channel, :connection
+
     def initialize channel
       @channel = channel
     end
