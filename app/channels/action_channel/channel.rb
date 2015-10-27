@@ -1,3 +1,5 @@
+require 'action_channel/action.rb'
+
 module ActionChannel
   class Channel < ApplicationCable::Channel
     extend Forwardable

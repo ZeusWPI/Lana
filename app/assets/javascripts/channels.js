@@ -1,6 +1,8 @@
 import store from './store';
 
-const cable = Cable.createConsumer('ws://127.0.0.1:28080');
+const cable = Cable.createConsumer(
+  'ws://' + window.location.host + '/websocket'
+);
 
 function subscribe(channel) {
   return cable.subscriptions.create(channel, {
