@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 
 class ChatMessage extends Component {
+  componentWillMount() {
+    var mb = $( ".messagebox" )[0];
+    // Difference yields height of div if scrolled to bottom
+    var diff = mb.scrollHeight - mb.scrollTop;
+    this.doScroll = (diff == $( ".messagebox" ).height())
+  }
+
+  componentDidMount() {
+    if (this.doScroll) {
+      var obj = $(".messagebox")[0];
+      // This scrolls completely to the bottom of div
+      obj.scrollTop = obj.scrollHeight;
+    }
+  }
+
   render() {
     const { author, contents, timestamp } = this.props;
     return (
