@@ -26,7 +26,7 @@ export default class EventForm extends Component {
             <div className='col-sm-4'>
               <DateTimeField
                 dateTime={this.state.moment}
-                onChange={ e => this.setState({moment: new Date(e)}) }
+                onChange={ e => this.setState({moment: new Date(- -e)}) }
               />
             </div>
           </div>
