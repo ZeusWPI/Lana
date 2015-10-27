@@ -10,10 +10,13 @@
     border: solid 1px DarkGrey;
 }
 
-.username {
-    font-weight: bold;
-    margin-right: 3px;
+.message {
+    .author {
+        font-weight: bold;
+        margin-right: 3px;
+    }
 }
+
 
 #send_message {
     height: 30px;
@@ -21,4 +24,3 @@
     border: solid 1px DarkGrey;
     margin-bottom: 5px;
 }
-
