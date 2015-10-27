@@ -1,6 +1,26 @@
+$send-message-height: 34px;
+
 .message {
     .author {
         font-weight: bold;
         margin-right: 3px;
     }
+    .timestamp {
+        color: LightGray;
+        margin-right: 3px;
+    }
+}
+
+.chatpanel {
+  position: relative;
+  height: 500px;
+}
+
+.send-message {
+  height: 34px;
+}
+
+.messagebox {
+  height: calc(100% - 34px);
+  overflow: auto;
 }

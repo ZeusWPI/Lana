@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 
 class ChatMessage extends Component {
   render() {
+    const { author, contents, timestamp } = this.props;
     return (
       <div className="message">
+        <span className="timestamp">
+          {moment(timestamp).format("HH:mm")}
+        </span>
         <span className="author">
-          {this.props.author}:
+          {author}
         </span>
         <span className="contents">
-          {this.props.contents}
+          {contents}
         </span>
       </div>
     );
@@ -18,12 +22,9 @@ class ChatMessage extends Component {
 class MessageBox extends Component {
   render() {
     return (
-      <div>
+      <div className="messagebox">
         {this.props.messages.map(function(message){
-          return <ChatMessage
-            author={message.author}
-            contents={message.contents}
-          />;
+          return <ChatMessage {...message}/>;
         })}
       </div>
     );
@@ -48,7 +49,7 @@ class MessageForm extends Component {
 
   render() {
     return (
-      <div className="input-group">
+      <div className="input-group send-message">
         <form
           onSubmit={this.handleSubmit.bind(this)}
           id="messageform"
@@ -78,7 +79,7 @@ class MessageForm extends Component {
 class Chat extends Component {
   render() {
     return (
-      <div>
+      <div className="chatpanel">
         <MessageBox messages={this.props.messages}/>
         <MessageForm onSend={this.props.onSend}/>
       </div>

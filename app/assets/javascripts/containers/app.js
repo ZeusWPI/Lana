@@ -13,8 +13,14 @@ class App extends Component {
         </div>
         <Chat
           messages={this.props.messages}
-          onSend={text =>
-            dispatch(addMessage({author: 'you', contents: text}))
+          onSend={text => {
+            dispatch(addMessage(
+              {
+                author: 'you',
+                contents: text,
+                timestamp: Date.now()
+              }));
+            }
           }
         />
       {this.props.children}
