@@ -8,9 +8,10 @@ class Timeline extends Component {
   }
 
   render() {
+    const eventActions = this.props.eventActions;
     return (
       <div>
-        <EventForm/>
+        <EventForm onSubmit={eventActions.add}/>
         {this.props.events.map(this.renderEvent)}
       </div>
     );
