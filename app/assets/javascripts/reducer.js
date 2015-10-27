@@ -20,7 +20,9 @@ const events = handleActions({
 
 const groups = handleActions({
   receive_groups: (state, action) => (
-    Immutable.List(action.payload)
+    // TODO Replace again when unstubbing
+    // Immutable.List(action.payload)
+    Immutable.List([{game: {name: "Dota"}, users: [1, 2, 3], max_users: 5, notes: "Hallo."}])
   )
 }, Immutable.List());
 
