@@ -7,8 +7,9 @@ Don't forget to run `rake emoji`.
 ## Install
 
     bundle install
-    packer -S npm      # install npm
-    npm install        # in root directory of the repo
+    packer -S npm               # install npm
+    npm install                 # in root directory of the repo
+    bundle exec rake db:setup   # setup the database
 
 ## Run
 
