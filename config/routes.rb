@@ -21,5 +21,6 @@
 
 Rails.application.routes.draw do
   root to: 'welcome#index'
+  match '/websocket', to: ActionCable.server, via: [:get, :post]
   get '/*route', to: 'welcome#index'
 end
