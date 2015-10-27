@@ -5,6 +5,7 @@
         "browserify": "~> 10.2.4",
         "browserify-incremental": "^3.0.1",
         "es6-promise": "^3.0.2",
+        "history": "^1.12",
         "immutable": "~> 3.7.5",
         "isomorphic-fetch": "^2.1.1",
         "moment": "^2.10.6",
