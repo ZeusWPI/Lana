@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addMessage } from '../actions/messages';
 import Chat from './chat';
-import Timeline from './timeline';
 
 class App extends Component {
   render() {
     const dispatch = this.props.dispatch;
     return (
       <div>
-        <Timeline events={this.props.events}/>
-        <hr/>
         <Chat
           messages={this.props.messages}
           onSend={text =>
