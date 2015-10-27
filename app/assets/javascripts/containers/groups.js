@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import GroupList from '../components/group.js';
 
 function select(state) {
-  const { groups } = state;
-  return { grouplist: groups };
+  return { grouplist: [
+    { game: { name: "Dota" }, users: [1, 2, 3], notes: "PLZ JOIN", max_users: 4 }
+  ]};
 }
 
 export default connect(select)(GroupList);
