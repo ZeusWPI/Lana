@@ -5,7 +5,7 @@ class ChatMessage extends Component {
     return (
       <div className="message">
         <span className="author">
-          {this.props.author}
+          {this.props.author}:
         </span>
         <span className="contents">
           {this.props.contents}
@@ -48,13 +48,29 @@ class MessageForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
-        <input
-          type="text"
-          onChange={this.handleChange.bind(this)}
-          value={this.state.text}
-        />
-      </form>
+      <div className="input-group">
+        <form
+          onSubmit={this.handleSubmit.bind(this)}
+          id="messageform"
+          className="form-group">
+          <input
+            type="text"
+            onChange={this.handleChange.bind(this)}
+            value={this.state.text}
+            className="messageforminput form-control"
+          />
+        </form>
+        <span className="input-group-btn">
+          <button
+            form="messageform"
+            type="submit"
+            value="Submit"
+            className="btn btn-default"
+          >
+            <span className="glyphicon glyphicon-send" aria-hidden="true"></span>
+          </button>
+        </span>
+      </div>
     );
   }
 }
