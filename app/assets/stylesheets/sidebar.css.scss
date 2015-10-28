@@ -4,21 +4,34 @@
     z-index: 1000;
     position: fixed;
     width: 20%;
-}
-
-.sidebar-logo {
-    @extend .list-group-item;
-    font-weight: 700;
-    font-size: 32px;
-    padding: 5px 15px;
+    height: 100%;
+    background-color: #455A64;
 }
 
 .sidebar-item {
-    @extend .list-group-item;
+    width: 100%;
+    background-color: inherit;
     padding: 5px;
+    border-width: 0px 0;
+    border-radius: 0;
+    border-color: #37474F;
+    color: white;
+}
+
+.sidebar-logo {
+    @extend .sidebar-item;
+    font-weight: 700;
+    font-size: 32px;
+    padding: 5px 15px;
+    background-color: inherit;
+}
+
+.sidebar-game {
+    @extend .sidebar-item;
+    font-weight: 700;
 }
 
 .game-thumbnail {
     border-radius: 3px;
-    margin-right: 5px;
+    margin-right: 10px;
 }
