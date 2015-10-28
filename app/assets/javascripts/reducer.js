@@ -19,20 +19,35 @@ const current_user = handleActions({
   login: (state, action) => action.payload
 }, null);
 
+const modelActions = {
+  receive: (state, action) =>
+    action.payload.reduce(
+      (map, model) => map.set(model.id, model),
+      Immutable.Map()),
+  add: (state, action) =>
+    state.set(action.payload.id, action.payload)
+};
 
+function postfixKeys(obj, postfix) {
+  var newObj = {};
+  for (let key in obj) {
+    newObj[key+postfix] = obj[key]
+  }
+  return newObj;
+}
 
-const events = handleActions({
-  receive_events: (state, action) =>
-    (action.payload.reduce(
-      (map, event) => map.set(event.id, event),
-      Immutable.Map())
-    ),
-  add_event: (state, action) =>
-    (state.set(action.payload.id, action.payload))
-}, Immutable.Map());
+function modelReducer(name, additionalActions) {
+  return handleActions(
+    {...additionalActions, ...postfixKeys(modelActions, '_'+name)},
+    Immutable.Map()
+  );
+}
+
+const events = modelReducer('events');
 
 const data = combineReducers({
-  events
+  events,
+  groups
 });
 
 const timeline = handleActions({
