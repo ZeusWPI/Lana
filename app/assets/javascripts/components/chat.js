@@ -5,7 +5,7 @@ class ChatMessage extends Component {
     var mb = $( ".messagebox" )[0];
     // Difference yields height of div if scrolled to bottom
     var diff = mb.scrollHeight - mb.scrollTop;
-    this.doScroll = (diff == $( ".messagebox" ).height())
+    this.doScroll = (diff == $( ".messagebox" ).outerHeight())
   }
 
   componentDidMount() {
@@ -96,10 +96,27 @@ class Chat extends Component {
     return (
       <div className="chatpanel">
         <MessageBox messages={this.props.messages}/>
+        <div id="new_messages" className="hide">
+        <span className="glyphicon glyphicon-arrow-down" aria-hidden="true"> </span>
+         MORE MESSAGES
+        <span className="glyphicon glyphicon-arrow-down" aria-hidden="true"> </span>
+        </div>
         <MessageForm onSend={this.props.onSend}/>
       </div>
     );
   }
+
+  componentDidMount() {
+    $( ".messagebox" ).scroll(function() {
+      var diff = this.scrollHeight - this.scrollTop;
+      if(diff == $( ".messagebox" ).outerHeight()) {
+        $( "#new_messages" ).addClass("hide");
+      } else {
+        $( "#new_messages" ).removeClass("hide");
+      }
+    });
+  }
+
 }
 
 export default Chat;
