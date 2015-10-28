@@ -5,7 +5,9 @@ export default class EventForm extends Component {
   constructor(props, context) {
     super(props, context);
     if (this.props.event === undefined) {
-      this.state = { moment: moment().add(30, 'minutes')};
+      this.state = {
+        moment: moment().add(30, 'minutes').format('x')
+      };
     } else {
       this.state = this.props.event;
     }
