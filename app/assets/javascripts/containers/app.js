@@ -10,6 +10,9 @@ class App extends Component {
     return (
       <div>
         <Sidebar games={this.props.games}/>
+        <div id='content'>
+          {this.props.children}
+        </div>
       </div>
     );
   }
