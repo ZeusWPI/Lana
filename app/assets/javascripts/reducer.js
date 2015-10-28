@@ -9,12 +9,6 @@ const messages = handleActions({
   )
 }, Immutable.List());
 
-const groups = handleActions({
-  receive_groups: (state, action) => (
-    Immutable.List(action.payload)
-  )
-}, Immutable.List());
-
 const current_user = handleActions({
   login: (state, action) => action.payload
 }, null);
@@ -44,10 +38,16 @@ function modelReducer(name, additionalActions) {
 }
 
 const events = modelReducer('events');
+const groups = modelReducer('groups');
+const games = modelReducer('games');
+const users = modelReducer('users');
+
 
 const data = combineReducers({
   events,
-  groups
+  groups,
+  games,
+  users
 });
 
 const timeline = handleActions({
@@ -62,7 +62,6 @@ export default combineReducers({
   data,
   timeline,
   messages,
-  groups,
   current_user,
   router
 });
