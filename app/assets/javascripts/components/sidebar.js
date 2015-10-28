@@ -32,10 +32,8 @@ class Sidebar extends Component {
   render() {
     return (
       <div className='sidebar'>
-        <ul className='list-group'>
-          <Logo/>
-          {this.props.games.map(this.renderGamePreview.bind(this))}
-        </ul>
+        <Logo/>
+        {this.props.games.map(this.renderGamePreview.bind(this))}
       </div>
     );
   }

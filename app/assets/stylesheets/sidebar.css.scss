@@ -6,14 +6,13 @@
     width: 20%;
     height: 100%;
     background-color: #455A64;
+    border-right: 1px solid #37474F;
 }
 
 .sidebar-item {
     width: 100%;
     background-color: inherit;
     padding: 5px;
-    border-width: 0px 0;
-    border-radius: 0;
     border-color: #37474F;
     color: white;
 }
@@ -28,7 +27,6 @@
 
 .sidebar-game {
     @extend .sidebar-item;
-    font-weight: 700;
 }
 
 .game-thumbnail {
