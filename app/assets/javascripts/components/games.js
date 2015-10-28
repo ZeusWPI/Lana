@@ -34,14 +34,11 @@ class GameList extends Component {
 
   render () {
     return (
-        <div className="game-list">
+      <div className="game-list">
         {this.props.games.map(this.renderGame)}
-        </div>
-        );
+      </div>
+      );
   }
-
-
-
 }
 
 

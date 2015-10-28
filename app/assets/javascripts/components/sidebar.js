@@ -17,21 +17,24 @@ class GamePreview extends Component {
         <img
           width='50px'
           className='game-thumbnail'
-          src={this.props.logo}/>
-        {this.props.name}
+          src={this.props.image_url}/>
+        {this.props.title}
       </div>
     );
   }
 }
 
 class Sidebar extends Component {
+  renderGamePreview(game) {
+    return <GamePreview {...game}/>;
+  }
+
   render() {
     return (
       <div className='sidebar'>
         <ul className='list-group'>
           <Logo/>
-          <GamePreview name='Geweren en Explosies 24'
-            logo='http://fotodes.ru/upload/img1342258123.jpg'/>
+          {this.props.games.map(this.renderGamePreview.bind(this))}
         </ul>
       </div>
     );
