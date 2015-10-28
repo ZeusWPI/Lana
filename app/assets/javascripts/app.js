@@ -26,3 +26,4 @@ window.test_event = addEvent({
 
 window.dispatch = store.dispatch;
 window.login = credentials => store.dispatch(login(credentials));
+window.getState = store.getState
