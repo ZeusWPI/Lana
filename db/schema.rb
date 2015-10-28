@@ -11,16 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007103328) do
+ActiveRecord::Schema.define(version: 20151028234811) do
 
   create_table "chat_messages", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chat_messages_on_user_id"
   end
-
-  add_index "chat_messages", ["user_id"], name: "index_chat_messages_on_user_id"
 
   create_table "competitions", force: :cascade do |t|
     t.integer  "game_id"
@@ -28,9 +27,8 @@ ActiveRecord::Schema.define(version: 20151007103328) do
     t.datetime "starttime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_competitions_on_game_id"
   end
-
-  add_index "competitions", ["game_id"], name: "index_competitions_on_game_id"
 
   create_table "events", force: :cascade do |t|
     t.string   "name",                     null: false
@@ -38,9 +36,8 @@ ActiveRecord::Schema.define(version: 20151007103328) do
     t.datetime "moment",                   null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["moment"], name: "index_events_on_moment"
   end
-
-  add_index "events", ["moment"], name: "index_events_on_moment"
 
   create_table "games", force: :cascade do |t|
     t.string   "title"
@@ -58,17 +55,16 @@ ActiveRecord::Schema.define(version: 20151007103328) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "max_users"
+    t.string   "name"
+    t.index ["game_id"], name: "index_groups_on_game_id"
   end
-
-  add_index "groups", ["game_id"], name: "index_groups_on_game_id"
 
   create_table "groups_users", id: false, force: :cascade do |t|
     t.integer "group_id"
     t.integer "user_id"
+    t.index ["group_id"], name: "index_groups_users_on_group_id"
+    t.index ["user_id"], name: "index_groups_users_on_user_id"
   end
-
-  add_index "groups_users", ["group_id"], name: "index_groups_users_on_group_id"
-  add_index "groups_users", ["user_id"], name: "index_groups_users_on_user_id"
 
   create_table "notifications", force: :cascade do |t|
     t.text     "content"
