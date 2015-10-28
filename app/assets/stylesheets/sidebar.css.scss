@@ -17,6 +17,11 @@
     color: white;
 }
 
+.sidebar-item:hover {
+    background-color: #37474F;
+    cursor: pointer;
+}
+
 .sidebar-logo {
     @extend .sidebar-item;
     font-weight: 700;
