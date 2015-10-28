@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 class Game extends Component {
-
-
   render () {
     return ( 
         <div className="game row">
@@ -11,10 +9,10 @@ class Game extends Component {
           </div>
           <div className="game-title col-xs-4" >{this.props.title}</div>
           <div className="game-info col-xs-4">
-            <div><span className="glyphicon glyphicon-user" aria-hidden="true"> </span> 
+            <div><span className="glyphicon glyphicon-user"> </span>
               {this.props.groups}
             </div>
-            <div><span className="glyphicon glyphicon-fire" aria-hidden="true"> </span>
+            <div><span className="glyphicon glyphicon-fire"> </span>
               {this.props.events}
             </div>
           </div>

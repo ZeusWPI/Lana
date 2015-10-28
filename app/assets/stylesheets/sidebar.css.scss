@@ -1,0 +1,23 @@
+@import 'bootstrap';
+
+.sidebar {
+    z-index: 1000;
+    position: fixed;
+}
+
+.sidebar-logo {
+    @extend .list-group-item;
+    font-weight: 700;
+    font-size: 32px;
+    padding: 5px 15px;
+}
+
+.sidebar-item {
+    @extend .list-group-item;
+    padding: 5px;
+}
+
+.game-thumbnail {
+    border-radius: 3px;
+    margin-right: 5px;
+}
