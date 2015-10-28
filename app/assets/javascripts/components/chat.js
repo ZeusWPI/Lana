@@ -128,7 +128,7 @@ class Chat extends Component {
   componentDidMount() {
     $( ".messagebox" ).scroll(function() {
       var diff = this.scrollHeight - this.scrollTop;
-      if(diff == $( ".messagebox" ).outerHeight()) {
+      if(diff <= $( ".messagebox" ).outerHeight()) {
         $( "#new_messages" ).addClass("hide");
       } else {
         $( "#new_messages" ).removeClass("hide");
