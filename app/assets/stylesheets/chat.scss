@@ -21,6 +21,7 @@
 .messagebox {
   height: calc(100% - 34px);
   padding: 0 0 6px;
+  z-index: 5;
   overflow: auto;
 }
 
@@ -32,4 +33,22 @@
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
   border-radius: 15px 15px 0 0;
+}
+
+.expand-button {
+  float: right;
+  border: none;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  z-index: 10;
+  background-color: white;
+  padding: 20px;
 }

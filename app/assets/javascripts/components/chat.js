@@ -91,10 +91,29 @@ class MessageForm extends Component {
   }
 }
 
+class ExpandButton extends Component {
+  handleClick() {
+    $(".chatpanel").toggleClass("fullscreen");
+  }
+
+  render() {
+    return (
+      <button
+        type="button"
+        className="expand-button btn btn-default"
+        onClick={this.handleClick}
+      >
+        <span className="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+      </button>
+    );
+  }
+}
+
 class Chat extends Component {
   render() {
     return (
       <div className="chatpanel">
+        <ExpandButton />
         <MessageBox messages={this.props.messages}/>
         <div id="new_messages" className="hide">
         <span className="glyphicon glyphicon-arrow-down" aria-hidden="true"> </span>
