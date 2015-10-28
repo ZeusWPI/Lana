@@ -5,7 +5,7 @@ export default class EventForm extends Component {
   constructor(props, context) {
     super(props, context);
     if (this.props.event === undefined) {
-      this.state = {};
+      this.state = { moment: moment().add(30, 'minutes')};
     } else {
       this.state = this.props.event;
     }
@@ -27,6 +27,7 @@ export default class EventForm extends Component {
               <DateTimeField
                 dateTime={this.state.moment}
                 onChange={ e => this.setState({moment: new Date(- -e)}) }
+                minDate={moment()}
               />
             </div>
           </div>
