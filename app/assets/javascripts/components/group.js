@@ -42,7 +42,9 @@ class Group extends Component {
             <span className="small">{this.props.name}</span>
             <span className="pull-right">
               {this.props.members.length} / {this.props.capacity}
-              <button type="button" className="btn pull-right small">Join!</button>
+              <form onSubmit={this.props.join}>
+                <button type="button" className="btn pull-right small">Join!</button>
+              </form>
             </span>
           </h4>
         </div>
@@ -54,26 +56,30 @@ class Group extends Component {
 
 class GroupList extends Component {
   renderGroupInList(group) {
+    const { actions } = this.props;
     return <Group
       game={group.game.name}
       name={group.name}
       members={group.members}
       notes={group.notes}
       capacity={group.max_members}
+      join={actions.join}
     />;
   }
 
   render() {
-    console.log(this.props.grouplist);
+    const { actions } = this.props;
     return (
       <div className="group-list">
         <h1>Groups</h1>
 
         <div className="panel-group" role="tablist" aria-multiselectable="true">
-          {this.props.grouplist.map(this.renderGroupInList)}
+          {this.props.grouplist.map(this.renderGroupInList.bind(this))}
         </div>
 
-        <button type="button" className="btn btn-primary">Make a group</button>
+        <form onSubmit={actions.add}>
+          <button type="button" className="btn btn-primary">Make a group</button>
+        </form>
       </div>
     );
   }

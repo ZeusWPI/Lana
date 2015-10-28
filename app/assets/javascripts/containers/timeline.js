@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Event from '../components/event';
+import Timeline from '../components/timeline';
+import { addEvent } from '../actions/events';
 
-class Timeline extends Component {
-  render() {
-    return (
-      <div>
-        {this.props.events.map(
-          event => <Event event={event}/>
-        )}
-      </div>
-    );
-  }
-}
-
-function select(state) {
+function props(state) {
   const { events } = state;
   return { events };
 }
 
-export default connect(select)(Timeline);
+function actions(dispatch){
+  const eventActions = {
+    add: e => {
+      console.log(e);
+      dispatch(addEvent(e));
+    }
+  }
+  return { eventActions };
+}
+
+export default connect(props, actions)(Timeline);
