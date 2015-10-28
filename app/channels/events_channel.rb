@@ -7,9 +7,7 @@ class EventsChannel < ActionChannel::Channel
 
   reducer do
     def add_event event
-      e = Event.new event
-      p e
-      e
+      Event.create! event
     end
   end
 end

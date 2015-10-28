@@ -9,7 +9,9 @@ module ActionChannel
 
     def initialize(*args)
       super(*args)
-      @reducer = self.class.reducer_class.new(self)
+      self.class.reducer_class.try do |klass|
+        @reducer = klass.new(self)
+      end
     end
 
     # 'controller' endpoint
