@@ -13,7 +13,14 @@ class GroupsChannel < ActionChannel::Channel
     def join_group params
       group = Group.find params["id"]
       group.users << connection.current_user
-      group.save!
+      { user: connection.current_user.id,
+        group: group.id
+      }
+    end
+
+    def leave_group params
+      group = Group.find params["id"]
+      group.users.delete(connection.current_user)
       { user: connection.current_user.id,
         group: group.id
       }

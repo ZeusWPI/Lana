@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class GroupInfo extends Component {
   renderJoinLeaveButton() {
-    if (this.props.current_user in this.props.members) {
+    if (this.props.joined) {
       return (
         <button type="button"
                 className="btn btn-primary pull-right small groupbutton"
@@ -52,7 +52,7 @@ class Group extends Component {
         members={this.props.members}
         join={this.join.bind(this)}
         leave={this.leave.bind(this)}
-        current_user={this.props.current_user}
+        joined={this.props.joined}
       />;
     }
   }
@@ -93,7 +93,7 @@ class GroupList extends Component {
       capacity={group.max_members}
       join={actions.join}
       leave={actions.leave}
-      current_user={this.props.current_user}
+      joined={group.joined}
     />;
   }
 

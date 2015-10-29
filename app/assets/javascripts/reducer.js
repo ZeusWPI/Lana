@@ -44,6 +44,12 @@ const groups = modelReducer('groups', {
   join_group: (state, action) => {
     let { group, user } = action.payload;
     return state.updateIn([group, 'members'], ms => ms.push(user));
+  },
+  leave_group: (state, action) => {
+    let { group, user } = action.payload;
+    return state.updateIn(
+      [group, 'members'], ms => ms.delete(ms.indexOf(user))
+    );
   }
 });
 
