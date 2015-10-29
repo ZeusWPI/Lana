@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
 
 class UserForm extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {text: ''};
+  }
+
+  handleSubmit(e){
+    e.preventDefault();
+    this.props.onSubmit(this.state.text);
+    this.setState({text: ''});
+  }
+
   render() {
     var inputName = "authentication[" + this.props.field + "]";
     var btnclasses = [ "btn", "btn-default", "btn-" + this.props.btnclass ]
     return (
       <form
-        onSubmit={this.props.handler.bind(this)}
+        onSubmit={this.handleSubmit.bind(this)}
         className="authentication-form" >
         <label htmlFor={inputName}>
           {this.props.label}
@@ -18,6 +29,8 @@ class UserForm extends Component {
             placeholder={this.props.placeholder}
             name={inputName}
             id={inputName}
+            value={this.state.text}
+            onChange={e => this.setState({text: e.target.value})}
           />
           <div className="input-group-btn">
             <button type="submit" className={btnclasses.join(" ")} >
@@ -31,17 +44,8 @@ class UserForm extends Component {
 }
 
 class User extends Component {
-  handleUsername(e) {
-    e.preventDefault();
-    console.log("username");
-  }
-
-  handleToken(e) {
-    e.preventDefault();
-    console.log("token");
-  }
-
   render() {
+    const { login, register } = this.props.authActions;
     return (
       <div className="row">
         <div className="col-md-4 col-md-offset-4 text-center">
@@ -53,13 +57,15 @@ class User extends Component {
             placeholder="Username"
             btnclass="success"
             label="Sign up"
-            handler={this.handleUsername} />
+            onSubmit={name => register({name: name})}
+          />
           <UserForm
             field="token"
             placeholder="XXXX"
             btnclass="primary"
             label="or sign in with your token"
-            handler={this.handleToken} />
+            onSubmit={token => login({token: token})}
+          />
         </div>
       </div>
     );
@@ -102,4 +108,15 @@ class LoggedIn extends Component {
   }
 }
 
-export default LoggedIn;
+class ShowUser extends Component {
+  render() {
+    const { authActions } = this.props;
+    if (this.props.user) {
+      return <LoggedIn/>;
+    } else {
+      return <User authActions={authActions}/>
+    }
+  }
+}
+
+export default ShowUser;
