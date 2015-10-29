@@ -14,13 +14,9 @@ class Group < ActiveRecord::Base
   belongs_to :game
   has_and_belongs_to_many :users
 
-  #validate :validate_max_users
-  #validates :game, presence: true
-  #validates :users, presence: true
-
-  def usercount
-    users.size
-  end
+  validate :validate_max_users
+  validates :game, presence: true
+  validates :users, presence: true
 
   private
 

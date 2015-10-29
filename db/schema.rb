@@ -55,12 +55,14 @@ ActiveRecord::Schema.define(version: 20151029115318) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "max_users"
+    t.string   "name"
     t.index ["game_id"], name: "index_groups_on_game_id"
   end
 
   create_table "groups_users", id: false, force: :cascade do |t|
     t.integer "group_id"
     t.integer "user_id"
+    t.index ["group_id", "user_id"], name: "index_groups_users_on_group_id_and_user_id", unique: true
     t.index ["group_id"], name: "index_groups_users_on_group_id"
     t.index ["user_id"], name: "index_groups_users_on_user_id"
   end
@@ -73,10 +75,13 @@ ActiveRecord::Schema.define(version: 20151029115318) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",                       null: false
+    t.string   "token",                      null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "admin",      default: false, null: false
+    t.index ["name"], name: "index_users_on_name"
+    t.index ["token"], name: "index_users_on_token"
   end
 
 end
