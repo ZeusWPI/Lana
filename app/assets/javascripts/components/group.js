@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class GroupInfo extends Component {
+  isFull() {
+    return this.props.members.length >= this.props.capacity;
+  }
+
   renderJoinLeaveButton() {
     if (this.props.joined) {
       return (
@@ -13,7 +17,8 @@ class GroupInfo extends Component {
       return (
         <button type="button"
                 className="btn btn-primary pull-right small groupbutton"
-                onClick={this.props.join}>
+                onClick={this.props.join}
+                disabled={this.isFull()}>
           Join!
         </button>);
     }
@@ -50,6 +55,7 @@ class Group extends Component {
       return <GroupInfo
         notes={this.props.notes}
         members={this.props.members}
+        capacity={this.props.capacity}
         join={this.join.bind(this)}
         leave={this.leave.bind(this)}
         joined={this.props.joined}
