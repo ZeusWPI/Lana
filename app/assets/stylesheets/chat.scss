@@ -9,55 +9,77 @@
     }
 }
 
-.chatpanel {
+#chatpanel {
   position: fixed;
   bottom: 0;
   right: 20px;
-  height: 50%;
+  height: 475px;
   width: 400px;
   padding: 20px;
+  z-index: 10;
 
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
   background-color: white;
 
   transition: all 1s ease-in-out;
+
+  #send-message {
+    height: 34px;
+  }
+
+  .chat-header {
+    height: 32px;
+    width: 100%;
+    text-align: center;
+
+    // For vertical align of text
+    display: inline-block;
+
+    .channel-name {
+      font-weight: bold;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 32px;
+    }
+  }
+
+  .messagebox {
+    height: calc(100% - ( 34px + 32px ));
+    padding: 0 0 6px;
+    z-index: 5;
+    overflow: auto;
+  }
+
+  #new_messages {
+    position: absolute;
+    bottom: 34px;
+    text-align: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .expand-button {
+    float: right;
+    border: none;
+  }
+
+  .minimize-button {
+    float: right;
+    border: none;
+  }
 }
 
-.chatpanel.fullscreen {
-  position: fixed;
+#chatpanel.fullscreen {
   height: 100%;
   width: 100%;
   right: 0px;
-  z-index: 10;
-  padding: 20px;
-
-  transition: all 1s ease-in-out;
-  border-color: transparent;
 }
 
-.send-message {
-  height: 34px;
-}
-
-.messagebox {
-  height: calc(100% - 34px);
-  padding: 0 0 6px;
-  z-index: 5;
-  overflow: auto;
-}
-
-#new_messages {
-  position: absolute;
-  bottom: 34px;
-  text-align: center;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  border-radius: 15px 15px 0 0;
-}
-
-.expand-button {
-  float: right;
-  border: none;
+#chatpanel.minimized {
+  -ms-transform: translate(0,403px); /* IE 9 */
+ 	-webkit-transform: translate(0,403px); /* Safari */
+  transform: translate(0,403px);
 }

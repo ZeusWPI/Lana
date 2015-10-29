@@ -87,7 +87,8 @@ class MessageForm extends Component {
             type="text"
             onChange={this.handleChange.bind(this)}
             value={this.state.text}
-            className="messageforminput form-control"
+            className="form-control"
+            id="messageforminput"
           />
         </form>
         <span className="input-group-btn">
@@ -107,11 +108,16 @@ class MessageForm extends Component {
 
 class ExpandButton extends Component {
   handleClick() {
-    $(".chatpanel").toggleClass("fullscreen");
+    $("#chatpanel").removeClass("minimized");
+    $("#chatpanel").toggleClass("fullscreen");
+
 
     // Change glyphicon
     $(".expand-button > .glyphicon").toggleClass("glyphicon-resize-full");
     $(".expand-button > .glyphicon").toggleClass("glyphicon-resize-small");
+
+    $(".minimize-button > .glyphicon").removeClass("glyphicon-menu-up");
+    $(".minimize-button > .glyphicon").addClass("glyphicon-menu-down");
 
     checkNewMessages();
   }
@@ -129,11 +135,43 @@ class ExpandButton extends Component {
   }
 }
 
+class MinimizeButton extends Component {
+  handleClick() {
+    $("#chatpanel").removeClass("fullscreen");
+    $("#chatpanel").toggleClass("minimized");
+
+    // Change glyphicon
+    $(".expand-button > .glyphicon").removeClass("glyphicon-resize-small");
+    $(".expand-button > .glyphicon").addClass("glyphicon-resize-full");
+
+    // Change glyphicon
+    $(".minimize-button > .glyphicon").toggleClass("glyphicon-menu-down");
+    $(".minimize-button > .glyphicon").toggleClass("glyphicon-menu-up");
+
+  }
+
+  render() {
+    return (
+      <button
+        type="button"
+        className="minimize-button btn btn-default"
+        onClick={this.handleClick}
+      >
+        <span className="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+      </button>
+    );
+  }
+}
+
 class Chat extends Component {
   render() {
     return (
-      <div className="chatpanel">
-        <ExpandButton />
+      <div id="chatpanel">
+        <div className="chat-header">
+          <span className="channel-name">#general</span>
+          <MinimizeButton />
+          <ExpandButton />
+        </div>
         <MessageBox messages={this.props.messages}/>
         <MessageForm onSend={this.props.onSend}/>
       </div>
@@ -142,6 +180,9 @@ class Chat extends Component {
 
   componentDidMount() {
     $( ".messagebox" ).scroll(checkNewMessages);
+    $( "#chatpanel").click(function () {
+      $("#messageforminput")[0].focus();
+    });
   }
 
 }
