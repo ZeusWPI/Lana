@@ -10,7 +10,7 @@ const messages = handleActions({
 }, Immutable.List());
 
 const current_user = handleActions({
-  login: (state, action) => action.payload
+  login: (state, action) => action.payload.id
 }, null);
 
 const modelActions = {
@@ -42,10 +42,8 @@ const games = modelReducer('games');
 const users = modelReducer('users');
 const groups = modelReducer('groups', {
   join_group: (state, action) => {
-    let { group, member } = action.payload;
-    return state.update(
-      member, g => g.update('members', ms => ms.push(member))
-    );
+    let { group, user } = action.payload;
+    return state.updateIn([group, 'members'], ms => ms.push(user));
   }
 });
 

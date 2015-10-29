@@ -4,8 +4,15 @@ import GroupList from '../components/group.js';
 import { addGroup, joinGroup, leaveGroup } from '../actions/groups.js';
 
 function props(state) {
-  const { current_user, data } = state
-  return { current_user, groups: data.groups.toList().toJS() };
+  const { current_user, data } = state;
+  const groups = data.groups.map(
+    g => g.update('members', ms => ms.map(m => data.users.getIn([m, 'name'])))
+  ).toIndexedSeq().toJS();
+
+  return {
+    current_user: data.users.getIn([current_user, 'name']),
+    groups
+  };
 }
 
 function actions(dispatch) {
