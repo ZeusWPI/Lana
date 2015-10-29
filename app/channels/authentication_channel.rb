@@ -1,4 +1,8 @@
 class AuthenticationChannel < ActionChannel::Channel
+  def snapshot
+    Action.new('login', self.current_user)
+  end
+
   def publish action
     # only send this information to the user himself
     transmit(action)

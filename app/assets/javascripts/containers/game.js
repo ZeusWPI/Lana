@@ -3,11 +3,12 @@ import Game from '../components/game';
 import { addEvent } from '../actions/events';
 
 function props(state){
+  const { data } = state;
   return {
     title: 'Geweren en Explosies 24',
     image_url: 'http://fotodes.ru/upload/img1342258123.jpg',
-    groups: state.groups.toList().toJS(),
-    events: state.events.toList().toJS()
+    groups: data.groups.toList().toJS(),
+    events: data.events.toList().toJS()
   };
 }
 
