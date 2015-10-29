@@ -1,4 +1,7 @@
 class AuthenticationChannel < ActionChannel::Channel
+  def snapshot
+    Action.new('login', login_payload) if self.current_user
+  end
 
   def publish action
     # only send this information to the user himself
