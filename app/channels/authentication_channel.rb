@@ -1,7 +1,4 @@
 class AuthenticationChannel < ActionChannel::Channel
-  def snapshot
-    Action.new('login', self.current_user)
-  end
 
   def publish action
     # only send this information to the user himself
@@ -9,10 +6,16 @@ class AuthenticationChannel < ActionChannel::Channel
   end
 
   reducer do
-    # TODO: actually authenticate the user
     def login credentials
-      u = User.find_or_create_by name: credentials['name']
-      connection.current_user = u
+      connection.current_user = User.find_by! token: credentials['token']
+      channel.login_payload
     end
+  end
+
+  def login_payload
+    ActiveModel::SerializableResource.new(
+      self.current_user,
+      serializer: CurrentUserSerializer
+    ).serializable_hash
   end
 end

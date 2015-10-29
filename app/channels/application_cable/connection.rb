@@ -4,7 +4,7 @@ module ApplicationCable
 
     def connect
       # For now, we are bert.
-      self.current_user = User.find_or_create_by name: 'bert'
+      #self.current_user = User.find_or_create_by name: 'bert'
     end
   end
 end
