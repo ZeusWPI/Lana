@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import { routerStateReducer as router } from 'redux-router';
 import Immutable from 'immutable';
+import Cookies from 'js-cookie';
 
 const messages = handleActions({
   add_message: (state, action) => (
@@ -10,7 +11,11 @@ const messages = handleActions({
 }, Immutable.List());
 
 const current_user = handleActions({
-  login: (state, action) => action.payload.id
+  login: (state, action) => {
+    const { id, token} = action.payload;
+    Cookies.set('token', token, {expires: 2});
+    return { id, token };
+  }
 }, null);
 
 const modelActions = {

@@ -10,4 +10,10 @@
 
 class User < ActiveRecord::Base
   has_and_belongs_to_many :groups
+  before_create :generate_token
+
+  private
+  def generate_token
+    self.token = SecureRandom::base64(3)
+  end
 end

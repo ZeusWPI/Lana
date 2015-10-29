@@ -12,7 +12,7 @@ function props(state) {
   ).toIndexedSeq().toJS();
 
   return {
-    current_user: username(current_user),
+    current_user: username(current_user.id),
     groups
   };
 }

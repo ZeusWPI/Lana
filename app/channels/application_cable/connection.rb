@@ -3,8 +3,9 @@ module ApplicationCable
     identified_by :current_user
 
     def connect
-      # For now, we are bert.
-      self.current_user = User.find_or_create_by name: 'bert'
+      cookies['token'].try do |token|
+        self.current_user = User.find_by token: token
+      end
     end
   end
 end
