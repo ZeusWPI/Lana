@@ -7,7 +7,11 @@ class GroupsChannel < ActionChannel::Channel
 
   reducer do
     def add_group group
-      Group.create! group
+      g = Group.new group
+      g.users.push connection.current_user
+      g.game = Game.first #TODO: FIXME
+      g.save!
+      g
     end
 
     def join_group params

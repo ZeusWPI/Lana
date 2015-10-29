@@ -92,11 +92,17 @@ class GroupForm extends Component {
   constructor(props, context) {
     super(props, context);
     if (this.props.group === undefined) {
-      this.state = {};
+      this.state = { group: {} };
     } else {
-      this.state = this.props.group;
+      this.state = {group: this.props.group };
     }
     this.state.expanded = false;
+  }
+
+  updateGroup(field, value) {
+    const group = this.state.group;
+    group[field] = value;
+    this.setState({ group });
   }
 
   checkValidity(e) {
@@ -106,7 +112,7 @@ class GroupForm extends Component {
 
   submit(e) {
     e.preventDefault();
-    this.props.onSubmit(this.state);
+    this.props.onSubmit(this.state.group);
   }
 
   cancel(e) {
@@ -119,7 +125,7 @@ class GroupForm extends Component {
         <button className="btn btn-default" onClick={() => this.setState({expanded: true})}>Make a group</button>
       );
     }
-
+    const group = this.state.group;
     return (
       <form className="form-horizontal"
            onSubmit={this.submit.bind(this)}
@@ -128,24 +134,24 @@ class GroupForm extends Component {
           <label htmlFor="name-field" className="col-sm-2 control-label">Name</label>
           <div className="col-sm-10">
             <input type="text" className="form-control" id="name-field" placeholder="Name" required
-              value={this.state.name}
-              onChange={(e) => this.setState({name: e.target.value})} />
+              value={group.name}
+              onChange={e => this.updateGroup('name', e.target.value)} />
           </div>
         </div>
         <div className="form-group">
           <label htmlFor="notes-field" className="col-sm-2 control-label">Description</label>
           <div className="col-sm-10">
             <textarea className="form-control" id="notes-field" placeholder="Description" rows="3"
-              value={this.state.notes}
-              onChange={(e) => this.setState({notes: e.target.value})} />
+              value={group.notes}
+              onChange={e => this.updateGroup('notes', e.target.value)} />
           </div>
         </div>
         <div className="form-group">
           <label htmlFor="max-members-field" className="col-sm-2 control-label">Maximum members</label>
           <div className="col-sm-10">
             <input type="number" className="form-control" id="max-members-field" min="2" placeholder="Maximum members"
-              value={this.state.max_members}
-              onChange={(e) => this.setState({max_members: e.target.value})} />
+              value={group.max_members}
+              onChange={e => this.updateGroup('max_members', e.target.value)} />
           </div>
         </div>
         <div className="form-group">
@@ -184,11 +190,11 @@ class GroupList extends Component {
         <h1>Groups</h1>
 
         <div className="panel-group" role="tablist" aria-multiselectable="true">
-          {this.props.groups.map(this.renderGroupInList)}
+          {this.props.groups.map(this.renderGroupInList.bind(this))}
         </div>
 
         <GroupForm
-          onSubmit={state => actions.add(state)} />
+          onSubmit={group => actions.add(group)} />
       </div>
     );
   }
