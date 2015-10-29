@@ -172,8 +172,10 @@ class Chat extends Component {
           <MinimizeButton />
           <ExpandButton />
         </div>
-        <MessageBox messages={this.props.messages}/>
-        <MessageForm onSend={this.props.onSend}/>
+        <div className="chat-body">
+          <MessageBox messages={this.props.messages}/>
+          <MessageForm onSend={this.props.onSend}/>
+        </div>
       </div>
     );
   }

@@ -1,21 +1,9 @@
-.message {
-    .author {
-        font-weight: bold;
-        margin-right: 3px;
-    }
-    .timestamp {
-        color: LightGray;
-        margin-right: 3px;
-    }
-}
-
 #chatpanel {
   position: fixed;
   bottom: 0;
   right: 20px;
   height: 475px;
   width: 400px;
-  padding: 20px;
   z-index: 10;
 
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -24,52 +12,98 @@
 
   transition: all 1s ease-in-out;
 
-  #send-message {
-    height: 34px;
-  }
 
   .chat-header {
-    height: 32px;
+    position: relative;
+    height: 52px;
     width: 100%;
+
+    color: white;
+
+    // Material shit
+    background-color: #2196F3;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
     text-align: center;
+
+    button {
+      background-color: inherit;
+    }
+
+    .glyphicon {
+      color: white;
+    }
 
     // For vertical align of text
     display: inline-block;
 
     .channel-name {
       font-weight: bold;
-      display: inline-block;
-      vertical-align: middle;
-      line-height: 32px;
+      line-height: 52px;
+    }
+
+    .expand-button {
+      border: none;
+      position: absolute;
+      right: 50px;
+
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .minimize-button {
+      float: right;
+      right: 5px;
+      position: absolute;
+      border: none;
+
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 
-  .messagebox {
-    height: calc(100% - ( 34px + 32px ));
-    padding: 0 0 6px;
-    z-index: 5;
-    overflow: auto;
+  .chat-body {
+    height: 100%;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .messagebox {
+      height: calc(100% - ( 34px + 32px + 20px));
+      padding: 20px;
+      padding: 0 0 6px;
+      z-index: 5;
+      overflow: auto;
+    }
+
+    #new_messages {
+      position: absolute;
+      bottom: 34px;
+      text-align: center;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      border-radius: 15px 15px 0 0;
+    }
+
+    #send-message {
+      height: 34px;
+    }
+
+    .message {
+        .author {
+            font-weight: bold;
+            margin-right: 3px;
+        }
+        .timestamp {
+            color: LightGray;
+            margin-right: 3px;
+        }
+    }
   }
 
-  #new_messages {
-    position: absolute;
-    bottom: 34px;
-    text-align: center;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    border-radius: 15px 15px 0 0;
-  }
-
-  .expand-button {
-    float: right;
-    border: none;
-  }
-
-  .minimize-button {
-    float: right;
-    border: none;
-  }
 }
 
 #chatpanel.fullscreen {
@@ -79,7 +113,7 @@
 }
 
 #chatpanel.minimized {
-  -ms-transform: translate(0,403px); /* IE 9 */
- 	-webkit-transform: translate(0,403px); /* Safari */
-  transform: translate(0,403px);
+  -ms-transform: translate(0,423px); /* IE 9 */
+ 	-webkit-transform: translate(0,423px); /* Safari */
+  transform: translate(0,423px);
 }
