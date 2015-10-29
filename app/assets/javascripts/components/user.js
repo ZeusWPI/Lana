@@ -66,4 +66,40 @@ class User extends Component {
   }
 }
 
-export default User;
+class NameToken extends Component {
+  editName(e) {
+    console.log("edit name");
+  }
+
+  render() {
+    return (
+      <div className="row">
+        <div className="col-md-2">
+          <div>
+            <h2>
+              {this.props.name + " "}
+              <small>
+                <span
+                  className="glyphicon glyphicon-edit cursor-hand"
+                  onClick={this.editName.bind(this)} />
+              </small>
+            </h2>
+          </div>
+          <div>
+            Token: {this.props.token}
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+class LoggedIn extends Component {
+  render() {
+    return (
+      <NameToken name="benji" token="U34Y" />
+    );
+  }
+}
+
+export default LoggedIn;
