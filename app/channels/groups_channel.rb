@@ -14,7 +14,7 @@ class GroupsChannel < ActionChannel::Channel
       group = Group.find params["id"]
       group.users << connection.current_user
       group.save!
-      { user: current_user.id,
+      { user: connection.current_user.id,
         group: group.id
       }
     end

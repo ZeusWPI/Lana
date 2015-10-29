@@ -3,9 +3,19 @@ import React, { Component } from 'react';
 class GroupInfo extends Component {
   renderJoinLeaveButton() {
     if (this.props.current_user in this.props.members) {
-      return (<button type="button" className="btn btn-primary pull-right small groupbutton" onClick={this.props.leave}>Leave!</button>);
+      return (
+        <button type="button"
+                className="btn btn-primary pull-right small groupbutton"
+                onClick={this.props.leave}>
+          Leave!
+        </button>);
     } else {
-      return (<button type="button" className="btn btn-primary pull-right small groupbutton" onClick={this.props.join}>Join!</button>);
+      return (
+        <button type="button"
+                className="btn btn-primary pull-right small groupbutton"
+                onClick={this.props.join}>
+          Join!
+        </button>);
     }
   }
 
@@ -77,7 +87,6 @@ class GroupList extends Component {
     const { actions } = this.props;
     return <Group
       id={group.id}
-      game={group.game.name}
       name={group.name}
       members={group.members}
       notes={group.notes}
@@ -95,7 +104,7 @@ class GroupList extends Component {
         <h1>Groups</h1>
 
         <div className="panel-group" role="tablist" aria-multiselectable="true">
-          {this.props.grouplist.map(this.renderGroupInList.bind(this))}
+          {this.props.groups.map(this.renderGroupInList.bind(this))}
         </div>
 
         <form onSubmit={actions.add}>
