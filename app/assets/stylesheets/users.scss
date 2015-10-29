@@ -1,3 +1,14 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.authentication-user-glyph {
+  font-size: 5.2em;
+}
+
+.authentication-form {
+  label {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+}
