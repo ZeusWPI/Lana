@@ -90,7 +90,7 @@ class GroupList extends Component {
       name={group.name}
       members={group.members}
       notes={group.notes}
-      capacity={group.max_members}
+      capacity={group.max_users}
       join={actions.join}
       leave={actions.leave}
       joined={group.joined}
