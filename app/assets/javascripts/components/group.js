@@ -143,10 +143,12 @@ class GroupForm extends Component {
           </div>
         </div>
         <div className="form-group">
-          <div className="col-sm-offset-2 col-sm-10">
-            <button type="submit" className="btn btn-primary" disabled={!this.state.isValid}>Make group</button>
-            &nbsp;
-            <button type="reset" className="btn btn-default" onClick={this.cancel.bind(this)}>Cancel</button>
+          <div className="col-sm-12">
+            <div className="pull-right">
+              <button type="submit" className="btn btn-primary" disabled={!this.state.isValid}>Make group</button>
+              &nbsp;
+              <button type="reset" className="btn btn-default" onClick={this.cancel.bind(this)}>Cancel</button>
+            </div>
           </div>
         </div>
       </form>
