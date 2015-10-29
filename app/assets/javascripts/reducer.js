@@ -15,11 +15,11 @@ const current_user = handleActions({
 
 const modelActions = {
   receive: (state, action) =>
-    action.payload.reduce(
-      (map, model) => map.set(model.id, model),
+    Immutable.fromJS(action.payload).reduce(
+      (map, model) => map.set(model.get('id'), model),
       Immutable.Map()),
   add: (state, action) =>
-    state.set(action.payload.id, action.payload)
+    state.set(action.payload.id, Immutable.fromJS(action.payload))
 };
 
 function postfixKeys(obj, postfix) {
@@ -38,9 +38,16 @@ function modelReducer(name, additionalActions) {
 }
 
 const events = modelReducer('events');
-const groups = modelReducer('groups');
 const games = modelReducer('games');
 const users = modelReducer('users');
+const groups = modelReducer('groups', {
+  join_group: (state, action) => {
+    let { group, member } = action.payload;
+    return state.update(
+      member, g => g.update('members', ms => ms.push(member))
+    );
+  }
+});
 
 
 const data = combineReducers({

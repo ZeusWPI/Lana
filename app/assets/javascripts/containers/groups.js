@@ -5,7 +5,7 @@ import { addGroup, joinGroup, leaveGroup } from '../actions/groups.js';
 
 function props(state) {
   const { current_user, data } = state
-  return { current_user, groups: data.groups.toList() };
+  return { current_user, groups: data.groups.toList().toJS() };
 }
 
 function actions(dispatch) {
