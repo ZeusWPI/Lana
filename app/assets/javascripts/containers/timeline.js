@@ -6,7 +6,7 @@ import { addEvent } from '../actions/events';
 function props(state) {
   const { timeline, data } = state;
   return {
-    events: timeline.map(id => data.events.get(id))
+    events: timeline.map(id => data.events.get(id)).toJS()
   };
 }
 
