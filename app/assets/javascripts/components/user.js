@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 
 class UserForm extends Component {
-  handleSubmit(e) {
-    e.preventDefault();
-  }
-
   render() {
     var inputName = "authentication[" + this.props.field + "]";
     var btnclasses = [ "btn", "btn-default", "btn-" + this.props.btnclass ]
     return (
       <form
-        onSubmit={this.handleSubmit.bind(this)}
+        onSubmit={this.props.handler.bind(this)}
         className="authentication-form" >
         <label htmlFor={inputName}>
           {this.props.label}
@@ -35,6 +31,16 @@ class UserForm extends Component {
 }
 
 class User extends Component {
+  handleUsername(e) {
+    e.preventDefault();
+    console.log("username");
+  }
+
+  handleToken(e) {
+    e.preventDefault();
+    console.log("token");
+  }
+
   render() {
     return (
       <div className="row">
@@ -46,12 +52,14 @@ class User extends Component {
             field="name"
             placeholder="Username"
             btnclass="success"
-            label="Sign up" />
+            label="Sign up"
+            handler={this.handleUsername} />
           <UserForm
             field="token"
             placeholder="XXXX"
             btnclass="primary"
-            label="or sign in with your token" />
+            label="or sign in with your token"
+            handler={this.handleToken} />
         </div>
       </div>
     );
