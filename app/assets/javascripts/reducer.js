@@ -18,34 +18,32 @@ const current_user = handleActions({
   }
 }, null);
 
-const modelActions = {
-  receive: (state, action) =>
-    Immutable.fromJS(action.payload).reduce(
-      (map, model) => map.set(model.get('id'), model),
-      Immutable.Map()),
-  add: (state, action) =>
-    state.set(action.payload.id, Immutable.fromJS(action.payload))
-};
+const receive_models = (state, action) =>
+  Immutable.fromJS(action.payload).reduce(
+    (map, model) => map.set(model.get('id'), model),
+    Immutable.Map());
 
-function postfixKeys(obj, postfix) {
-  var newObj = {};
-  for (let key in obj) {
-    newObj[key+postfix] = obj[key]
-  }
-  return newObj;
-}
+const add_model = (state, action) =>
+    state.set(action.payload.id, Immutable.fromJS(action.payload));
 
-function modelReducer(name, additionalActions) {
-  return handleActions(
-    {...additionalActions, ...postfixKeys(modelActions, '_'+name)},
-    Immutable.Map()
-  );
-}
+const events = handleActions({
+  receive_events: receive_models,
+  add_event: add_model
+}, Immutable.Map());
 
-const events = modelReducer('events');
-const games = modelReducer('games');
-const users = modelReducer('users');
-const groups = modelReducer('groups', {
+const games = handleActions({
+  receive_games: receive_models,
+  add_game: add_model
+}, Immutable.Map());
+
+const users = handleActions({
+  receive_users: receive_models,
+  add_user: add_model
+}, Immutable.Map());
+
+const groups = handleActions({
+  receive_groups: receive_models,
+  add_group: add_model,
   join_group: (state, action) => {
     let { group, user } = action.payload;
     return state.updateIn([group, 'members'], ms => ms.push(user));
@@ -56,8 +54,7 @@ const groups = modelReducer('groups', {
       [group, 'members'], ms => ms.delete(ms.indexOf(user))
     );
   }
-});
-
+}, Immutable.Map());
 
 const data = combineReducers({
   events,
