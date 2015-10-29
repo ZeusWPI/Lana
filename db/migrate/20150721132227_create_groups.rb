@@ -1,8 +1,10 @@
 class CreateGroups < ActiveRecord::Migration
   def change
     create_table :groups do |t|
-      t.references :game, index: true
+      t.references :game, index: true, null: false
+      t.string :name
       t.text :notes
+      t.integer :max_users
 
       t.timestamps null: false
     end

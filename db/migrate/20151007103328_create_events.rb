@@ -4,11 +4,9 @@ class CreateEvents < ActiveRecord::Migration
 
       t.string :name, null: false
       t.text :description, null: false, default: ""
-      t.timestamp :moment, null: false
+      t.timestamp :moment, null: false, index: true
 
       t.timestamps null: false
     end
-
-    add_index :events, :moment
   end
 end
