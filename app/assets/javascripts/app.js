@@ -29,5 +29,7 @@ window.test_event = addEvent({
 window.dispatch = store.dispatch;
 window.login = credentials => store.dispatch(login(credentials));
 window.getState = store.getState
+
 window.getToken = () => Cookies.get('token');
 window.setToken = (val) => Cookies.set('token', val);
+window.deleteToken = () => Cookies.remove('token');
