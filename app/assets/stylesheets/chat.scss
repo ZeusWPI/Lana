@@ -10,8 +10,30 @@
 }
 
 .chatpanel {
-  position: relative;
-  height: 500px;
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  height: 50%;
+  width: 400px;
+  padding: 20px;
+
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+  background-color: white;
+
+  transition: all 1s ease-in-out;
+}
+
+.chatpanel.fullscreen {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  right: 0px;
+  z-index: 10;
+  padding: 20px;
+
+  transition: all 1s ease-in-out;
+  border-color: transparent;
 }
 
 .send-message {
@@ -38,17 +60,4 @@
 .expand-button {
   float: right;
   border: none;
-}
-
-.fullscreen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  min-height: 100%;
-  min-width: 100%;
-  z-index: 10;
-  background-color: white;
-  padding: 20px;
 }

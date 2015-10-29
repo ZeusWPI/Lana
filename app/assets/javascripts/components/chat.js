@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
 
+function checkNewMessages() {
+  var diff = $( ".messagebox" )[0].scrollHeight - $( ".messagebox" )[0].scrollTop;
+  if(diff <= $( ".messagebox" ).outerHeight()) {
+    $( "#new_messages" ).addClass("hide");
+  } else {
+    $( "#new_messages" ).removeClass("hide");
+  }
+}
+
 class ChatMessage extends Component {
   componentWillMount() {
     var mb = $( ".messagebox" )[0];
@@ -65,6 +74,11 @@ class MessageForm extends Component {
   render() {
     return (
       <div className="input-group send-message">
+        <div id="new_messages" className="hide">
+        <span className="glyphicon glyphicon-arrow-down" aria-hidden="true"> </span>
+         MORE MESSAGES
+        <span className="glyphicon glyphicon-arrow-down" aria-hidden="true"> </span>
+        </div>
         <form
           onSubmit={this.handleSubmit.bind(this)}
           id="messageform"
@@ -94,6 +108,12 @@ class MessageForm extends Component {
 class ExpandButton extends Component {
   handleClick() {
     $(".chatpanel").toggleClass("fullscreen");
+
+    // Change glyphicon
+    $(".expand-button > .glyphicon").toggleClass("glyphicon-resize-full");
+    $(".expand-button > .glyphicon").toggleClass("glyphicon-resize-small");
+
+    checkNewMessages();
   }
 
   render() {
@@ -115,25 +135,13 @@ class Chat extends Component {
       <div className="chatpanel">
         <ExpandButton />
         <MessageBox messages={this.props.messages}/>
-        <div id="new_messages" className="hide">
-        <span className="glyphicon glyphicon-arrow-down" aria-hidden="true"> </span>
-         MORE MESSAGES
-        <span className="glyphicon glyphicon-arrow-down" aria-hidden="true"> </span>
-        </div>
         <MessageForm onSend={this.props.onSend}/>
       </div>
     );
   }
 
   componentDidMount() {
-    $( ".messagebox" ).scroll(function() {
-      var diff = this.scrollHeight - this.scrollTop;
-      if(diff <= $( ".messagebox" ).outerHeight()) {
-        $( "#new_messages" ).addClass("hide");
-      } else {
-        $( "#new_messages" ).removeClass("hide");
-      }
-    });
+    $( ".messagebox" ).scroll(checkNewMessages);
   }
 
 }
