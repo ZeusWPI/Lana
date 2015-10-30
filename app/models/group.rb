@@ -14,5 +14,20 @@ class Group < ActiveRecord::Base
   extend Broadcastable
   belongs_to :game
   has_many :memberships
-  has_many :users, through: :memberships
+  has_many :users, through: :memberships,
+    after_remove: :broadcast_leave
+
+  def as_json(options)
+    self.attributes.slice(
+      'id', 'game_id', 'notes', 'max_users'
+    ).merge(members: users.pluck(:id))
+  end
+
+  private
+  def broadcast_leave user
+    Membership.action(:delete, {
+      group_id: self.id,
+      user_id: user.id
+    }).broadcast
+  end
 end

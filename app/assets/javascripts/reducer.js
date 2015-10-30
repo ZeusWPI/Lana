@@ -11,7 +11,7 @@ const messages = handleActions({
 }, Immutable.List());
 
 const current_user = handleActions({
-  login: (state, action) => {
+  'user#login': (state, action) => {
     const { id, token} = action.payload;
     Cookies.set('token', token, {expires: 2});
     return { id, token };
@@ -51,14 +51,14 @@ const events = modelReducer('event');
 const games = modelReducer('game');
 const users = modelReducer('user');
 const groups = modelReducer('group', {
-  join_group: (state, action) => {
-    let { group, user } = action.payload;
-    return state.updateIn([group, 'members'], ms => ms.push(user));
+  'membership#upsert': (state, action) => {
+    let { group_id, user_id } = action.payload;
+    return state.updateIn([group_id, 'members'], ms => ms.push(user_id));
   },
-  leave_group: (state, action) => {
-    let { group, user } = action.payload;
+  'membership#delete': (state, action) => {
+    let { group_id, user_id } = action.payload;
     return state.updateIn(
-      [group, 'members'], ms => ms.delete(ms.indexOf(user))
+      [group_id, 'members'], ms => ms.delete(ms.indexOf(user_id))
     );
   }
 });

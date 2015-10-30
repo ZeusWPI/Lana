@@ -1,0 +1,3 @@
+class GamesReducer < Reducer
+
+end

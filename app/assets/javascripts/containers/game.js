@@ -7,7 +7,13 @@ import { addGroup, joinGroup, leaveGroup } from '../actions/groups.js';
 function props(state){
   const { current_user, data } = state;
 
-  const username = (user_id) => data.users.getIn([user_id, 'name'])
+  const username = user_id => data.users.getIn([user_id, 'name'])
+  if (current_user) {
+    const joined = group => group.get('members').includes(current_user.id)
+  } else {
+    const joined = group => false
+  }
+  
   const groups = data.groups.map(
     group => group.set('joined', group.get('members').includes(current_user.id))
                   .update('members', ms => ms.map(username))

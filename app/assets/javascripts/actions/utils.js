@@ -9,7 +9,7 @@ export function publishedAction(name) {
 export function publishedActions(hash) {
   var actions = {};
   for (let key in hash){
-    actions[key] = publishedAction(channel, hash[key]);
+    actions[key] = publishedAction(hash[key]);
   }
   return actions;
 }

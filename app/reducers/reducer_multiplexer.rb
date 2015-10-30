@@ -3,7 +3,9 @@ class ReducerMultiplexer < Reducer
   def initialize connection
     super(connection)
     @reducerMap = {
-      event: EventsReducer.new(connection)
+      event: EventsReducer.new(connection),
+      group: GroupsReducer.new(connection),
+      user: UsersReducer.new(connection)
     }
   end
 

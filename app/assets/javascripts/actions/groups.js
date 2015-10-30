@@ -1,7 +1,7 @@
 import { publishedActions } from './utils';
 
 export default publishedActions({
-  addGroup: 'group#upsert',
+  addGroup: 'group#create',
   joinGroup: 'group#join',
   leaveGroup: 'group#leave'
 });

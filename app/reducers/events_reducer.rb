@@ -1,8 +1,6 @@
 class EventsReducer < Reducer
   def snapshot
-    { type: 'event#receive',
-      payload: Event.all
-    }
+    Event.action(:receive, Event.all)
   end
 
   def create event

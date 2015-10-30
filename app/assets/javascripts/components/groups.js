@@ -150,8 +150,8 @@ class GroupForm extends Component {
           <label htmlFor="max-members-field" className="col-sm-2 control-label">Maximum members</label>
           <div className="col-sm-10">
             <input type="number" className="form-control" id="max-members-field" min="2" placeholder="Maximum members"
-              value={group.max_members}
-              onChange={e => this.updateGroup('max_members', e.target.value)} />
+              value={group.max_users}
+              onChange={e => this.updateGroup('max_users', e.target.value)} />
           </div>
         </div>
         <div className="form-group">
