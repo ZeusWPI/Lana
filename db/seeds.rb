@@ -5,7 +5,7 @@ games = [
     notes: 'Wil jij ook veel schieten en dingen laten ontploffen?!!'
   }, {
     name: 'League of Legends',
-    image_url: '',
+    image_url: 'https://hdgameplay.com/uploads/games/LoL_icon.png',
     notes: '5,556 km legendes'
   }, {
     name: 'Counterstrike: Global Offensive',
