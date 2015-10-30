@@ -12,6 +12,7 @@
 
 class Event < ActiveRecord::Base
   extend Broadcastable
+  belongs_to :game
 
   def as_json(options)
     self.attributes.slice(
