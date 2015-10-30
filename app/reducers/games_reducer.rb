@@ -1,5 +1,5 @@
 class GamesReducer < Reducer
   def snapshot
-    Game.event(:receive, Game.all)
+    Game.action(:receive, Game.all)
   end
 end
