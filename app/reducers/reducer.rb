@@ -2,7 +2,7 @@ class Reducer
   extend Forwardable
   attr_reader :channel
   def_delegators :channel, :connection, :transmit
-  def_delegators :connection, :current_user
+  def_delegators :connection, :current_user, :current_user=
 
   def initialize channel
     @channel = channel
