@@ -1,3 +1,6 @@
-import { publishedAction } from './utils';
+import { publishedActions } from './utils';
 
-//export const login = publishedAction(authenticationChannel, 'login');
+export default publishedActions({
+  login: 'user#login',
+  register: 'user#register'
+});

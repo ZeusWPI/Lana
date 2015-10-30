@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import User from '../components/user';
-import { login } from '../actions/authentication';
+import { login, register } from '../actions/authentication';
 
 function props(state) {
   const { current_user, data } = state;
@@ -18,7 +18,8 @@ function props(state) {
 function actions(dispatch) {
   return {
     authActions: {
-      login: e => dispatch(login(e))
+      login: e => dispatch(login(e)),
+      register: e => dispatch(register(e))
     }
   };
 }

@@ -5,12 +5,12 @@ class UsersReducer < Reducer
   end
 
   def register params
-    current_user = User.create name: params['name']
+    self.current_user = User.create name: params['name']
     send_login
   end
 
   def login params
-    current_user = User.find_by! token: params['token']
+    self.current_user = User.find_by! token: params['token']
     send_login
   end
 
