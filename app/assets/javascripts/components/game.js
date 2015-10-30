@@ -12,9 +12,16 @@ class Game extends Component {
     };
   }
 
+  eventActions(){
+    const { add } = this.props.eventActions;
+    return {
+      add: g => add({...g, game_id: this.props.id}),
+    };
+  }
+
   render() {
     const { name, image_url, groups, events,
-            current_user, notes, eventActions } = this.props;
+            current_user, notes } = this.props;
     return (
       <div className="game">
         <div className="col-md-12">
@@ -32,7 +39,7 @@ class Game extends Component {
           <div className="well">
             <Timeline
               events={events}
-              eventActions={eventActions}
+              eventActions={this.eventActions()}
               isAdmin={current_user.admin}
             />
           </div>
