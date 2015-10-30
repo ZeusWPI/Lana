@@ -12,7 +12,7 @@ class App extends Component {
           <h1>Chat</h1>
         </div>
         <Chat
-          messages={this.props.messages}
+          message_map={this.props.message_map}
           onSend={text => {
             dispatch(addMessage(
               {
@@ -31,7 +31,21 @@ class App extends Component {
 
 function select(state) {
   const { messages } = state;
-  return { messages };
+
+  return {
+    message_map: {
+      'general': [{
+        author: 'Ilion',
+        contents: 'hoi',
+        timestamp: Date.now()
+      }],
+      'groepskanaal n°5': [{
+        author: 'Donniepon',
+        contents: 'HOIZ',
+        timestamp: Date.now()
+      }]
+    }
+  };
 }
 
 export default connect(select)(App);

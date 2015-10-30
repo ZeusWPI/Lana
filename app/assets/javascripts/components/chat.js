@@ -106,6 +106,22 @@ class MessageForm extends Component {
   }
 }
 
+class ChannelSwitcher extends Component {
+  render() {
+    return (
+      <span className="channel-name">
+        <select
+            value={this.props.current_channel}
+            onChange={e => this.props.onChange(e.target.value)}>
+          {this.props.channels.map(channel =>
+            <option value={channel}>#{channel}</option>
+          )}
+        </select>
+      </span>
+    );
+  }
+}
+
 class ExpandButton extends Component {
   handleClick() {
     $("#chatpanel").removeClass("minimized");
@@ -164,17 +180,27 @@ class MinimizeButton extends Component {
 }
 
 class Chat extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {channel: 'general'};
+  }
+
   render() {
+    const { message_map, onSend } = this.props;
+
     return (
       <div id="chatpanel">
         <div className="chat-header">
-          <span className="channel-name">#general</span>
+          <ChannelSwitcher
+            current_channel={this.state.channel}
+            channels={Object.keys(message_map)}
+            onChange={channel => this.setState({channel: channel})}/>
           <MinimizeButton />
           <ExpandButton />
         </div>
         <div className="chat-body">
-          <MessageBox messages={this.props.messages}/>
-          <MessageForm onSend={this.props.onSend}/>
+          <MessageBox messages={message_map[this.state.channel]}/>
+          <MessageForm onSend={onSend}/>
         </div>
       </div>
     );
