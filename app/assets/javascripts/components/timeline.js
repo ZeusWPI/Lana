@@ -46,7 +46,7 @@ class Timeline extends Component {
     return (
       <div>
         {this.props.events.map(this.renderEvent)}
-        {this.renderForm()}
+        {this.props.isAdmin && this.renderForm()}
       </div>
     );
   }

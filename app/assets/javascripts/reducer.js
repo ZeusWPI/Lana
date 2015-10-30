@@ -6,9 +6,9 @@ import Cookies from 'js-cookie';
 
 const current_user = handleActions({
   'user#login': (state, action) => {
-    const { id, token} = action.payload;
+    const { id, token, admin } = action.payload;
     Cookies.set('token', token, {expires: 2});
-    return { id, token };
+    return { id, token, admin };
   }
 }, null);
 

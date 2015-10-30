@@ -24,7 +24,8 @@ function props(state){
   return {
     ...data.games.get(id),
     groups,
-    events: []
+    events: [],
+    current_user: current_user
   };
 }
 

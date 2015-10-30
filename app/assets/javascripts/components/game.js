@@ -4,7 +4,9 @@ import Groups from './groups';
 
 class Game extends Component {
   render() {
-    const { name, image_url, groups, events, eventActions, groupActions } = this.props;
+    const { name, image_url, groups, events, current_user, eventActions,
+            groupActions } = this.props;
+
     return (
       <div className="game">
         <div className="col-md-12">
@@ -15,18 +17,19 @@ class Game extends Component {
         </div>
 
         <div className="col-md-12">
-        <div className="well">
-          <Groups groups={groups} actions={groupActions}/>
-        </div>
+          <div className="well">
+            <Groups groups={groups} actions={groupActions}/>
+          </div>
         </div>
 
         <div className="col-md-12">
-        <div className="well">
-          <Timeline
-            events={events}
-            eventActions={eventActions}
-          />
-        </div>
+          <div className="well">
+            <Timeline
+              events={events}
+              eventActions={eventActions}
+              isAdmin={current_user.admin}
+            />
+          </div>
         </div>
       </div>
     );

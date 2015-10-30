@@ -17,7 +17,7 @@ class UsersReducer < Reducer
   private
   def send_login
     current_user.try do |u|
-      transmit( User.action(:login, u.attributes.slice('id', 'token')))
+      transmit(User.action(:login, u.attributes.slice('id', 'token', 'admin')))
     end
   end
 
