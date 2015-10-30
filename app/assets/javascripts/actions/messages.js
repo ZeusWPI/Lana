@@ -1,3 +1,3 @@
-import { createAction } from 'redux-actions';
+import { publishedAction } from './utils';
 
-export const addMessage = createAction('add_message');
+export const sendMessage = publishedAction('message#create');

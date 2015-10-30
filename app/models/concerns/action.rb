@@ -13,7 +13,8 @@ class Action
     }
   end
 
-  def broadcast
-    ActionCable.server.broadcast('actions', self)
+  def broadcast channel=nil
+    channel ||= 'actions'
+    ActionCable.server.broadcast(channel, self)
   end
 end

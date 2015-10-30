@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Chat from '../components/chat';
 import Sidebar from '../components/sidebar';
 import ShowUser from './user';
-import { addMessage } from '../actions/messages';
+import { sendMessage } from '../actions/messages';
 
 class App extends Component {
   renderContent() {
@@ -13,15 +13,7 @@ class App extends Component {
           {this.props.children}
           <Chat
             message_map={this.props.message_map}
-            onSend={text => {
-              dispatch(addMessage(
-                {
-                  author: 'you',
-                  contents: text,
-                  timestamp: Date.now()
-                }));
-              }
-            }
+            sendMessage={this.props.sendMessage}
           />
         </div>
       );
@@ -86,4 +78,10 @@ function select(state) {
   }
 }
 
-export default connect(select)(App);
+function actions(dispatch){
+  return {
+    sendMessage: m => dispatch(sendMessage(m))
+  };
+}
+
+export default connect(select, actions)(App);

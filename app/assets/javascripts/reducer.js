@@ -67,7 +67,7 @@ const data = combineReducers({
   events,
   groups,
   games,
-  users
+  users,
 });
 
 const timeline = handleActions({

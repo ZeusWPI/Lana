@@ -188,6 +188,10 @@ class Chat extends Component {
     this.state = {channel: 'general'};
   }
 
+  sendMessage(text){
+    this.props.sendMessage({contents: text});
+  }
+
   render() {
     const { message_map, onSend } = this.props;
 
@@ -203,7 +207,7 @@ class Chat extends Component {
         </div>
         <div className="chat-body">
           <MessageBox messages={message_map[this.state.channel]}/>
-          <MessageForm onSend={onSend}/>
+          <MessageForm onSend={this.sendMessage.bind(this)}/>
         </div>
       </div>
     );
