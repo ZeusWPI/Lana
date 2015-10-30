@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Chat from '../components/chat';
 import Sidebar from '../components/sidebar';
+import ShowUser from './user';
 import { addMessage } from '../actions/messages';
 
 class App extends Component {
   render() {
-    const dispatch = this.props.dispatch;
+    const {current_user, games, dispatch, children} = this.props;
+
     return (
       <div>
-        <Sidebar games={this.props.games}/>
+        <Sidebar games={games} />
         <div id='content'>
-          {this.props.children}
+          {current_user ? children : <ShowUser />}
         </div>
       </div>
     );
@@ -20,6 +22,7 @@ class App extends Component {
 
 function select(state) {
   return {
+    current_user: state.current_user,
     games: {
       1: {
         title: 'Geweren en Explosies 24',
