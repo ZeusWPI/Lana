@@ -71,10 +71,10 @@ const data = combineReducers({
 });
 
 const timeline = handleActions({
-  receive_events: (state, action) =>
+  'event#receive': (state, action) =>
     Immutable.List(action.payload.map(e => (e.id)))
       .sortBy(e => e.moment),
-  add_event: (state, action) =>
+  'event#create': (state, action) =>
     (state.push(action.payload.id).sortBy(e => e.moment))
 }, Immutable.List());
 
