@@ -47,7 +47,7 @@ class User extends Component {
   render() {
     const { login, register } = this.props.authActions;
     return (
-      <div className="row">
+      <div className="row authentication-page">
         <div className="col-md-4 col-md-offset-4 text-center">
           <span
             className="glyphicon glyphicon-user authentication-user-glyph"
