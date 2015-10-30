@@ -30,7 +30,7 @@ class Timeline extends Component {
       return (
         <div className='button-container'>
           <button onClick={this.showForm.bind(this)}
-                  className='btn btn-primary pull-right'>
+                  className='btn btn-primary'>
             Add event
           </button>
         </div>
@@ -45,9 +45,8 @@ class Timeline extends Component {
   render() {
     return (
       <div>
-        <h2>Timeline</h2>
-        {this.renderForm()}
         {this.props.events.map(this.renderEvent)}
+        {this.renderForm()}
       </div>
     );
   }
