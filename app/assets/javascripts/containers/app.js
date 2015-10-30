@@ -15,6 +15,19 @@ class App extends Component {
         <div id='content'>
           {current_user ? children : <ShowUser />}
         </div>
+        <Chat
+          message_map={this.props.message_map}
+          onSend={text => {
+            dispatch(addMessage(
+              {
+                author: 'you',
+                contents: text,
+                timestamp: Date.now()
+              }));
+            }
+          }
+        />
+      {this.props.children}
       </div>
     );
   }
@@ -48,8 +61,20 @@ function select(state) {
         groups: [],
         events: []
       }
+    },
+    message_map: {
+      'general': [{
+        author: 'Ilion',
+        contents: 'hoi',
+        timestamp: Date.now()
+      }],
+      'groepskanaal n°5': [{
+        author: 'Donniepon',
+        contents: 'HOIZ',
+        timestamp: Date.now()
+      }]
     }
-  };
+  }
 }
 
 export default connect(select)(App);
