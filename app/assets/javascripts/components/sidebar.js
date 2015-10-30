@@ -20,7 +20,7 @@ class GamePreview extends Component {
           width='50px'
           className='game-thumbnail'
           src={this.props.image_url}/>
-        {this.props.title}
+        {this.props.name}
       </div>
     );
   }

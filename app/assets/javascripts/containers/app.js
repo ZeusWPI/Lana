@@ -37,34 +37,10 @@ class App extends Component {
 function select(state) {
   const { chat, data } = state;
   const userName = u_id => data.users.getIn([u_id, 'name']);
+
   return {
     current_user: state.current_user,
-    games: {
-      1: {
-        title: 'Geweren en Explosies 24',
-        image_url: 'http://fotodes.ru/upload/img1342258123.jpg',
-        groups: [],
-        events: []
-      },
-      2: {
-        title: 'Dota 2',
-        image_url: 'http://1.bp.blogspot.com/-GplgZlvkXSc/Uk_3BipvAlI/AAAAAAAAAJE/NIU9Sm2vSVU/s1600/Dota2-Filled.png',
-        groups: [],
-        events: []
-      },
-      3: {
-        title: 'Dota 3',
-        image_url: 'http://1.bp.blogspot.com/-GplgZlvkXSc/Uk_3BipvAlI/AAAAAAAAAJE/NIU9Sm2vSVU/s1600/Dota2-Filled.png',
-        groups: [],
-        events: []
-      },
-      4: {
-        title: 'Dota 4',
-        image_url: 'http://1.bp.blogspot.com/-GplgZlvkXSc/Uk_3BipvAlI/AAAAAAAAAJE/NIU9Sm2vSVU/s1600/Dota2-Filled.png',
-        groups: [],
-        events: []
-      }
-    },
+    games: data.games.toJS(),
     message_map: {
       general: state.chat.map(m =>
         ({author: userName(m.user_id),

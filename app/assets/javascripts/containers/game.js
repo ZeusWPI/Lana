@@ -14,39 +14,14 @@ function props(state){
   } else {
     const joined = group => false
   }
-  
+
   const groups = data.groups.map(
     group => group.set('joined', group.get('members').includes(current_user.id))
                   .update('members', ms => ms.map(username))
   ).toIndexedSeq().toJS();
   const events = data.events.toList().toJS();
 
-  return {
-    1: {
-      title: 'Geweren en Explosies 24',
-      image_url: 'http://fotodes.ru/upload/img1342258123.jpg',
-      groups: [],
-      events: []
-    },
-    2: {
-      title: 'Dota 2',
-      image_url: 'http://1.bp.blogspot.com/-GplgZlvkXSc/Uk_3BipvAlI/AAAAAAAAAJE/NIU9Sm2vSVU/s1600/Dota2-Filled.png',
-      groups: [],
-      events: []
-    },
-    3: {
-      title: 'Dota 3',
-      image_url: 'http://1.bp.blogspot.com/-GplgZlvkXSc/Uk_3BipvAlI/AAAAAAAAAJE/NIU9Sm2vSVU/s1600/Dota2-Filled.png',
-      groups: [],
-      events: []
-    },
-    4: {
-      title: 'Dota 4',
-      image_url: 'http://1.bp.blogspot.com/-GplgZlvkXSc/Uk_3BipvAlI/AAAAAAAAAJE/NIU9Sm2vSVU/s1600/Dota2-Filled.png',
-      groups: [],
-      events: []
-    }
-  }[id];
+  return data.games[id];
 }
 
 function actions(dispatch){
