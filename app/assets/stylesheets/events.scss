@@ -9,6 +9,8 @@
   margin-right: 20px;
   margin-bottom: 7px;
   padding-right: 50px;
+  opacity: 1;
+  transition: all 1000ms;
 
   .event-img {
     position: absolute;
@@ -33,6 +35,10 @@
     float: right;
     color: #808080;
   }
+}
+
+.panel.event.new {
+  opacity: 0.01;
 }
 
 .panel.event_form {
