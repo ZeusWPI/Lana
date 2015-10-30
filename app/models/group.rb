@@ -19,7 +19,7 @@ class Group < ActiveRecord::Base
 
   def as_json(options)
     self.attributes.slice(
-      'id', 'game_id', 'notes', 'max_users'
+      'id', 'name', 'game_id', 'notes', 'max_users'
     ).merge(members: users.pluck(:id))
   end
 

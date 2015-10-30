@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class GroupInfo extends Component {
   isFull() {
-    return this.props.members.length >= this.props.capacity;
+    const { members, capacity } = this.props;
+    return !capacity || members.length >= capacity;
   }
 
   renderJoinLeaveButton() {
@@ -72,15 +73,16 @@ class Group extends Component {
   }
 
   render() {
+    const { members, capacity, name } = this.props;
     return (
-      <div className="panel panel-default">
+      <div className="panel panel-default group">
         <div className="panel-heading" role="tab" onClick={this.toggleCollapse.bind(this)}>
           <div className="small group-capacity pull-right">
-            {this.props.members.length} of {this.props.capacity} members
+            <span className='glyphicon glyphicon-user'></span>
+            {this.props.members.length}
+            {capacity && <span>/{this.props.capacity}</span>}
           </div>
-          <h4 className="panel-title">
-            {this.props.name}
-          </h4>
+          <span className="name">{name}</span>
         </div>
         {this.showInfo()}
       </div>
@@ -157,7 +159,9 @@ class GroupForm extends Component {
         <div className="form-group">
           <div className="col-sm-12">
             <div className="pull-right">
-              <button type="submit" className="btn btn-primary" disabled={!this.state.isValid}>Make group</button>
+              <button type="submit" className="btn btn-primary" disabled={!this.state.isValid}>
+                Create group
+              </button>
               &nbsp;
               <button type="reset" className="btn btn-default" onClick={this.cancel.bind(this)}>Cancel</button>
             </div>
@@ -172,6 +176,7 @@ class GroupList extends Component {
   groupsContent() {
     const groups = this.props.groups;
     if (groups.length == 0) return 'There are no groups yet.';
+    console.log(this.groups);
     return groups.map(this.renderGroupInList.bind(this));
   }
 
