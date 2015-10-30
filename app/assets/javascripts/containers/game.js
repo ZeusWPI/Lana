@@ -5,28 +5,28 @@ import { addGroup, joinGroup, leaveGroup } from '../actions/groups.js';
 
 
 function props(state){
-  const { current_user, data } = state;
+  const { current_user, data, timeline} = state;
   const { id } = state.router.params;
 
   const username = user_id => data.users.getIn([user_id, 'name'])
-  if (current_user) {
-    const joined = group => group.get('members').includes(current_user.id)
-  } else {
-    const joined = group => false
-  }
+  const joined = group => group.get('members').includes(current_user.id)
 
-  const game = data.games.toJS()[id];
+  const game = data.games.toJS()[id]; // dafuq?
+
   const groups = data.groups.map(
     group => group.set('joined', group.get('members').includes(current_user.id))
                   .update('members', ms => ms.map(username))
   ).toIndexedSeq().toJS();
-  const events = data.events.toList().toJS();
+
+  const events = timeline
+    .map(id => data.events.get(id))
+    .filter(e => e.get('game_id') == id).toJS();
 
   return {
     ...game,
     groups,
-    events: [],
-    current_user: current_user
+    events,
+    current_user
   };
 }
 

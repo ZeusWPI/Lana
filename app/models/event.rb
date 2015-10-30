@@ -16,6 +16,6 @@ class Event < ActiveRecord::Base
 
   def as_json(options)
     self.attributes.slice(
-      'id', 'name', 'moment', 'description')
+      'id', 'name', 'moment', 'description', 'game_id')
   end
 end
