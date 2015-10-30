@@ -1,8 +1,6 @@
-import { createAction } from 'redux-actions';
-import { groupsChannel } from '../channels';
 import { publishedActions } from './utils';
 
-export default publishedActions(groupsChannel, {
+export default publishedActions({
   addGroup: 'group#upsert',
   joinGroup: 'group#join',
   leaveGroup: 'group#leave'

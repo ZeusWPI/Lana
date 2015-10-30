@@ -1,24 +1,19 @@
 class Action
-  attr_accessor :type, :payload
+  attr_accessor :namespace, :method, :payload
 
-  def initialize type, payload
-    self.type = type
+  def initialize namespace, method, payload
+    self.namespace = namespace
+    self.method = method
     self.payload = payload
   end
 
   def as_json options
-    { type: type,
-      payload: serializable_payload(options)
+    { type: "#{self.namespace}##{self.method}",
+      payload: payload.as_json(options)
     }
   end
 
-  private
-  def serializable_payload options
-    resource = ActiveModel::SerializableResource.new(self.payload)
-    if resource.serializer?
-      resource.serializable_hash
-    else
-      self.payload.as_json options
-    end
+  def broadcast
+    ActionCable.server.broadcast('actions', self)
   end
 end

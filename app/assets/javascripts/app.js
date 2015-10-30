@@ -6,7 +6,6 @@ import { addEvent } from './actions/events';
 import { login } from './actions/authentication';
 import { ReduxRouter } from 'redux-router';
 import { Provider } from 'react-redux';
-require('./channels');
 
 import Cookies from 'js-cookie';
 

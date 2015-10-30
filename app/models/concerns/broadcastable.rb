@@ -1,27 +1,11 @@
 module Broadcastable
   def self.extended base
     base.after_save do
-      self.class.broadcast(:upsert, self)
+      Action.new(self.class.name.downcase, :upsert, self).broadcast
     end
 
     base.after_destroy do
-      self.class.broadcast(:delete, self.id)
+      Action.new(self.class.name.downcase, :delete, self.id).broadcast
     end
-  end
-
-  def broadcast method, payload
-    ActionCable.server.broadcast(action(method, payload))
-  end
-
-  def action method, payload
-    Action.new(action_type(method), payload)
-  end
-
-  def channel
-    self.name.downcase.pluralize
-  end
-
-  def action_type method
-    "#{self.name.downcase}##{method}"
   end
 end

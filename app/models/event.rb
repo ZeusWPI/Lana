@@ -12,4 +12,9 @@
 
 class Event < ActiveRecord::Base
   extend Broadcastable
+
+  def as_json(options)
+    self.attributes.slice(
+      'id', 'name', 'moment', 'description')
+  end
 end
