@@ -4,7 +4,7 @@ import Groups from './groups';
 
 class Game extends Component {
   render() {
-    const { name, image_url, groups, events, current_user, eventActions,
+    const { name, image_url, notes, groups, events, current_user, eventActions,
             groupActions } = this.props;
 
     return (
@@ -14,15 +14,13 @@ class Game extends Component {
             <img src={image_url} height='40px' className="pull-left" />
             {name}
           </h1>
-        </div>
 
-        <div className="col-md-12">
+          <blockquote>{notes}</blockquote>
+
           <div className="well">
             <Groups groups={groups} actions={groupActions}/>
           </div>
-        </div>
 
-        <div className="col-md-12">
           <div className="well">
             <Timeline
               events={events}
