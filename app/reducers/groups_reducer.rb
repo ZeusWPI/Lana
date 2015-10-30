@@ -4,7 +4,7 @@ class GroupsReducer < Reducer
   end
 
   def create group
-    Group.create! group.merge(users: [current_user], game: Game.first)
+    Group.create! group.merge(users: [current_user])
   end
 
   def join group
