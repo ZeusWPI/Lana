@@ -13,7 +13,7 @@ function props(state){
 
   const game = data.games.toJS()[id]; // dafuq?
 
-  const groups = data.groups.map(
+  const groups = data.groups.filter(g => g.get('game_id') == id).map(
     group => group.set('joined', group.get('members').includes(current_user.id))
                   .update('members', ms => ms.map(username))
   ).toIndexedSeq().toJS();
