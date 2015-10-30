@@ -74,13 +74,18 @@ class GroupInfo extends Component {
     }
   }
 
+  renderMember(member){
+    return (<span className='member'>{member}</span>);
+  }
+
   render() {
+    const { members } = this.props;
     return (
       <div className="panel-collapse collapse in" role="tabpanel">
         <div className="panel-body">
           {this.props.notes}
           <h4>Members:</h4>
-          {this.props.members}
+          {members.map(this.renderMember.bind(this))}
           <span className="pull-right">
             {this.renderJoinLeaveButton()}
           </span>
