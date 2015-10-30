@@ -65,6 +65,8 @@ const data = combineReducers({
 });
 
 const chat = handleActions({
+  'message#receive': (state, action) =>
+    Immutable.List(action.payload),
   'message#create': (state, action) =>
     state.push(action.payload)
 }, Immutable.List());
