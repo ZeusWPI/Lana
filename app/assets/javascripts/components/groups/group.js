@@ -52,7 +52,7 @@ class Group extends Component {
 class GroupInfo extends Component {
   isFull() {
     const { members, capacity } = this.props;
-    return !capacity || members.length >= capacity;
+    return capacity && members.length >= capacity;
   }
 
   renderJoinLeaveButton() {
@@ -68,7 +68,7 @@ class GroupInfo extends Component {
         <button type="button"
                 className="btn btn-primary pull-right small groupbutton"
                 onClick={this.props.join}
-                disabled={!this.isFull()}>
+                disabled={this.isFull()}>
           Join!
         </button>);
     }
