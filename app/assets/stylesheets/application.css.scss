@@ -21,8 +21,9 @@
 
 html, body {
     height: 100%;
+    background-color: #F5F5F5 !important;
 }
 
 #content {
-    margin-left: 20%;
+    margin-left: calc( 20% + 20px);
 }

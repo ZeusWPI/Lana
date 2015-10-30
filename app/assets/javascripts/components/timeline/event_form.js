@@ -15,7 +15,7 @@ export default class EventForm extends Component {
 
   render() {
     return (
-      <div className='event panel panel-default'>
+      <div className='event_form panel panel-default'>
         <div className='panel-body'>
           <div className='row'>
             <div className='col-sm-8'>
@@ -61,4 +61,3 @@ export default class EventForm extends Component {
     );
   }
 }
-
