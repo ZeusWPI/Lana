@@ -45,6 +45,7 @@ class Timeline extends Component {
   render() {
     return (
       <div>
+        <h2>Timeline</h2>
         {this.renderForm()}
         {this.props.events.map(this.renderEvent)}
       </div>
