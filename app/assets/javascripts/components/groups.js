@@ -184,13 +184,16 @@ class GroupList extends Component {
   }
 
   render() {
-    const { actions } = this.props;
+    const { groups, actions } = this.props;
+
+    const groupsContent = groups.length > 0 ? groups.map(this.renderGroupInList) : 'There are no groups yet.';
+
     return (
       <div className="group-list">
-        <h1>Groups</h1>
+        <h2>Groups</h2>
 
         <div className="panel-group" role="tablist" aria-multiselectable="true">
-          {this.props.groups.map(this.renderGroupInList.bind(this))}
+          {groupsContent}
         </div>
 
         <GroupForm
