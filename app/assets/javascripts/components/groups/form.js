@@ -25,6 +25,7 @@ class GroupForm extends Component {
   submit(e) {
     e.preventDefault();
     this.props.onSubmit(this.state.group);
+    this.setState({expanded: false, group: {}});
   }
 
   cancel(e) {
