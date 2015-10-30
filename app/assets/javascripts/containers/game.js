@@ -21,7 +21,11 @@ function props(state){
   ).toIndexedSeq().toJS();
   const events = data.events.toList().toJS();
 
-  return data.games[id];
+  return {
+    ...data.games.get(id),
+    groups,
+    events: []
+  };
 }
 
 function actions(dispatch){
