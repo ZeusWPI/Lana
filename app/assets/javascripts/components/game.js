@@ -6,7 +6,7 @@ class Game extends Component {
   groupActions(){
     const { add, join, leave } = this.props.groupActions;
     return {
-      add: g => add({...g, group_id: this.props.id}),
+      add: g => add({...g, game_id: this.props.id}),
       join,
       leave
     };

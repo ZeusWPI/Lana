@@ -15,7 +15,7 @@ class Group < ActiveRecord::Base
   belongs_to :game
   has_many :memberships
   has_many :users, through: :memberships,
-    after_remove: :broadcast_leave
+    after_remove: [:broadcast_leave, :delete_if_empty]
 
   def as_json(options)
     self.attributes.slice(
@@ -29,5 +29,9 @@ class Group < ActiveRecord::Base
       group_id: self.id,
       user_id: user.id
     }).broadcast
+  end
+
+  def delete_if_empty last_user
+    self.destroy if self.users.empty?
   end
 end
