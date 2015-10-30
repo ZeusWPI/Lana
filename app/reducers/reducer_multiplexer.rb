@@ -6,7 +6,8 @@ class ReducerMultiplexer < Reducer
       event: EventsReducer.new(connection),
       group: GroupsReducer.new(connection),
       user: UsersReducer.new(connection),
-      message: MessagesReducer.new(connection)
+      message: MessagesReducer.new(connection),
+      game: GamesReducer.new(connection)
     }
   end
 
