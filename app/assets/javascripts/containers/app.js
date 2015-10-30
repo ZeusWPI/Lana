@@ -35,6 +35,8 @@ class App extends Component {
 }
 
 function select(state) {
+  const { chat, data } = state;
+  const userName = u_id => data.users.getIn([u_id, 'name']);
   return {
     current_user: state.current_user,
     games: {
@@ -64,16 +66,10 @@ function select(state) {
       }
     },
     message_map: {
-      'general': [{
-        author: 'Ilion',
-        contents: 'hoi',
-        timestamp: Date.now()
-      }],
-      'groepskanaal n°5': [{
-        author: 'Donniepon',
-        contents: 'HOIZ',
-        timestamp: Date.now()
-      }]
+      general: state.chat.map(m =>
+        ({author: userName(m.user_id),
+          contents: m.contents,
+          timestamp: m.timestamp }))
     }
   }
 }

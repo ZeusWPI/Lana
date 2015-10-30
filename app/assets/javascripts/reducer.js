@@ -4,12 +4,6 @@ import { routerStateReducer as router } from 'redux-router';
 import Immutable from 'immutable';
 import Cookies from 'js-cookie';
 
-const messages = handleActions({
-  add_message: (state, action) => (
-    state.push(action.payload)
-  )
-}, Immutable.List());
-
 const current_user = handleActions({
   'user#login': (state, action) => {
     const { id, token} = action.payload;
@@ -30,7 +24,7 @@ const modelActions = {
     state.set(action.payload.id, Immutable.fromJS(action.payload)),
   delete: (state, action) =>
     state.delete(action.payload)
-}
+};
 
 function prefix_keys(obj, prefix) {
   var newObj = {};
@@ -70,6 +64,11 @@ const data = combineReducers({
   users,
 });
 
+const chat = handleActions({
+  'message#create': (state, action) =>
+    state.push(action.payload)
+}, Immutable.List());
+
 const timeline = handleActions({
   'event#receive': (state, action) =>
     Immutable.List(action.payload.map(e => (e.id)))
@@ -80,8 +79,8 @@ const timeline = handleActions({
 
 export default combineReducers({
   data,
+  chat,
   timeline,
-  messages,
   current_user,
   router
 });
