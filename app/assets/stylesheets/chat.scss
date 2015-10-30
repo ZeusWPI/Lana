@@ -12,7 +12,6 @@
 
   transition: all 1s ease-in-out;
 
-
   .chat-header {
     position: relative;
     height: 52px;
@@ -21,7 +20,7 @@
     color: white;
 
     // Material shit
-    background-color: #2196F3;
+    background-color: #455A64;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
     text-align: center;
@@ -37,9 +36,36 @@
     // For vertical align of text
     display: inline-block;
 
-    .channel-name {
+    .channel-switcher {
+      font-size: 1.1em;
       font-weight: bold;
       line-height: 52px;
+      position: relative;
+
+      &:before {
+        color: white;
+        position: absolute;
+        top: 0.4em;
+        left: -1.1em;
+        width: 0;
+        height: 0;
+        padding: 0;
+        content: '';
+        border-left: .25em solid transparent;
+        border-right: .25em solid transparent;
+        border-top: .375em solid white;
+        pointer-events: none;
+      }
+
+      select {
+        background-color: transparent;
+        border: none;
+        appearance: none;
+      }
+
+      select:focus {
+        outline: none
+      }
     }
 
     .expand-button {

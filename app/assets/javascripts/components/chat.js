@@ -112,7 +112,7 @@ class MessageForm extends Component {
 class ChannelSwitcher extends Component {
   render() {
     return (
-      <span className="channel-name">
+      <span className="channel-switcher">
         <select
             value={this.props.current_channel}
             onChange={e => this.props.onChange(e.target.value)}>
