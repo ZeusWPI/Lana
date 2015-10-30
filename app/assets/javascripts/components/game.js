@@ -15,7 +15,7 @@ class Game extends Component {
             {name}
           </h1>
 
-          <blockquote>{notes}</blockquote>
+          <blockquote className="blockquote-reverse">{notes}</blockquote>
 
           <div className="well">
             <Groups groups={groups} actions={groupActions}/>
