@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+
 
 class Logo extends Component {
   render() {
@@ -11,7 +13,7 @@ class Logo extends Component {
 }
 
 class GamePreview extends Component {
-  render () {
+  render() {
     return (
       <div className='sidebar-item'>
         <img
@@ -25,15 +27,17 @@ class GamePreview extends Component {
 }
 
 class Sidebar extends Component {
-  renderGamePreview(game) {
-    return <GamePreview {...game}/>;
+  renderGamePreview(id, game) {
+    return <Link to={`/game/${id}`}><GamePreview {...game}/></Link>;
   }
 
   render() {
     return (
       <div className='sidebar'>
-        <Logo/>
-        {this.props.games.map(this.renderGamePreview.bind(this))}
+        <Link to='/'><Logo/></Link>
+        {Object.keys(this.props.games).map(id =>
+          this.renderGamePreview.bind(this)(id, this.props.games[id])
+        )}
       </div>
     );
   }
