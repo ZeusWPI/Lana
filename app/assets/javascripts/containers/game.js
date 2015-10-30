@@ -15,6 +15,7 @@ function props(state){
     const joined = group => false
   }
 
+  const game = data.games.toJS()[id];
   const groups = data.groups.map(
     group => group.set('joined', group.get('members').includes(current_user.id))
                   .update('members', ms => ms.map(username))
@@ -22,7 +23,7 @@ function props(state){
   const events = data.events.toList().toJS();
 
   return {
-    ...data.games.get(id),
+    ...game,
     groups,
     events: [],
     current_user: current_user
