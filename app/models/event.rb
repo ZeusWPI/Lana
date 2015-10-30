@@ -11,5 +11,5 @@
 #
 
 class Event < ActiveRecord::Base
-
+  extend Broadcastable
 end

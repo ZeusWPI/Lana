@@ -1,4 +1,4 @@
-class AuthenticationChannel < ActionChannel::Channel
+class AuthenticationChannel < ActionChannel
   def snapshot
     Action.new('login', login_payload) if self.current_user
   end

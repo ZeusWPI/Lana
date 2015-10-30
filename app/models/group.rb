@@ -11,18 +11,8 @@
 #
 
 class Group < ActiveRecord::Base
+  extend Broadcastable
   belongs_to :game
-  has_and_belongs_to_many :users
-
-  validate :validate_max_users
-  validates :game, presence: true
-  validates :users, presence: true
-
-  private
-
-  def validate_max_users
-    if max_users.present? && users.size > max_users then
-      errors.add(:max_users, "has been exceeded.")
-    end
-  end
+  has_many :memberships
+  has_many :users, through: :memberships
 end
