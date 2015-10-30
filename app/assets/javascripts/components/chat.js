@@ -11,10 +11,13 @@ function checkNewMessages() {
 
 class ChatMessage extends Component {
   componentWillMount() {
-    var mb = $( ".messagebox" )[0];
-    // Difference yields height of div if scrolled to bottom
-    var diff = mb.scrollHeight - mb.scrollTop;
-    this.doScroll = (diff == $( ".messagebox" ).outerHeight());
+    $(".messagebox").ready( () => {
+      var mb = $( ".messagebox" )[0];
+      if (!mb) return;
+      // Difference yields height of div if scrolled to bottom
+      var diff = mb.scrollHeight - mb.scrollTop;
+      this.doScroll = (diff == $( ".messagebox" ).outerHeight());
+    });
   }
 
   componentDidMount() {

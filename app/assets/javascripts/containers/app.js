@@ -6,28 +6,37 @@ import ShowUser from './user';
 import { addMessage } from '../actions/messages';
 
 class App extends Component {
-  render() {
-    const {current_user, games, dispatch, children} = this.props;
+  renderContent() {
+    if (this.props.current_user) {
+      return (
+        <div>
+          {this.props.children}
+          <Chat
+            message_map={this.props.message_map}
+            onSend={text => {
+              dispatch(addMessage(
+                {
+                  author: 'you',
+                  contents: text,
+                  timestamp: Date.now()
+                }));
+              }
+            }
+          />
+        </div>
+      );
+    } else {
+      return <ShowUser/>;
+    }
+  }
 
+  render() {
     return (
       <div>
-        <Sidebar games={games} />
+        <Sidebar games={this.props.games} />
         <div id='content'>
-          {current_user ? children : <ShowUser />}
+          {this.renderContent()}
         </div>
-        <Chat
-          message_map={this.props.message_map}
-          onSend={text => {
-            dispatch(addMessage(
-              {
-                author: 'you',
-                contents: text,
-                timestamp: Date.now()
-              }));
-            }
-          }
-        />
-      {this.props.children}
       </div>
     );
   }
