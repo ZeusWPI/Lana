@@ -3,10 +3,18 @@ import Timeline from './timeline';
 import Groups from './groups';
 
 class Game extends Component {
-  render() {
-    const { name, image_url, notes, groups, events, current_user, eventActions,
-            groupActions } = this.props;
+  groupActions(){
+    const { add, join, leave } = this.props.groupActions;
+    return {
+      add: g => add({...g, group_id: this.props.id}),
+      join,
+      leave
+    };
+  }
 
+  render() {
+    const { name, image_url, groups, events,
+            current_user, notes, eventActions } = this.props;
     return (
       <div className="game">
         <div className="col-md-12">
@@ -18,7 +26,7 @@ class Game extends Component {
           <blockquote className="blockquote-reverse">{notes}</blockquote>
 
           <div className="well">
-            <Groups groups={groups} actions={groupActions}/>
+            <Groups groups={groups} actions={this.groupActions()}/>
           </div>
 
           <div className="well">

@@ -199,7 +199,7 @@ class GroupList extends Component {
         </div>
 
         <GroupForm
-          onSubmit={group => this.props.actions.add(group)} />
+          onSubmit={this.props.actions.add} />
       </div>
     );
   }
