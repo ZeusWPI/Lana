@@ -5,7 +5,7 @@ class Event extends Component {
   formatMoment(){
     const time = moment(this.props.moment);
     if (time < moment().add(1, 'day')){
-      return time.format('HH:MM');
+      return time.format('HH:mm');
     } else {
       return moment.calendar();
     }
