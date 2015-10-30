@@ -24,10 +24,10 @@ const modelActions = {
     Immutable.fromJS(action.payload).reduce(
       (map, model) => map.set(model.get('id'), model),
       Immutable.Map()),
-
-  upsert: (state, action) =>
+  create: (state, action) =>
     state.set(action.payload.id, Immutable.fromJS(action.payload)),
-
+  update: (state, action) =>
+    state.set(action.payload.id, Immutable.fromJS(action.payload)),
   delete: (state, action) =>
     state.delete(action.payload)
 }
@@ -51,7 +51,7 @@ const events = modelReducer('event');
 const games = modelReducer('game');
 const users = modelReducer('user');
 const groups = modelReducer('group', {
-  'membership#upsert': (state, action) => {
+  'membership#create': (state, action) => {
     let { group_id, user_id } = action.payload;
     return state.updateIn([group_id, 'members'], ms => ms.push(user_id));
   },

@@ -1,7 +1,8 @@
 module Broadcastable
   def self.extended base
     base.include InstanceMethods
-    base.after_save :broadcast_save
+    base.after_create :broadcast_create
+    base.after_update :broadcast_update
     base.after_destroy :broadcast_delete
   end
 
@@ -10,7 +11,11 @@ module Broadcastable
   end
 
   module InstanceMethods
-    def broadcast_save
+    def broadcast_create
+      self.class.action(:create, self).broadcast(channel)
+    end
+
+    def broadcast_update
       self.class.action(:upsert, self).broadcast(channel)
     end
 
