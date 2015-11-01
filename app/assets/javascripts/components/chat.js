@@ -189,7 +189,9 @@ class Chat extends Component {
   }
 
   sendMessage(text){
-    this.props.sendMessage({contents: text});
+    if (text.trim()) {
+      this.props.sendMessage({contents: text});
+    }
   }
 
   render() {
