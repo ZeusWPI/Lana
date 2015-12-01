@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Chat from '../components/chat';
 import Sidebar from '../components/sidebar';
+import Header from '../components/header';
 import ShowUser from './user';
 import { sendMessage } from '../actions/messages';
 
@@ -10,6 +11,9 @@ class App extends Component {
     if (this.props.current_user) {
       return (
         <div>
+          <Header
+            user={this.props.current_user}
+          />
           {this.props.children}
           <Chat
             message_map={this.props.message_map}
