@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+/**
+ * Will show or hide the "new messages" box
+ */
 function checkNewMessages() {
   var diff = $( ".messagebox" )[0].scrollHeight - $( ".messagebox" )[0].scrollTop;
   if(diff <= $( ".messagebox" ).outerHeight()) {
@@ -128,9 +131,12 @@ class ChannelSwitcher extends Component {
 
 class ExpandButton extends Component {
   handleClick() {
-    $("#chatpanel").removeClass("minimized");
-    $("#chatpanel").toggleClass("fullscreen");
-
+    chatpanel = $("#chatpanel");
+    chatpanel.removeClass("minimized");
+    chatpanel.toggleClass("fullscreen");
+    chatpanel.one('transitionend', function (e) {
+      checkNewMessages();
+    });
 
     // Change glyphicon
     $(".expand-button > .glyphicon").toggleClass("glyphicon-resize-full");
@@ -138,8 +144,6 @@ class ExpandButton extends Component {
 
     $(".minimize-button > .glyphicon").removeClass("glyphicon-menu-up");
     $(".minimize-button > .glyphicon").addClass("glyphicon-menu-down");
-
-    checkNewMessages();
   }
 
   render() {
