@@ -72,28 +72,93 @@ class User extends Component {
   }
 }
 
-class NameToken extends Component {
+class ShowName extends Component {
+  render() {
+    return (
+      <div className="input-group input-group-lg">
+        <span className="input-group-addon form-control">
+          {this.props.name}
+        </span>
+        <div className="input-group-btn">
+          <button
+            onClick={this.props.handler.bind(this)}
+            className="btn btn-default">
+            <span className="glyphicon glyphicon-edit" />
+          </button>
+        </div>
+      </div>
+    );
+  }
+}
+
+class EditName extends Component {
+  render() {
+    return (
+      <span>hoi</span>
+    );
+  }
+}
+
+class Name extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = { editing: false };
+  }
+
   editName(e) {
-    console.log("edit name");
+    this.setState({ editing: true });
+  }
+
+  showField() {
+    if (this.state.editing) {
+      return <EditName />
+    } else {
+      return <ShowName name={this.props.name} handler={this.editName} />
+    }
   }
 
   render() {
     return (
+      <div className="authentication-form">
+        <label>You are logged in as</label>
+        {this.showField()}
+      </div>
+    );
+  }
+}
+
+class Token extends Component {
+  render() {
+    return (
+      <div className="authentication-form">
+        <label>
+          Log in with this token next time
+        </label>
+        <div className="input-group input-group-lg">
+          <span className="input-group-addon">
+            Token
+          </span>
+          <input
+            htmlReadonly="readonly"
+            value={this.props.token}
+            className="form-control"
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+class NameToken extends Component {
+  render() {
+    return (
       <div className="row">
-        <div className="col-md-2">
-          <div>
-            <h2>
-              {this.props.name + " "}
-              <small>
-                <span
-                  className="glyphicon glyphicon-edit cursor-hand"
-                  onClick={this.editName.bind(this)} />
-              </small>
-            </h2>
-          </div>
-          <div>
-            Token: {this.props.token}
-          </div>
+        <div className="col-md-4 col-md-offset-4 text-center">
+          <span
+            className="glyphicon glyphicon-user authentication-user-glyph"
+          />
+          <Name name={this.props.name} />
+          <Token token={this.props.token} />
         </div>
       </div>
     );
@@ -119,4 +184,4 @@ class ShowUser extends Component {
   }
 }
 
-export default ShowUser;
+export default LoggedIn;
