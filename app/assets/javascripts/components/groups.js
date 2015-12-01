@@ -6,7 +6,6 @@ class GroupList extends Component {
   groupsContent() {
     const groups = this.props.groups;
     if (groups.length == 0) return 'There are no groups yet.';
-    console.log(this.groups);
     return groups.map(this.renderGroupInList.bind(this));
   }
 

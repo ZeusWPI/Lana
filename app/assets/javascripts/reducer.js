@@ -66,10 +66,11 @@ const data = combineReducers({
 
 const chat = handleActions({
   'message#receive': (state, action) =>
-    Immutable.List(action.payload),
+    state.set(action.payload.group,
+              Immutable.fromJS(action.payload.messages)),
   'message#create': (state, action) =>
-    state.push(action.payload)
-}, Immutable.List());
+    state.update(action.payload.group_id, ms => ms.push(action.payload))
+}, Immutable.Map({null: []}));
 
 const timeline = handleActions({
   'event#receive': (state, action) =>

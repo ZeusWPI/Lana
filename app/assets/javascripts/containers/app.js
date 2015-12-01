@@ -37,17 +37,14 @@ class App extends Component {
 function select(state) {
   const { chat, data } = state;
   const userName = u_id => data.users.getIn([u_id, 'name']);
+  const channelName = g_id =>
+    data.groups.getIn([g_id, 'name']) || 'general';
 
   return {
     current_user: state.current_user,
     games: data.games.toJS(),
-    message_map: {
-      general: state.chat.map(m =>
-        ({author: userName(m.user_id),
-          contents: m.contents,
-          timestamp: m.timestamp }))
-    }
-  }
+    message_map: chat.mapKeys(channelName).toJS()
+  };
 }
 
 function actions(dispatch){
