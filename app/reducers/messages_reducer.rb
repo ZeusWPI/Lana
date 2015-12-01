@@ -1,6 +1,9 @@
 class MessagesReducer < Reducer
   def snapshot
-    Message.action(:receive, Message.all)
+    Message.action(:receive, {
+      group: nil,
+      messages: Message.where(group: nil)
+    })
   end
 
   def create message
