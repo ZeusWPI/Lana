@@ -34,6 +34,8 @@ class App extends Component {
   }
 }
 
+const translate = (m, s, t, f) => m.set(t, f(m.get(s))).delete(s)
+
 function select(state) {
   const { chat, data } = state;
   const userName = u_id => data.users.getIn([u_id, 'name']);
@@ -43,7 +45,10 @@ function select(state) {
   return {
     current_user: state.current_user,
     games: data.games.toJS(),
-    message_map: chat.mapKeys(channelName).toJS()
+    message_map: chat
+    .mapKeys(channelName)
+    .map(ms => ms.map(m => translate(m, 'user_id', 'author', userName)))
+    .toJS()
   };
 }
 

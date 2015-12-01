@@ -30,6 +30,7 @@ class ChatMessage extends Component {
 
   render() {
     const { author, contents, timestamp} = this.props;
+    console.log(this.props);
     return (
       <div className="message">
         <span className="timestamp">
@@ -190,7 +191,10 @@ class Chat extends Component {
 
   sendMessage(text){
     if (text.trim()) {
-      this.props.sendMessage({contents: text});
+      // TODO: Perhaps not send the channel in text or something
+      this.props.sendMessage(
+        {contents: text, group: this.state.channel}
+      );
     }
   }
 

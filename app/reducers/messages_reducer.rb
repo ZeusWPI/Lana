@@ -7,9 +7,9 @@ class MessagesReducer < Reducer
   end
 
   def create message
-    Message.create! message.merge(
-      timestamp: DateTime.current,
-      user: current_user
-    )
+    Message.create! contents: message['contents'],
+                    group: Group.find_by(name: message['group']),
+                    timestamp: DateTime.current,
+                    user: current_user
   end
 end
