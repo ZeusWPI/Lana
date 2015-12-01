@@ -30,7 +30,6 @@ class ChatMessage extends Component {
 
   render() {
     const { author, contents, timestamp} = this.props;
-    console.log(this.props);
     return (
       <div className="message">
         <span className="timestamp">

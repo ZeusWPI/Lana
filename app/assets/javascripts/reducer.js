@@ -69,7 +69,8 @@ const chat = handleActions({
     state.set(action.payload.group,
               Immutable.fromJS(action.payload.messages)),
   'message#create': (state, action) =>
-    state.update(action.payload.group_id, ms => ms.push(action.payload))
+    state.update(action.payload.group_id, ms => ms.push(
+      Immutable.fromJS(action.payload)))
 }, Immutable.Map({null: []}));
 
 const timeline = handleActions({
