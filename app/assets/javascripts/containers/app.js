@@ -7,6 +7,7 @@ import { sendMessage } from '../actions/messages';
 
 class App extends Component {
   renderContent() {
+    console.log(this.props.current_user);
     if (this.props.current_user) {
       return (
         <div>

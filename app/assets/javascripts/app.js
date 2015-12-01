@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './components/app';
 import store from './store';
 import { addEvent } from './actions/events';
 import { login } from './actions/authentication';

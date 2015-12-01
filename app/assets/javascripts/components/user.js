@@ -43,7 +43,7 @@ class UserForm extends Component {
   }
 }
 
-class User extends Component {
+class Login extends Component {
   render() {
     const { login, register } = this.props.authActions;
     return (
@@ -132,7 +132,7 @@ class Token extends Component {
     return (
       <div className="authentication-form">
         <label>
-          Log in with this token next time
+          You can log in with this token
         </label>
         <div className="input-group input-group-lg">
           <span className="input-group-addon">
@@ -165,23 +165,24 @@ class NameToken extends Component {
   }
 }
 
-class LoggedIn extends Component {
+class ShowUser extends Component {
   render() {
+    const {name, token} = this.props.user;
     return (
-      <NameToken name="benji" token="U34Y" />
+      <NameToken name={name} token={token} />
     );
   }
 }
 
-class ShowUser extends Component {
+class User extends Component {
   render() {
-    const { authActions } = this.props;
-    if (this.props.user) {
-      return <LoggedIn/>;
+    const { user, authActions } = this.props;
+    if (user) {
+      return <ShowUser user={user}/>;
     } else {
-      return <User authActions={authActions}/>
+      return <Login authActions={authActions}/>
     }
   }
 }
 
-export default LoggedIn;
+export default User;
