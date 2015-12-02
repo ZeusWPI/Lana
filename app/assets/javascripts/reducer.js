@@ -41,7 +41,7 @@ function modelReducer(name, extraActions) {
   );
 }
 
-const events = modelReducer('event');
+const events = modelReducer('events');
 const games = modelReducer('game');
 const users = modelReducer('user');
 const groups = modelReducer('group', {
@@ -57,13 +57,6 @@ const groups = modelReducer('group', {
   }
 });
 
-const data = combineReducers({
-  events,
-  groups,
-  games,
-  users,
-});
-
 const chat = handleActions({
   'message#receive': (state, action) =>
     state.set(action.payload.group,
@@ -73,18 +66,12 @@ const chat = handleActions({
       Immutable.fromJS(action.payload)))
 }, Immutable.Map({null: []}));
 
-const timeline = handleActions({
-  'event#receive': (state, action) =>
-    Immutable.List(action.payload.map(e => (e.id)))
-      .sortBy(e => e.moment),
-  'event#create': (state, action) =>
-    (state.push(action.payload.id).sortBy(e => e.moment))
-}, Immutable.List());
-
 export default combineReducers({
-  data,
+  events,
+  games,
+  users,
+  groups,
   chat,
-  timeline,
   current_user,
   router
 });

@@ -8,7 +8,7 @@ import User from './containers/user';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Timeline}/>
-    <Route path="game/:id" component={Game}/>
+    <Route path="game/:game_id" component={Game}/>
     <Route path="user" component={User}/>
   </Route>
 );

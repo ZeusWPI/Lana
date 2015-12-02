@@ -41,23 +41,23 @@ class App extends Component {
 
 const translate = (m, s, t, f) => m.set(t, f(m.get(s))).delete(s)
 
-function get_current_user(current_user, data){
+function get_current_user(current_user, users){
   if (current_user){
     return {
       ...current_user,
-      ...data.users.get(current_user.id).toJS()
+      ...users.get(current_user.id).toJS()
     };
   }
 }
 
 function select(state) {
-  const { chat, data, current_user} = state;
-  const userName = u_id => data.users.getIn([u_id, 'name']);
+  const { chat, users, groups, games, current_user} = state;
+  const userName = u_id => users.getIn([u_id, 'name']);
   const channelName = g_id =>
-    data.groups.getIn([g_id, 'name']) || 'general';
+    groups.getIn([g_id, 'name']) || 'general';
   return {
-    current_user: get_current_user(current_user, data),
-    games: data.games.toJS(),
+    current_user: get_current_user(current_user, users),
+    games: games.toJS(),
     message_map: chat
       .mapKeys(channelName)
       .map(ms => ms.map(m => translate(m, 'user_id', 'author', userName)))

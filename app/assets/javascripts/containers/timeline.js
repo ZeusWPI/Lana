@@ -4,9 +4,9 @@ import Timeline from '../components/timeline';
 import { addEvent } from '../actions/events';
 
 function props(state) {
-  const { timeline, data } = state;
+  const { events } = state;
   return {
-    events: timeline.map(id => data.events.get(id)).toJS()
+    events: events.toList().toJS()
   };
 }
 

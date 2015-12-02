@@ -3,12 +3,12 @@ import User from '../components/user';
 import { login, register } from '../actions/authentication';
 
 function props(state) {
-  const { current_user, data } = state;
+  const { current_user, users } = state;
   if (current_user){
     return {
       user: {
         ...current_user,
-        ...data.users.get(current_user.id).toJS()
+        ...users.get(current_user.id).toJS()
       }
     };
   }
