@@ -2,15 +2,19 @@
   position: fixed;
   bottom: 0;
   right: 20px;
-  height: 475px;
-  width: 400px;
+  height: 100%;
+  max-height: 475px;
+  width: 100%;
+  max-width: 400px;
   z-index: 10;
+
+  resize: both;
 
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
   background-color: white;
 
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
 
   .chat-header {
     position: relative;
@@ -98,9 +102,8 @@
     padding-right: 20px;
 
     .messagebox {
-      height: calc(100% - ( 34px + 32px + 20px));
-      padding: 20px;
-      padding: 0 0 6px;
+      height: calc(100% - ( 34px + 32px + 20px + 10px));
+      margin-bottom: 10px;
       z-index: 5;
       overflow: auto;
     }
@@ -110,9 +113,11 @@
       bottom: 34px;
       text-align: center;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, 0.7);
       color: white;
-      border-radius: 15px 15px 0 0;
+      padding: 8px;
+      cursor: pointer;
+      user-select: none;
     }
 
     #send-message {
@@ -133,9 +138,13 @@
 
 }
 
+#send-button {
+  border-radius: 0;
+}
+
 #chatpanel.fullscreen {
-  height: 100%;
-  width: 80%;
+  max-height: 100%;
+  max-width: 80%;
   right: 0px;
 }
 

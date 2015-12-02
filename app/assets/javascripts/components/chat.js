@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+/**
+ * Will show or hide the "new messages" box
+ */
 function checkNewMessages() {
   var diff = $( ".messagebox" )[0].scrollHeight - $( ".messagebox" )[0].scrollTop;
   if(diff <= $( ".messagebox" ).outerHeight()) {
@@ -58,6 +61,22 @@ class MessageBox extends Component {
   }
 }
 
+class MoreMessagesDiv {
+  handleClick() {
+    var obj = $(".messagebox")[0];
+    // This scrolls completely to the bottom of div
+    obj.scrollTop = obj.scrollHeight;
+  }
+
+  render() {
+    return (
+        <div id="new_messages" className="hide" onClick={this.handleClick}>
+        More messages...
+        </div>
+    );
+  }
+}
+
 class MessageForm extends Component {
   constructor(props, context) {
     super(props, context);
@@ -77,11 +96,7 @@ class MessageForm extends Component {
   render() {
     return (
       <div className="input-group send-message">
-        <div id="new_messages" className="hide">
-        <span className="glyphicon glyphicon-arrow-down" aria-hidden="true"> </span>
-        &nbsp;MORE MESSAGES&nbsp;
-        <span className="glyphicon glyphicon-arrow-down" aria-hidden="true"> </span>
-        </div>
+        <MoreMessagesDiv />
         <form
           onSubmit={this.handleSubmit.bind(this)}
           id="messageform"
@@ -100,6 +115,7 @@ class MessageForm extends Component {
             type="submit"
             value="Submit"
             className="btn btn-default"
+            id="send-button"
           >
             <span className="glyphicon glyphicon-send" aria-hidden="true"></span>
           </button>
@@ -129,7 +145,9 @@ class ExpandButton extends Component {
   handleClick() {
     $("#chatpanel").removeClass("minimized");
     $("#chatpanel").toggleClass("fullscreen");
-
+    $("#chatpanel").one('transitionend', function (e) {
+      checkNewMessages();
+    });
 
     // Change glyphicon
     $(".expand-button > .glyphicon").toggleClass("glyphicon-resize-full");
@@ -137,8 +155,6 @@ class ExpandButton extends Component {
 
     $(".minimize-button > .glyphicon").removeClass("glyphicon-menu-up");
     $(".minimize-button > .glyphicon").addClass("glyphicon-menu-down");
-
-    checkNewMessages();
   }
 
   render() {
