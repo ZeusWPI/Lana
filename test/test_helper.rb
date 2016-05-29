@@ -1,3 +1,5 @@
+ActiveRecord::Migration.maintain_test_schema!
+
 # Coveralls integration
 require 'coveralls'
 Coveralls.wear!
