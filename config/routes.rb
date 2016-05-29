@@ -20,13 +20,7 @@
 #
 
 Rails.application.routes.draw do
-  get 'chat', to: 'chat#index'
-
-  root 'welcome#index'
-
-  resources :users, only: [:index, :show]
-  resources :games, only: [:index, :show]
-  resources :notifications, only: [:index, :create]
-  resources :competitions, only: [:index, :create, :show, :new]
-  resources :groups, only: [:new, :create, :show, :destroy, :edit, :update]
+  root to: 'welcome#index'
+  match '/websocket', to: ActionCable.server, via: [:get, :post]
+  get '/*route', to: 'welcome#index'
 end

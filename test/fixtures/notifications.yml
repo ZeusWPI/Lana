@@ -2,10 +2,11 @@
 #
 # Table name: notifications
 #
-#  id         :integer          not null, primary key
-#  content    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  content      :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  scheduled_at :datetime
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

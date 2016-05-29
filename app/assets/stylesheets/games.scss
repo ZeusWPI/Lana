@@ -1,6 +1,18 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.game {
+    h1 {
+        margin: 15px;
+
+        img {
+            margin-right: 15px;
+        }
+    }
+}
+
+// This is obsolete -- it's only used in app/views/games/index.html
 .game-image {
     padding: 0;
 

@@ -1,8 +1,7 @@
 language: ruby
 sudo: false
 before_script:
-- RAILS_ENV=test bundle exec rake db:create
-- RAILS_ENV=test bundle exec rake db:schema:load
+- bundle exec rails db:migrate RAILS_ENV=test
 notifications:
   email:
     recipients:

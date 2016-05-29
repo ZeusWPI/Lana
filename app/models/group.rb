@@ -11,22 +11,24 @@
 #
 
 class Group < ActiveRecord::Base
+  extend Broadcastable
   belongs_to :game
-  has_and_belongs_to_many :users
+  has_many :memberships
+  has_many :users, through: :memberships,
+                   after_remove: [:broadcast_leave, :delete_if_empty]
 
-  validate :validate_max_users
-  validates :game, presence: true
-  validates :users, presence: true
-
-  def usercount
-    users.size
+  def as_json(_options)
+    attributes.slice('id', 'name', 'game_id', 'notes', 'max_users')
+              .merge(members: users.pluck(:id))
   end
 
   private
 
-  def validate_max_users
-    if max_users.present? && users.size > max_users then
-      errors.add(:max_users, "has been exceeded.")
-    end
+  def broadcast_leave(user)
+    Membership.action(:delete, group_id: id, user_id: user.id).broadcast
+  end
+
+  def delete_if_empty(_last_user)
+    destroy if users.empty?
   end
 end
