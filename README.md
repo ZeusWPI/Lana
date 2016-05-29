@@ -16,5 +16,5 @@ Don't forget to run `rake emoji`.
 (run these in parallel)
 
     bundle exec rails s    # the https server
-    ./bin/cable            # the websocket server
+    redis-server           # redis needs to be running for action-cable
 
