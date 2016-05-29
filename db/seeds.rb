@@ -59,5 +59,5 @@ games = [
 ]
 
 games.each do |game_hash|
-  Game.create! **game_hash
+  Game.create!(**game_hash)
 end
