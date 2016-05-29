@@ -6,7 +6,7 @@ class ActionChannel < ApplicationCable::Channel
     stream_from 'actions'
   end
 
-  def reduce action
+  def reduce(action)
     reducer.reduce(action['type'], action['payload'])
   end
 
@@ -14,4 +14,3 @@ class ActionChannel < ApplicationCable::Channel
     @reducer ||= ReducerMultiplexer.new(self)
   end
 end
-

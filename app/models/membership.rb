@@ -3,7 +3,7 @@ class Membership < ActiveRecord::Base
   belongs_to :user, dependent: :destroy
   belongs_to :group, dependent: :destroy
 
-  def as_json(options)
-    self.attributes.slice('user_id', 'group_id')
+  def as_json(_options)
+    attributes.slice('user_id', 'group_id')
   end
 end

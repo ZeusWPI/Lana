@@ -8,9 +8,7 @@ class Message < ActiveRecord::Base
     "group_#{group_id}" if group
   end
 
-  def as_json(options)
-    self.attributes.slice(
-      'id', 'contents', 'user_id', 'group_id', 'timestamp')
+  def as_json(_options)
+    attributes.slice('id', 'contents', 'user_id', 'group_id', 'timestamp')
   end
-
 end

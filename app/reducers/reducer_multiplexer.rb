@@ -1,6 +1,6 @@
 # <3 Stijn
 class ReducerMultiplexer < Reducer
-  def initialize connection
+  def initialize(connection)
     super(connection)
     @reducerMap = {
       event: EventsReducer.new(connection),
@@ -11,7 +11,7 @@ class ReducerMultiplexer < Reducer
     }
   end
 
-  def reduce method, params
+  def reduce(method, params)
     reducer, method = method.split('#')
     @reducerMap[reducer.to_sym].reduce(method, params)
   end

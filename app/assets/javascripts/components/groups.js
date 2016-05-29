@@ -5,7 +5,7 @@ import Group from './groups/group';
 class GroupList extends Component {
   groupsContent() {
     const groups = this.props.groups;
-    if (groups.length == 0) return 'There are no groups yet.';
+    if (groups.length === 0) return 'There are no groups yet.';
     return groups.map(this.renderGroupInList.bind(this));
   }
 

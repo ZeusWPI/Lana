@@ -3,7 +3,7 @@ class EventsReducer < Reducer
     Event.action(:receive, Event.all)
   end
 
-  def create event
+  def create(event)
     Event.create! event
   end
 end

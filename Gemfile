@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 
 # Edge rails!
-gem 'rails', github: 'rails/rails', ref: 'c35c0c4a42b26978304613ddffd19c647e2bf5d1'
-# Much features!
-gem 'actioncable', github: 'rails/actioncable', ref: '0cf1db6be29fb2269d722bedd690641e0f949b36'
+gem 'rails', '~> 5.0.0.rc1'
+# Needed for actioncable
+gem 'redis'
 # So wow!
 gem 'arel', github: 'rails/arel'
 # Much amazed!
@@ -70,7 +70,7 @@ gem 'puma'
 # gem 'capistrano-rails', group: :development
 
 # Errbit integratins
-gem 'airbrake'
+#gem 'airbrake'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

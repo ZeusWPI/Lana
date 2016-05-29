@@ -4,12 +4,12 @@ class Reducer
   def_delegators :channel, :connection, :transmit, :stream_from
   def_delegators :connection, :current_user, :current_user=
 
-  def initialize channel
+  def initialize(channel)
     @channel = channel
   end
 
-  def reduce method, params
-    self.send(method, params)
+  def reduce(method, params)
+    send(method, params)
   end
 
   # Optionally return an action that sets the initial state
@@ -17,6 +17,6 @@ class Reducer
   end
 
   def send_snapshot
-    self.snapshot.try {|s| transmit(s)}
+    snapshot.try { |s| transmit(s) }
   end
 end

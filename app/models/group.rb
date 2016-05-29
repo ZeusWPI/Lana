@@ -15,23 +15,20 @@ class Group < ActiveRecord::Base
   belongs_to :game
   has_many :memberships
   has_many :users, through: :memberships,
-    after_remove: [:broadcast_leave, :delete_if_empty]
+                   after_remove: [:broadcast_leave, :delete_if_empty]
 
-  def as_json(options)
-    self.attributes.slice(
-      'id', 'name', 'game_id', 'notes', 'max_users'
-    ).merge(members: users.pluck(:id))
+  def as_json(_options)
+    attributes.slice('id', 'name', 'game_id', 'notes', 'max_users')
+              .merge(members: users.pluck(:id))
   end
 
   private
-  def broadcast_leave user
-    Membership.action(:delete, {
-      group_id: self.id,
-      user_id: user.id
-    }).broadcast
+
+  def broadcast_leave(user)
+    Membership.action(:delete, group_id: id, user_id: user.id).broadcast
   end
 
-  def delete_if_empty last_user
-    self.destroy if self.users.empty?
+  def delete_if_empty(_last_user)
+    destroy if users.empty?
   end
 end

@@ -19,8 +19,8 @@
 //= require emoji-turbolinks
 //= require multi-select
 //= require moment
-//= require cable
 //= require bootstrap-datetimepicker
+//= require action_cable
 
 require('es6-promise').polyfill();
 require('./app.js');
