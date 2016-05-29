@@ -1,7 +1,7 @@
 language: ruby
 sudo: false
 before_script:
-- bundle exec rails db:migrate
+- bundle exec rails db:migrate RAILS_ENV=test
 notifications:
   email:
     recipients:
