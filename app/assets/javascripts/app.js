@@ -9,14 +9,12 @@ import { Provider } from 'react-redux';
 import Cookies from 'js-cookie';
 
 
-$(document).ready( () => {
-  render(
-    <Provider store={store}>
-      <ReduxRouter />
-    </Provider>,
-    document.getElementById('root')
-  );
-});
+render(
+  <Provider store={store}>
+    <ReduxRouter />
+  </Provider>,
+  document.getElementById('root')
+);
 
 window.test_event = addEvent({
   name: 'hoi',
