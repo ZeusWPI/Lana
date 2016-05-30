@@ -53,15 +53,15 @@ class MessageBox extends Component {
   render() {
     return (
       <div className="messagebox">
-        {this.props.messages.map(function(message){
-          return <ChatMessage {...message}/>;
-        })}
+        {this.props.messages.map((message, i) =>
+          <ChatMessage key={i} {...message}/>
+        )}
       </div>
     );
   }
 }
 
-class MoreMessagesDiv {
+class MoreMessagesDiv extends Component {
   handleClick() {
     var obj = $(".messagebox")[0];
     // This scrolls completely to the bottom of div
@@ -132,8 +132,8 @@ class ChannelSwitcher extends Component {
         <select
             value={this.props.current_channel}
             onChange={e => this.props.onChange(e.target.value)}>
-          {this.props.channels.map(channel =>
-            <option value={channel}>#{channel}</option>
+          {this.props.channels.map((channel, i) =>
+            <option key={i} value={channel}>#{channel}</option>
           )}
         </select>
       </span>

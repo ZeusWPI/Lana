@@ -7,7 +7,6 @@ const cable = ActionCable.createConsumer(
 export default cable.subscriptions.create('ActionChannel', {
   publish: function(action) {this.perform('reduce', action); },
   received: action => {
-    console.log(action);
     store.dispatch(action);
   }
 });

@@ -27,16 +27,16 @@ class GamePreview extends Component {
 }
 
 class Sidebar extends Component {
-  renderGamePreview(id, game) {
-    return <Link to={`/game/${id}`}><GamePreview {...game}/></Link>;
+  renderGamePreview(id, game, key) {
+    return <Link key={key} to={`/game/${id}`}><GamePreview {...game}/></Link>;
   }
 
   render() {
     return (
       <div className='sidebar'>
         <Link to='/'><Logo/></Link>
-        {Object.keys(this.props.games).map(id =>
-          this.renderGamePreview.bind(this)(id, this.props.games[id])
+        {Object.keys(this.props.games).map((id, i) =>
+          this.renderGamePreview.bind(this)(id, this.props.games[id], i)
         )}
       </div>
     );

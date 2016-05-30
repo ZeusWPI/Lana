@@ -139,7 +139,7 @@ class Token extends Component {
             Token
           </span>
           <input
-            htmlReadonly="readonly"
+            readOnly={true}
             value={this.props.token}
             className="form-control"
           />

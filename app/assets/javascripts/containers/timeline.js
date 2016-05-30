@@ -13,7 +13,6 @@ function props(state) {
 function actions(dispatch){
   const eventActions = {
     add: e => {
-      console.log(e);
       dispatch(addEvent(e));
     }
   }

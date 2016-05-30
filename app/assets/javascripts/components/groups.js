@@ -6,12 +6,13 @@ class GroupList extends Component {
   groupsContent() {
     const groups = this.props.groups;
     if (groups.length === 0) return 'There are no groups yet.';
-    return groups.map(this.renderGroupInList.bind(this));
+    return groups.map((group, i) => this.renderGroupInList.bind(this)(group, i));
   }
 
-  renderGroupInList(group) {
+  renderGroupInList(group, i) {
     const { actions } = this.props;
     return <Group
+      key={i}
       id={group.id}
       name={group.name}
       members={group.members}
