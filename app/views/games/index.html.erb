@@ -1,8 +1,0 @@
-<% for game in @games %>
-    <div class="col-xs-4 game-image">
-        <%= link_to game do %>
-            <%= image_tag "dota", { width: 200 } %>
-            <h2><span><%= game.title %></span></h2>
-        <% end %>
-    </div>
-<% end %>

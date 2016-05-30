@@ -4,14 +4,12 @@
         <title>Lana</title>
         <%= favicon_link_tag 'favicon.ico' %>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
         <%= csrf_meta_tags %>
-        <meta name="viewport" content="width=device-width, initial-scale=1.°">
-
-        <%= yield :head %>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <%= audio_tag "notification_sound.wav", { id: "notification_sound", class: "audio_player", preload: "auto" } %>
         <div id='root'></div>
+        <%= audio_tag "notification_sound.wav", { id: "notification_sound", class: "audio_player", preload: "auto" } %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     </body>
 </html>
