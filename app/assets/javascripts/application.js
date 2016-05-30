@@ -13,7 +13,6 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
 //= require jasny-bootstrap.min
 //= require easy-emoji
 //= require emoji-turbolinks
