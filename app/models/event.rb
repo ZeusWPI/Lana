@@ -8,9 +8,10 @@
 #  moment      :datetime         not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  game_id     :integer
 #
 
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   extend Broadcastable
   belongs_to :game
 

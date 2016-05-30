@@ -3,14 +3,15 @@
 # Table name: groups
 #
 #  id         :integer          not null, primary key
-#  game_id    :integer
+#  game_id    :integer          not null
+#  name       :string
 #  notes      :text
+#  max_users  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  max_users  :integer
 #
 
-class Group < ActiveRecord::Base
+class Group < ApplicationRecord
   extend Broadcastable
   belongs_to :game
   has_many :memberships

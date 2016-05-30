@@ -1,4 +1,15 @@
-class Message < ActiveRecord::Base
+# == Schema Information
+#
+# Table name: messages
+#
+#  id        :integer          not null, primary key
+#  user_id   :integer          not null
+#  contents  :text             not null
+#  timestamp :datetime         not null
+#  group_id  :integer
+#
+
+class Message < ApplicationRecord
   extend Broadcastable
   belongs_to :user
   belongs_to :group

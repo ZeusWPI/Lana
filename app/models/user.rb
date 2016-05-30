@@ -3,12 +3,14 @@
 # Table name: users
 #
 #  id         :integer          not null, primary key
-#  name       :string
+#  name       :string           not null
+#  token      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  admin      :boolean          default(FALSE), not null
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   extend Broadcastable
   has_many :memberships
   has_many :groups, through: :memberships
