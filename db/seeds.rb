@@ -1,10 +1,9 @@
 games = [
     {
         name: 'General',
-        image_url: ''
-    },
-
-    {
+        image_url: '/assets/tandwiel.png',
+        notes: 'General information'
+    }, {
         name: 'Geweren en Explosies 24',
         image_url: '/assets/geweren_en_explosies_24.jpg',
         notes: 'Wil jij ook veel schieten en dingen laten ontploffen?!!'
