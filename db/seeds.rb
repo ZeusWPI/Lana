@@ -1,7 +1,7 @@
 games = [
   {
     name: 'General',
-    image_url: '/assets/tandwiel.jpg',
+    image_url: '/assets/tandwiel.png',
     notes: 'General information'
   }, {
     name: 'Geweren en Explosies 24',
@@ -27,7 +27,7 @@ games = [
     notes: 'T is lijk magic maar dan anders'
   }, {
     name: 'Trackmania',
-    image_url: '/assets/tm.jpg',
+    image_url: '/assets/tm.png',
     notes: 'Snel rijden met auto\'s'
   }, {
     name: 'Team Fortress 2',
@@ -55,7 +55,7 @@ games = [
     notes: 'Ah, da\'s wel tof. T is gelijk beschaving vier maar dan met meer pixels.'
   }, {
     name: 'Runescape',
-    image_url: 'https://pbs.twimg.com/profile_images/685330164/RSEvents_Twitter_Logo.jpg',
+    image_url: '/assets/runescape.png',
     notes: 'Dit mag niet gespeeld worden op LAN-party\'s want dit draait niet eens lokaal. Ik ben eigenlijk ook tegen LoL.'
   }, {
     name: 'Age of Empires II',
