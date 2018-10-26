@@ -6,6 +6,8 @@ Don't forget to run `rake emoji`.
 
 ## Install
 
+    # make sure ruby 2.2.3 is installed
+
     bundle install
     packer -S npm               # install npm
     npm install                 # in root directory of the repo
