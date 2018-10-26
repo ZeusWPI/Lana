@@ -1,43 +1,49 @@
 games = [
   {
     name: 'Geweren en Explosies 24',
-    image_url: 'http://fotodes.ru/upload/img1342258123.jpg',
+    image_url: '/assets/geweren_en_explosies_24.jpg',
     notes: 'Wil jij ook veel schieten en dingen laten ontploffen?!!'
   }, {
     name: 'League of Legends',
-    image_url: 'https://hdgameplay.com/uploads/games/LoL_icon.png',
+    image_url: '/assets/lol.png',
     notes: '5,556 km legendes'
   }, {
     name: 'Counterstrike: Global Offensive',
-    image_url: 'http://1.bp.blogspot.com/-GplgZlvkXSc/Uk_3BipvAlI/AAAAAAAAAJE/NIU9Sm2vSVU/s1600/Dota2-Filled.png',
+    image_url: '/assets/csgo.png',
     notes: 'Een goedkope spin-off van Geweren en Explosies 22'
-  }, {
+  },
+  {
+      name: 'Overwatch',
+      image_url: 'assets/overwatch.png',
+      notes: 'Een beetje een mashup van Lol en CSGO, best of both worlds'
+  },
+  {
     name: 'Hearthstone',
-    image_url: 'http://t01.deviantart.net/qFmq0BiZfvL5V1Db6iy1CwFBlMI=/300x200/filters:fixed_height(100,100):origin()/pre06/2882/th/pre/f/2013/258/a/6/hearthstone_logo_by_drerrror-d6meodw.png',
+    image_url: '/assets/hearthstone.png',
     notes: 'T is lijk magic maar dan anders'
   }, {
     name: 'Trackmania',
-    image_url: 'http://www.logirama.net/img/images/D1Q56293.gif',
+    image_url: '/assets/tm.jpg',
     notes: 'Snel rijden met auto\'s'
   }, {
     name: 'Team Fortress 2',
-    image_url: 'http://www.stuffcoins.com/images/items/3043.png',
+    image_url: '/assets/tf.png',
     notes: 'Da ziet er een grote man met een geweer uit. T is ook in teams naar \'t schijnt.'
   }, {
     name: 'Rocket League',
-    image_url: 'http://static1.squarespace.com/static/55944a48e4b001e8af79bac6/55b14573e4b029684e326368/55db8185e4b0d4ac02041a7e/1440448911187/rl_shield_logo.png?format=500w',
+    image_url: '/assets/rocket_league.png',
     notes: 'Autovoetbal? Doe da maar. Heh.'
   }, {
     name: 'Dota 2',
-    image_url: 'http://1.bp.blogspot.com/-GplgZlvkXSc/Uk_3BipvAlI/AAAAAAAAAJE/NIU9Sm2vSVU/s1600/Dota2',
+    image_url: '/assets/dota.jpg',
     notes: 'WE ZITTEN OP VENTRILLO EN SPELEN EEN BEETJE DOTA.'
   }, {
     name: 'Minecraft',
-    image_url: 'http://www.mrslawsonskiddos.com/wp-content/uploads/2015/07/app_mce.png ',
+    image_url: '/assets/minecraft.png',
     notes: 'Lego maar dan computer. Is dat niet zo\'n boze meneer die dat geschreven heeft? Mein Kraft!'
   }, {
     name: 'Nidhogg',
-    image_url: 'http://orig04.deviantart.net/9cfc/f/2014/018/d/8/nidhogg_by_pooterman-d72o9gg.png',
+    image_url: '/assets/nidhogg.png',
     notes: 'Flippen met zwaarden en Mats.'
   }, {
     name: 'Civilization V',
@@ -61,3 +67,17 @@ games = [
 games.each do |game_hash|
   Game.create!(**game_hash)
 end
+
+# Create admin
+admin = User.new(name: "admin")
+admin.admin = true
+admin.save
+puts admin['token']
+
+# games.each do |game_hash|
+#   #Game.create!(**game_hash)
+#   #
+#   game = Game.find_or_initialize_by(name: game_hash['name'])
+#   game.update(**game_hash)
+#   game.save
+# end

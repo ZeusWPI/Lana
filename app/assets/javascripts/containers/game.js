@@ -8,19 +8,19 @@ function props(state){
   const { current_user, users, games, groups, events} = state;
   const { game_id } = state.router.params;
 
-  const username = user_id => users.getIn([user_id, 'name'])
-  const joined = group => group.get('members').includes(current_user.id)
+  const username = user_id => users.getIn([user_id, 'name']);
+  const joined = group => group.get('members').includes(current_user.id);
 
   const game = games.toJS()[game_id]; // dafuq?
 
-    const game_groups = groups.filter(g => g.get('game_id') == game_id)
+    const game_groups = groups.filter(g => g.get('game_id') === game_id)
       .map( group => group.set('joined',
                            group.get('members').includes(current_user.id))
                       .update('members', ms => ms.map(username))
     ).toIndexedSeq().toJS();
 
   const game_events = events.toList()
-                      .filter(e => e.get('game_id') == game_id).toJS();
+                      .filter(e => e.get('game_id') === game_id).toJS();
 
   return {
     ...game,
