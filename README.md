@@ -1,5 +1,9 @@
 # :dog2: Lana [![Analytics](https://ga-beacon.appspot.com/UA-25444917-6/ZeusWPI/Lana/README.md?pixel)](https://github.com/igrigorik/ga-beacon) [![Code Climate](https://codeclimate.com/github/ZeusWPI/Lana/badges/gpa.svg)](https://codeclimate.com/github/ZeusWPI/Lana) [![Coverage Status](https://coveralls.io/repos/ZeusWPI/Lana/badge.svg?branch=master&service=github)](https://coveralls.io/github/ZeusWPI/Lana?branch=master) [![Build Status](https://travis-ci.org/ZeusWPI/Lana.png?branch=master)](https://travis-ci.org/ZeusWPI/Lana)
 
+WARNING: There are no tests for this software, use is on your own risk.
+
+-----
+
 An application to make the life of a LAN-partygoer easier!
 
 Don't forget to run `rake emoji`.
@@ -37,9 +41,12 @@ Don't forget to run `rake emoji`.
     # reset, setup and seed the database when it's already populated
     bundle exec rake db:reset
 
-
+## Testing
+    # setup environment
+    bundle exec rails db:migrate RAILS_ENV=test
     
-    
+    # execute
+    bundle exec rake
 
 ## Programma structuur
 
