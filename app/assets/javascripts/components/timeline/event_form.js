@@ -50,7 +50,9 @@ export default class EventForm extends Component {
                   Cancel
                 </button>
                 <button type='button' className='btn btn-primary'
-                  onClick={() => this.props.onSubmit(this.state)}>
+                  onClick={() => {
+                    this.props.onSubmit(this.state)
+                  }}>
                   Save
                 </button>
               </div>

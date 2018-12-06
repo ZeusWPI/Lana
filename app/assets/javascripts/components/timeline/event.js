@@ -7,7 +7,7 @@ class Event extends Component {
     if (time < moment().add(1, 'day')){
       return time.format('HH:mm');
     } else {
-      return moment.calendar();
+      return time.calendar();
     }
   }
   render() {

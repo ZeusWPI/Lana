@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 
+# https://stackoverflow.com/questions/42334698/error-installing-json-1-8-3-with-ruby-2-4
+gem 'json', '>= 1.8.5'
 
 # Edge rails!
 gem 'rails', '~> 5.0.0.rc1'
 # Needed for actioncable
-gem 'redis'
+gem 'redis', '~> 3.2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -56,7 +58,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use puma as the app server
-gem 'puma'
+gem 'puma', '~> 3.10'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

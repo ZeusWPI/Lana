@@ -26,3 +26,6 @@ coverage/
 npm-debug.log
 
 dump.rdb
+
+.idea/
+vendor/

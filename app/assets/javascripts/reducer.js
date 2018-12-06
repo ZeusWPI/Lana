@@ -26,6 +26,7 @@ const modelActions = {
     state.delete(action.payload)
 };
 
+// Map the prefix over every key in de modelActions
 function prefix_keys(obj, prefix) {
   var newObj = {};
   for (let key in obj){
@@ -34,6 +35,7 @@ function prefix_keys(obj, prefix) {
   return newObj;
 }
 
+// Construct the correct reducer for every type
 function modelReducer(name, extraActions) {
   return handleActions(
     {...extraActions, ...prefix_keys(modelActions, name+'#')},
@@ -41,7 +43,7 @@ function modelReducer(name, extraActions) {
   );
 }
 
-const events = modelReducer('events');
+const events = modelReducer('event');
 const games = modelReducer('game');
 const users = modelReducer('user');
 const groups = modelReducer('group', {
