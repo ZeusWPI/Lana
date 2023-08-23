@@ -10,10 +10,19 @@ Don't forget to run `rake emoji`.
 
 ## Install
 
-    # make sure ruby 2.2.3 is installed
+    # make sure ruby and ruby-dev or ruby-devel 2.2.3 is installed
+    # make sure development tools are installed. e.g. apt install build-essentials or dnf groupinstall "Development Tools"
 
-    bundle install
-    packer -S npm               # install npm
+    gem install bundler:1.17.0
+    gem install shared-mime-info
+    rm Gemfile.lock
+
+
+    bundle update mimemagic
+
+    mkdir build
+    bundle install --path build/
+    packer -S npm    / apt install npm / dnf install npm           # install npm
     npm install                 # in root directory of the repo
     bundle exec rake db:setup   # setup the database
     bundle exec rake db:seed    # seed the database
